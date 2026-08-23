@@ -17,6 +17,7 @@ This repository holds the brand and marketing strategy.
 | [`brand/identity.md`](brand/identity.md) | Audit of the existing logo — palette, typography, what works and what breaks |
 | [`brand/identity-brief.md`](brand/identity-brief.md) | The rebuild brief — constraints, three art directions, deliverables |
 | [`brand/voice.md`](brand/voice.md) | Verbal identity — tone, voice qualities, vocabulary, style rules |
+| [`brand/architecture.md`](brand/architecture.md) | How the studio, publication and Day 7 relate — and the rules that keep them separate |
 | [`marketing/growth-plan.md`](marketing/growth-plan.md) | 12-month AARRR growth plan, 90-day roadmap, pricing and revenue strategy |
 | [`ASSUMPTIONS.md`](ASSUMPTIONS.md) | What's confirmed, what's inferred, and what breaks if the inferences are wrong |
 
@@ -54,7 +55,16 @@ Strategy v2 — rebuilt for the studio-with-media-arm model.
 four client segments unsegmented works against the goal of raising prices. A
 recommendation and an alternative are both on the table.
 
-**Not yet built:** brand story, content strategy, the editorial standards documents
-(sourcing, corrections, conflicts — the first execution deliverable), and the
-identity artwork itself. Master files belong in
-[`brand/assets/`](brand/assets/), which is currently a manifest only.
+### Editorial standards — drafted, ready to publish
+
+The three public documents the positioning rests on. Written to go on the site as-is,
+in the brand's voice. See [`editorial/`](editorial/) for what must be filled first.
+
+| Document | Commits to |
+| --- | --- |
+| [`sourcing-standard.md`](editorial/sourcing-standard.md) | What we require before publishing anything |
+| [`corrections-policy.md`](editorial/corrections-policy.md) | Correcting in public, and keeping the log |
+| [`conflicts-policy.md`](editorial/conflicts-policy.md) | The studio/publication conflict, named openly |
+
+**Not yet built:** brand story, content strategy, and the identity artwork itself.
+Master files belong in [`brand/assets/`](brand/assets/), currently a manifest only.

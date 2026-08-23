@@ -71,7 +71,7 @@ doesn't set the price of the dearest:
   The publication speaks to these two natively.
 - **Graduate into** — enterprise. The 12–24 month target, won by accumulated
   credibility rather than pursued now.
-- **Productised and separate** — creators, via **Day Seven**, a fixed-price product
+- **Productised and separate** — creators, via **Day 7**, a fixed-price product
   endorsed by 7th Creation. Naming conflict noted in `brand/architecture.md` §03.2.
 
 Structure and rules: `brand/architecture.md`. Reasoning: `marketing/growth-plan.md` §7.5.

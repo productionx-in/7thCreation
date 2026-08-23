@@ -133,11 +133,11 @@ that is evidently available.
 - **Don't say:** anything about being small, scrappy or fast-moving. Reassurance
   beats energy here.
 
-### Creators — via **Day Seven** *(productised)*
+### Creators — via **Day 7** *(productised)*
 
 - **Lead with:** the fixed shape. Price, scope and timeline, stated up front.
 - **Say:** "Fixed price, fixed scope, done by [date]."
-- **Always endorsed:** "Day Seven by 7th Creation" — never the name alone.
+- **Always endorsed:** "Day 7 by 7th Creation" — never the name alone.
   See `brand/architecture.md` §03.2 for why this one matters.
 - **Don't say:** anything that invites custom scoping. The offer's discipline *is*
   its message. See `brand/architecture.md` §3.
@@ -191,8 +191,8 @@ rigour cannot make an unverified claim about its own rigour.
 | Claim | Type | Status |
 | --- | --- | --- |
 | The published archive itself | Structural | 🔶 Ongoing — the core asset |
-| Public sourcing standard | Structural | 🔶 Build — Weeks 3–4 |
-| Public correction log | Structural | 🔶 Build — Weeks 3–4 |
+| Public sourcing standard | Structural | ✅ Drafted — `editorial/sourcing-standard.md` |
+| Public correction log | Structural | ✅ Policy drafted; the log itself must be built before publishing it |
 | Case studies showing reasoning | Credential | 🔶 Build — Weeks 3–4 |
 | Named client outcomes | Commercial | 🔶 Gather |
 | % of clients who read first | Commercial | 🔶 Instrument — Weeks 1–2 |

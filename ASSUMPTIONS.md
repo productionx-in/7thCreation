@@ -105,7 +105,7 @@ first time someone wants to quote a creator custom job off the studio rate card.
 
 ## ✅ Naming — decided, with one open item
 
-**The productised creator offer is named Day Seven.** Founder-confirmed.
+**The productised creator offer is named Day 7.** Founder-confirmed.
 
 **Open: clearance.** A web check found *Day Seven Design* — an existing design studio
 doing visual branding and identity, i.e. the same category. The name is being used
@@ -118,7 +118,7 @@ jurisdiction and class. A web search is not a clearance search, and this has not
 been done.
 
 **Also unresolved:** whether to set it as `DAY 7` in numerals rather than
-`DAY SEVEN`. Recommended — it separates the name in writing and in search, and ties
+`DAY 7`. Recommended — it separates the name in writing and in search, and ties
 to the logo's own numeral monogram. Needs a decision.
 
 ## Newly opened — needs an answer
