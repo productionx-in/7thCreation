@@ -12,19 +12,21 @@ assumed truth.
 
 | # | Input | Value |
 | --- | --- | --- |
-| 1 | Business model | Media / content brand — audience-first; revenue from sponsorship, ads, products |
+| 1 | Business model | Creative studio with a media arm — client work is the revenue, the publication is the trust engine |
 | 2 | Stage | Growth — revenue proven |
 | 3 | 12-month goal | Scale revenue and raise prices |
 | 4 | Market position | Trusted partner — rigorous, credible |
+| 5 | Client segments | All four: brands, startups, enterprise, creators (see the open disagreement below) |
+| 6 | Identity | Rebuild from strategy up; current logo treated as a direction |
 
 ## Inferred — confirm before spending against these
 
 | # | Assumption | Why it was chosen | What breaks if it's wrong |
 | --- | --- | --- | --- |
-| 5 | **Primary audience: operators building in the digital economy** — founders, marketers, product and brand people who make build/buy decisions | The founder selected "no preference". This audience makes the "digital world" name coherent, sits next to Production X's real competence, and is expensive for sponsors to reach elsewhere — which is the mechanism that lets prices rise | **Everything.** Positioning, messaging, voice register, channel choice and the entire sponsor pricing argument all route through this. Correct it first if it's wrong |
-| 6 | **Competitive set**: Stratechery, The Information, Lenny's Newsletter, Morning Brew, TechCrunch, platform-owned content | Drawn from the category as a reference class, to locate an unclaimed quadrant | The positioning *territory* (verified + institutional + practitioner-facing) survives a different competitor list, but the map in `brand/positioning.md` §02 and the "unclaimed space" argument would need redrawing |
+| A | **Primary reader audience: operators building in the digital economy** — founders, marketers, product and brand people who make build/buy decisions | The founder selected "no preference". This audience makes the "digital world" name coherent, sits next to Production X's real competence, and is expensive for sponsors to reach elsewhere — which is the mechanism that lets prices rise | **Everything.** Positioning, messaging, voice register, channel choice and the entire sponsor pricing argument all route through this. Correct it first if it's wrong. Still unconfirmed |
+| B | **Media competitive set**: Stratechery, The Information, Lenny's Newsletter, Morning Brew, TechCrunch, platform-owned content | Drawn from the category as a reference class, to locate an unclaimed quadrant | The positioning *territory* (verified + institutional + practitioner-facing) survives a different competitor list, but the map in `brand/positioning.md` §02 and the "unclaimed space" argument would need redrawing |
 
-## ⚠️ Contradiction — unresolved
+## ✅ Contradiction — RESOLVED
 
 **The logo tagline reads "A CREATIVE STUDIO". Assumption 1 says "media / content brand".**
 
@@ -58,7 +60,9 @@ earns the trust, the studio monetises it at a much higher rate than sponsorship
 ever could. If that's the shape, almost everything here stands, but it gets
 re-pointed: the audience work feeds a client pipeline instead of a rate card.
 
-**Status: blocking.** Flagged to the founder.
+**Resolved:** creative studio with a media arm — the third possibility above.
+Strategy rebuilt accordingly in commit `5ba9528`. The spine survived; the revenue
+model, acquisition funnels and north star were replaced.
 
 ## Not yet known — needed before execution
 
@@ -79,3 +83,31 @@ reach, raise revenue per reader rather than reader count, make rigour verifiable
 so it can be priced — follows from the four confirmed answers alone. Changing
 assumption 5 changes who the work speaks to and where it's distributed. It does
 not change the commercial logic.
+
+
+## Open disagreement — logged, not blocking
+
+**All four client segments, unsegmented, works against the goal of raising prices.**
+
+Raised in `marketing/growth-plan.md` §7.5 with the full argument. Short version:
+price anchors downward, so publicly serving creator-tier clients makes enterprise
+rates harder to defend, and a publication addressing all four at once goes generic.
+
+Recommended: keep all four, separate them — startups and brands primary, enterprise
+as a graduate-into target, creators productised under a distinct offer name.
+
+The founder has not yet responded to this. It is recorded here so it doesn't
+disappear into a document nobody re-reads. If the answer is "serve all four openly",
+that is a legitimate business and the plan should be rebuilt around volume and
+throughput — the failure mode to avoid is choosing the premium position and then
+quietly serving everyone.
+
+## Newly opened — needs an answer
+
+- **Studio competitive set is empty.** Who else bids for these briefs? This matters
+  more than the media competitor list and currently doesn't exist.
+- **Is sponsorship revenue already material?** `growth-plan.md` §7.1 recommends not
+  building it. If it's already a real line, that recommendation has a cost.
+- **Capacity.** Can the studio publish consistently *and* deliver client work? An
+  under-fed media arm advertises inconsistency to the exact buyers it's meant to
+  impress.
