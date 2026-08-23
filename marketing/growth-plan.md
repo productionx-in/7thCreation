@@ -1,282 +1,284 @@
 # 7th Creation — 12-Month Growth Plan
 
+> **Model (founder-confirmed):** creative studio with a media arm.
 > **Goal (founder-confirmed):** scale revenue and raise prices.
-> **Structure:** AARRR — Acquisition, Activation, Retention, Referral, Revenue.
+> **Structure:** AARRR, applied to a two-engine business.
 > Reads from `.agents/brand-context.md` and `brand/positioning.md`.
-> 🔶 marks an input that must be filled from real data before execution.
+> 🔶 marks an input that must come from real data before execution.
 
 ---
 
 ## 1. Executive Summary
 
-**The strategic claim: 7th Creation should not try to grow its audience this year.**
+**The media arm is not a business. It is the reason the studio can charge more.**
 
-That sounds like the wrong advice for a growth-stage media brand, so here is the
-reasoning explicitly.
+That reframing changes the plan's economics completely, and for the better.
 
-Media revenue is `audience × revenue per reader`. Almost every publication attacks
-the left-hand term, because it's visible and it feels like progress. But audience
-growth is the expensive term — it costs money per unit, it dilutes audience quality
-by construction (the marginal reader is always less qualified than the average one),
-and it drags the brand toward volume-priced ad inventory where the price is set by
-comparison to everyone else's CPM.
+A publication monetised through sponsorship earns, at healthy rates, somewhere in
+the region of a few tens of dollars per thousand impressions. The *same* audience,
+pointed at a studio, converts a handful of readers a year into engagements worth
+orders of magnitude more. The audience isn't a small revenue stream — it is a
+large one that has been pointed at the wrong buyer.
 
-The right-hand term is where a rigorous, premium-niche brand wins. It costs almost
-nothing per unit, it compounds, and it has no ceiling set by competitors. And it is
-the term the confirmed position — *trusted partner, rigorous, credible* — was built
-to move.
+So the original thesis holds, in a stronger form. It was: *monetise trust, not
+reach.* For a studio with a media arm, that becomes literal — the publication
+generates trust at deliberately low direct monetisation, and the studio captures
+it at high value.
 
 **Three bets for the year:**
 
-1. **Make the audience verifiable.** Sponsors don't pay a premium for a big
-   audience; they pay it for a *provably specific* one. Today the audience is
-   almost certainly asserted rather than evidenced. Turning that into documented
-   firmographics is the single highest-return action available, and it is
-   research, not marketing spend.
+1. **Stop selling sponsorship. Sell the studio.** Every sponsor slot spends
+   independence — the exact asset that makes the publication persuasive — for
+   revenue that is a rounding error against one retained client. Independence is
+   worth more unspent.
 
-2. **Move up the monetisation ladder.** Ads price on volume → sponsorship prices on
-   fit → owned products price on outcome. Every step up detaches revenue further
-   from audience size. Shift the mix deliberately, in that order.
+2. **Make the publication the portfolio.** Not content marketing. The studio doing
+   its actual craft in public: the research, the reasoning, the decisions. Prospects
+   should arrive having already watched you work. This is the single highest-leverage
+   lever on price, because it removes the pitch from the sale.
 
-3. **Ship the credibility infrastructure.** The sourcing standard, correction log
-   and conflicts policy are not editorial housekeeping — they are the pricing
-   mechanism. They are what converts "we're rigorous" from a claim into a
-   verifiable fact, and a verifiable fact is what a rate card increase has to
-   rest on.
+3. **Narrow the client list, or segment it deliberately.** You confirmed all four
+   segments. Serving all four unsegmented is the one thing in this plan that
+   actively fights the goal — see §7.5. There is a way to keep all four without
+   paying that cost, and it needs a decision.
 
-**90-day priorities:** audience census, three public standards shipped, rate card
-rebuilt on evidence, sponsor deals moved from one-off to annual.
+**90-day priorities:** publish the standards, ship one piece that proves the
+studio's thinking, rebuild the rate card on demonstrated expertise, instrument
+reader→lead conversion.
 
-**12-month outcome:** revenue materially up, audience roughly flat, revenue mix
-majority non-volume-priced, and a defensible answer to "why does it cost that?"
+**12-month outcome:** higher average engagement value, a majority-inbound pipeline,
+and prospects who arrive already convinced.
 
 ---
 
 ## 2. Current State
 
-🔶 **This section is a rubric, not an assessment.** Score honestly before planning
-spend; the plan below assumes middling scores and should be re-sequenced if
-reality differs.
+🔶 **A rubric, not an assessment.** Score honestly before committing spend.
 
-| Area | Score (0–5) | Notes |
-| --- | --- | --- |
-| Audience definition — documented, not assumed | 🔶 | |
-| Firmographic evidence of who reads | 🔶 | |
-| Editorial standards published | 🔶 | |
-| Correction / revisit process | 🔶 | |
-| Conflicts & sponsorship policy | 🔶 | |
-| Rate card — evidence-based vs. guessed | 🔶 | |
-| Revenue mix (ads / sponsorship / product) | 🔶 | |
-| Sponsor renewal rate | 🔶 | |
-| Owned distribution (email list vs. platform) | 🔶 | |
-| Direct traffic share | 🔶 | |
-| Citation tracking | 🔶 | |
-| Contributor bench | 🔶 | |
+| Area | Score (0–5) |
+| --- | --- |
+| **Studio** — positioning documented and distinct from competitors | 🔶 |
+| **Studio** — rate card, and whether it's defended or discounted | 🔶 |
+| **Studio** — inbound vs. outbound share of new business | 🔶 |
+| **Studio** — proposal win rate | 🔶 |
+| **Studio** — case studies published, with outcomes | 🔶 |
+| **Studio** — named competitive set | 🔶 |
+| **Media** — audience size, and how much is owned vs. rented | 🔶 |
+| **Media** — publishing cadence and capacity | 🔶 |
+| **Media** — editorial standards published | 🔶 |
+| **Bridge** — reader→lead conversion, instrumented at all | 🔶 |
+| **Bridge** — can you name a client the publication produced? | 🔶 |
 
-**The two scores that matter most:** *firmographic evidence* and *revenue mix*.
-Everything in this plan routes through those two.
+**The two that matter most:** *inbound share* and *reader→lead conversion*. The
+entire model rests on the bridge between the engines. If nobody has ever measured
+it, that is the first job — you cannot improve a mechanism you can't see.
 
 ---
 
-## 3. Acquisition — strangers become readers
+## 3. Acquisition
 
-**Posture: selective, not maximal.** The job is not more readers. It is *more of
-the right readers, from sources that prove they're the right readers.*
+Two funnels, one publication.
 
-**Do:**
+**Funnel A — readers (trust)**
 
-- **Citation-led acquisition (primary).** Publish the piece other people have to
-  link to — the definitive, sourced reference on a narrow question nobody else has
-  actually measured. One genuinely canonical piece per quarter outperforms twelve
-  competent ones. Citations are also the leading indicator of the positioning
-  working at all (see `brand/positioning.md` §05).
-- **Flagship annual research report.** The highest-leverage asset in the plan; it
-  serves acquisition, credibility and revenue simultaneously. Detailed in §7.
-- **Practitioner-network referral.** In this category, distribution runs through
-  respected individuals sharing into private channels — Slacks, group chats,
-  internal wikis. Optimise for *forwardability by an expert*, which means clean
-  sourcing and a headline that doesn't embarrass the person sharing it.
-- **Search, for decision-stage queries only.** Not traffic SEO. Target the
-  narrow, high-intent questions a buyer asks days before committing — where the
-  rigour is a differentiator and the reader is inherently qualified.
+- **Citation-led publishing.** One genuinely canonical piece per quarter beats
+  twelve competent ones. The piece other people have to link to.
+- **Show the work.** Publish the reasoning behind real projects — the constraint,
+  the options rejected, the trade-off taken. Most studios publish finished
+  artefacts; almost nobody publishes the thinking. The thinking is what a
+  prospective client is actually buying, and it is the part competitors can't copy.
+- **Practitioner-network distribution.** Optimise for forwardability by someone
+  whose reputation is attached to the share.
 
-**Don't:**
+**Funnel B — clients (revenue)**
 
-- Paid audience acquisition at CPM. It buys exactly the reader who dilutes the
-  firmographic story you're about to charge a premium for.
-- Volume SEO or programmatic content. It directly contradicts the position, and
-  the position is the product.
-- Platform-native growth tactics that require adopting hype cadence. The tonal
-  contrast is a differentiator; trading it for reach spends the asset to buy the
-  metric.
+- **Inbound from the publication.** The primary channel by design. Every piece
+  should make it obvious that a studio produced it, without ever reading as an ad.
+- **Referral from delivered work.** In studio businesses this is consistently the
+  highest-converting channel and the most neglected. Formalise it — see §6.
+- **Selective, research-led outbound.** Not volume prospecting. A small number of
+  named target accounts, approached with something specific you've published about
+  their actual problem. Rare and expensive; converts at rates cold outreach never
+  will.
 
-**Metric:** not sessions. **Qualified new readers** — new readers who match the
-ICP on the census — and **citation count**.
+**Don't**
 
----
+- Paid audience acquisition at CPM. It buys the reader least likely to become a
+  client.
+- Volume SEO or programmatic content. It contradicts the position, and here the
+  position *is* the sales asset.
+- Directory listings and marketplace platforms. They compete on price by
+  construction, which is the opposite of the goal.
 
-## 4. Activation — a reader has the experience that converts them
-
-The activating moment is not the first read. It is **the first time a reader uses
-7th Creation to make or defend a decision.** Everything before that is sampling.
-
-**Moves:**
-- **Land on the standard, not the archive.** A first-time reader should encounter
-  the sourcing standard and correction log early. For most publications the "about"
-  page is dead weight; here it is the differentiator and should be treated as a
-  primary conversion surface.
-- **Own the relationship.** Email over platform, always. A reader on someone
-  else's platform is an audience you rent and cannot document to a sponsor.
-- **Make pieces defensible on arrival.** Visible sources, dates and last-verified
-  stamps — the features that make a piece forwardable into a work conversation,
-  which is the activation event.
-- **Ask one question at signup.** Role and company size. That single field is what
-  makes the whole census, and therefore the rate card, possible.
-
-**Metric:** % of new readers who return within 30 days · % with role/firmographic
-data captured.
+**Metric:** qualified readers · citations · **inbound leads attributable to a
+published piece** (the bridge metric — instrument this first).
 
 ---
 
-## 5. Retention — readers stay and deepen
+## 4. Activation
 
-Retention *is* the asset. A media brand's balance sheet is the durability of
-attention, and sponsor pricing is downstream of it.
+Two activating moments, and they are different events.
 
-**Moves:**
-- **Publish on readiness, not on schedule.** A skipped week costs less than one
-  unverified piece. Say so publicly — it reinforces the position rather than
-  looking like a lapse.
-- **Living pieces.** Evergreen work with visible changelogs gives readers a reason
-  to return to something they've already read — a retention mechanic almost no
-  competitor has, because it's incompatible with volume economics.
-- **Correct loudly.** Counterintuitively, published corrections *raise* retention
-  in a credibility brand. They are proof the standard is real rather than decorative.
+**Reader activation** — the first time someone uses a 7th Creation piece to make or
+defend a decision. Moves: own the relationship by email, not platform; make pieces
+defensible on arrival (visible sources and dates); land newcomers on the standards,
+not the archive.
 
-**Metric:** cohort retention at 3/6/12 months · returning-reader share ·
-direct-traffic share (the cleanest proxy for genuine brand demand).
+**Client activation** — the first time a prospect thinks *"these are the people who
+wrote that."* This is the whole model working. It requires the studio and the
+publication to be visibly the same entity — which, right now, the identity does not
+make obvious (see `brand/identity-brief.md`).
+
+**Metric:** 30-day reader return rate · % of inbound leads who cite a specific piece.
 
 ---
 
-## 6. Referral — readers bring readers
+## 5. Retention
 
-No incentivised referral programme. Reward-driven sharing produces exactly the
-low-intent reader this plan is designed to avoid, and it cheapens a credibility
-brand in the eyes of the professionals it needs.
+**Readers:** publish on readiness, not schedule. Living pieces with visible
+changelogs — a retention mechanic competitors optimised for volume can't run.
+Correct loudly; published corrections raise trust rather than damage it.
 
-**Instead — engineer expert forwarding:**
-- Every piece should have one **quotable, sourced finding** an expert can paste
-  into a work channel with their reputation attached.
-- Make citation frictionless: stable URLs, a copy-ready citation block, clean
-  social cards.
-- **Contributor networks are the referral channel.** Each practitioner contributor
-  brings a credentialed audience that arrives pre-qualified. Treat contributor
-  recruitment as a growth channel, budgeted as one.
+**Clients:** retention is where studio economics are actually won. A retained client
+costs nothing to acquire and carries no proposal overhead, so it is dramatically
+more profitable than a new one at the same headline value. Concretely: default to
+retainer over project wherever the work supports it, and treat the end of every
+engagement as the start of the next conversation rather than a closed file.
 
-**Metric:** external citations · inbound links from practitioner sources ·
-share of new readers from direct/dark-social.
+**Metric:** cohort reader retention · client repeat rate · retainer share of revenue.
+
+---
+
+## 6. Referral
+
+**No incentivised reader referral.** Reward-driven sharing produces the low-intent
+reader this plan is built to avoid.
+
+**Formalise client referral instead.** This is the most under-managed channel in
+almost every studio. Ask at the moment of delivered success — not at invoice, not
+at year-end, but at the point the client is visibly pleased. Make it specific:
+"who else has this problem?" beats "keep us in mind."
+
+**Contributor networks** double as a channel: each practitioner contributor brings a
+credentialed audience that arrives pre-qualified.
+
+**Metric:** referral share of new business · citations · dark-social share.
 
 ---
 
 ## 7. Revenue — the core of this plan
 
-**The ladder. Move up it deliberately.**
+### 7.1 Don't build the sponsorship ladder
 
-| Tier | Priced on | Ceiling | Move |
-| --- | --- | --- | --- |
-| Volume ads / CPM | Impressions | Set by competitors' CPM | **Exit** |
-| Sponsorship | Audience fit | Set by audience quality | **Grow** |
-| Annual partnerships | Relationship + fit | Set by trust | **Prioritise** |
-| Owned products (reports, data, events) | Outcome | Set by value delivered | **Build** |
+The previous version of this plan proposed climbing CPM → sponsorship → products.
+Under the studio model, **skip it.**
 
-Each step up detaches price from audience size. That is the entire mechanism by
-which prices rise without the audience growing.
+Sponsorship revenue on a niche publication is small, and it costs the thing that
+makes the publication work. A reader who has watched you decline advertising treats
+your analysis differently from one who scrolled past a placement. That difference
+is the conversion mechanism for the studio. Selling it for sponsorship money is
+selling the machine for the price of its output.
 
-### 7.1 The audience census — do this first
+**Exception worth considering:** a single annual flagship report, sponsored by one
+non-competing partner, disclosed prominently. That's a credibility artifact with a
+sponsor attached, not an ad business.
 
-Before any price change, run a proper reader census: role, seniority, company size,
-industry, budget authority, tools evaluated in the last 12 months.
+### 7.2 Raise the price of the work
 
-This is the highest-ROI action in the plan. It converts the sponsor conversation
-from *"we have N readers"* (which invites CPM comparison, and CPM comparison caps
-the price) to *"we have N readers, 60% of whom hold budget authority for tooling
-decisions at companies of 200+"* (which has no comparison set, because nobody else
-has measured theirs).
+Three levers, in order of effect:
 
-**Publish the census.** It doubles as a credibility artifact and a citable asset.
+1. **Demonstrated expertise.** The publication *is* the proof. A prospect who has
+   read your reasoning doesn't need a pitch, and doesn't benchmark you against three
+   other studios — because the others didn't show their thinking.
+2. **Selectivity.** Visible capacity constraint raises price more reliably than any
+   argument about value. A studio that is evidently choosing its clients is priced
+   differently from one that is evidently available.
+3. **Specificity.** Specialists are paid more than generalists, always. This is
+   where the four-segment answer bites — see §7.5.
 
-### 7.2 Rebuild the rate card on evidence
+**Practically:** raise rates on new business first, not existing clients. Quote the
+new rate without apology or explanation. 🔶 Set the increase from actual current
+pricing and win rate — **a win rate above ~70% is evidence of underpricing**, and
+the fastest read available on whether there's room.
 
-- Price on **audience quality**, never impressions.
-- **Lead with firmographics** in every sponsor conversation. If subscriber count is
-  the headline number, the price has already been capped.
-- **Raise prices at renewal, not mid-term** — with the census as the stated reason.
-  A price rise attached to new evidence is a different conversation from one
-  attached to nothing.
-- 🔶 Set the increase from actual current pricing and renewal rate. **A renewal rate
-  above ~90% is itself evidence of underpricing.**
+### 7.3 Shift project → retainer
 
-### 7.3 Shift one-offs to annual
+Projects force perpetual re-selling and price each engagement in isolation.
+Retainers give predictable revenue, remove proposal overhead, and — because the
+client is buying an ongoing relationship with a studio they trust rather than a
+defined deliverable — support a materially higher effective rate.
 
-One-off placements are volume-priced by nature and force perpetual re-selling.
-Annual partnerships give revenue predictability, cut sales cost, and — because the
-sponsor is buying a relationship with a trusted publication rather than a slot —
-support a materially higher effective rate.
+**Target by month 12:** a meaningful majority of revenue on retained or repeat work.
 
-**Target mix by month 12:** majority of sponsor revenue on annual commitments.
+### 7.4 Productise one offer
 
-### 7.4 Build one owned product
+One fixed-scope, fixed-price offer — a positioning sprint, an identity audit, a
+research engagement. It does three jobs: gives inbound leads a low-friction entry
+point, qualifies them before they consume proposal time, and converts a share into
+full engagements. It also gives creator-tier demand somewhere to go (§7.5).
 
-The flagship annual research report is the right first product. It is the only
-asset that serves all five AARRR stages at once:
+### 7.5 The four-segment problem ⚠️
 
-- **Acquisition** — the citable artifact of the year
-- **Activation** — demonstrates the standard better than any about-page
-- **Retention** — an annual appointment readers anticipate
-- **Referral** — the thing practitioners forward to their whole team
-- **Revenue** — sponsorable at a large multiple of a normal placement, and
-  independently saleable
+You confirmed all four client types. This is the one answer in the plan that works
+against the stated goal, and it deserves a direct argument rather than a footnote.
 
-**Rule: the report must be genuinely researched — original data the audience
-cannot get elsewhere.** A repackaged survey with a design pass is transparently
-that, and in a brand whose entire premium is rigour, a fake research product does
-more damage than no product at all.
+**The cost.** Four segments means four pitches, four price points, four proof sets,
+and a publication trying to interest enterprise procurement and individual creators
+in the same week. It goes generic, because that's the only way to speak to everyone.
+Generic is precisely what cannot command a premium.
 
-### 7.5 On a paid reader tier
+**The specific damage.** Price anchors downward, not upward. Public creator-tier
+work makes an enterprise rate harder to defend — a procurement team that finds your
+low-tier pricing will ask why their quote differs, and "different segment" is a
+weak answer in that conversation. Enterprise and creators are the two ends, and
+carrying both visibly under one brand caps the top.
 
-🔶 **Defer the decision to Q3.** A paywall trades reach for direct revenue, and
-reach is what sponsor pricing rests on. With sponsorship not yet optimised, a
-paywall would cannibalise the larger lever to serve the smaller one. Revisit once
-§7.1–7.3 are done and the sponsor ceiling is actually known.
+**Recommendation — keep all four, but not all in one brand:**
+
+| Segment | Treatment |
+| --- | --- |
+| **Startups — brand & identity** | **Primary.** Best fit for the position; the publication speaks to them natively |
+| **Brands — content & campaigns** | **Primary.** Same buyer sophistication, larger budgets, retainer-friendly |
+| **Enterprise** | **Graduate into.** The 12–24 month target. Won by the credibility the publication builds — don't chase it before the proof exists |
+| **Creators** | **Productise and separate.** Fixed-price packages under a distinct offer name (§7.4). Keeps the revenue, contains the anchoring |
+
+This keeps every segment. It just stops the cheapest one from setting the price of
+the most expensive one.
+
+**If you'd rather serve all four openly and unsegmented, say so and I'll rebuild
+the plan around volume and throughput instead** — that is a legitimate business,
+it is simply a different one, and it doesn't reach a premium rate card. The failure
+mode to avoid is choosing the premium position and then quietly serving everyone,
+which delivers neither.
 
 ---
 
 ## 8. 90-Day Roadmap
 
 **Weeks 1–2 — Unblock**
-- Score the §2 rubric honestly. 🔶
-- Pull real numbers: audience size, revenue by line, renewal rate, current rates. 🔶
-- Draft the sourcing standard, correction policy, conflicts policy. *(Revenue)*
-- Add the role/company-size field at signup. *(Activation)*
+- Score the §2 rubric. 🔶
+- Pull real numbers: rates, win rate, inbound share, retainer share, audience. 🔶
+- **Instrument the bridge** — can you attribute a lead to a published piece? *(Acq)*
+- Take the §7.5 segmentation decision. *(Revenue)*
 
 **Weeks 3–4 — Foundation**
-- **Publish all three standards.** They are live proof points from that day. *(Revenue)*
-- Launch the audience census. *(Revenue)*
-- Start citation tracking. *(Acquisition)*
-- Audit every published claim about ourselves for sourcing. *(Brand integrity)*
+- Publish the editorial standards — sourcing, corrections, conflicts. *(Trust)*
+- Publish two case studies that show *reasoning*, not just outcomes. *(Acq)*
+- Name the studio competitive set. 🔶 *(Positioning)*
+- Draft the productised offer. *(Revenue)*
 
 **Weeks 5–8 — Velocity**
-- Close the census; publish the findings. *(Revenue / Acquisition)*
-- **Rebuild the rate card on census evidence.** *(Revenue)*
-- Take the new card to the next two renewals — annual terms, higher rate. *(Revenue)*
-- Scope the flagship report: the question, the method, the data. *(Revenue)*
-- Ship one deliberately canonical piece. *(Acquisition)*
+- Ship one deliberately canonical piece. *(Acq)*
+- **Raise rates on new business.** Quote the new number without preamble. *(Revenue)*
+- Launch the productised offer. *(Revenue)*
+- Ask every recently-delighted client the referral question. *(Referral)*
+- Begin the identity rebuild against `brand/identity-brief.md`. *(Brand)*
 
 **Weeks 9–12 — Compound**
-- Convert remaining one-off sponsors to annual at renewal. *(Revenue)*
-- Recruit two practitioner contributors. *(Referral / Retention)*
-- Convert top evergreen pieces to living pieces with changelogs. *(Retention)*
-- Publish the first correction under the new policy — visibly. *(Retention / Brand)*
+- Convert one project client to retainer. *(Retention)*
+- Recruit one practitioner contributor. *(Referral)*
+- Convert top evergreen pieces to living pieces. *(Retention)*
+- Review: did any inbound lead cite a piece? Ask every one of them. *(Bridge)*
 
 ---
 
@@ -284,48 +286,46 @@ paywall would cannibalise the larger lever to serve the smaller one. Revisit onc
 
 | Quarter | Milestone |
 | --- | --- |
-| **Q1** | Standards live. Census published. Rate card rebuilt on evidence. |
-| **Q2** | Flagship report researched and shipped. Majority of sponsors on annual terms. |
-| **Q3** | Contributor bench established. Paid-tier decision taken on real data. |
-| **Q4** | Second price rise justified by year-one citation and renewal record. Year-two report scoped. |
+| **Q1** | Standards live. Segmentation decided. Rates raised on new business. Bridge instrumented. |
+| **Q2** | Identity rebuild shipped. Productised offer converting. Flagship research scoped. |
+| **Q3** | Retainer share materially up. First enterprise conversation sourced from the publication. |
+| **Q4** | Second rate rise, justified by the year's citation and win-rate record. |
 
 ---
 
 ## 10. Measurement
 
-**North star: annual revenue per active reader (ARPR).**
+**North star: average engagement value (AEV).**
 
-Chosen deliberately. Subscriber count as a north star drives exactly the behaviour
-this plan argues against — it rewards volume, dilution and CPM inventory. ARPR
-rises when the audience gets *better* or the monetisation gets *smarter*, and it
-is unmoved by vanity growth. It encodes the strategy in a single number.
-
-**Leading indicators**
+Chosen deliberately over revenue or client count. Revenue rises by working more,
+which isn't the goal. Client count rewards exactly the volume behaviour the premium
+position argues against. AEV rises only when the work is priced better or the
+clients are better — which is the strategy, expressed as one number.
 
 | Stage | Metric |
 | --- | --- |
-| Acquisition | Qualified new readers · external citations |
-| Activation | 30-day return rate · % with firmographic data |
-| Retention | Cohort retention 3/6/12mo · direct-traffic share |
-| Referral | Citations · dark-social share · contributor-sourced readers |
-| Revenue | ARPR · sponsor renewal rate · % revenue on annual terms · % non-volume-priced |
+| Acquisition | Qualified readers · citations · **leads attributable to a piece** |
+| Activation | 30-day reader return · % of leads citing a specific piece |
+| Retention | Reader cohort retention · client repeat rate · retainer share |
+| Referral | Referral share of new business · dark-social share |
+| Revenue | **AEV** · win rate · inbound share · productised→full conversion |
 
-**Health check — the single question:** *can we prove who our readers are?*
-If the answer is still no in 90 days, nothing else in this plan will work, because
-every price increase it recommends rests on that evidence.
+**Health check — the single question:** *can you name a client the publication
+produced?* If the answer is still no in 90 days, the two engines aren't connected,
+and the media arm is a hobby rather than a growth channel.
 
 ---
 
 ## 11. Open Decisions
 
-Blocking, and owned by the founder:
-
-1. 🔶 **Confirm or correct the primary audience** (`.agents/brand-context.md`).
-   Chosen, not researched. Everything here routes through it.
-2. 🔶 **Current numbers** — audience, revenue by line, rates, renewal rate.
-   The rate-card work can't be sized without them.
-3. 🔶 **Validate the competitive set** in `brand/positioning.md` §02.
-4. 🔶 **Willingness to refuse revenue.** The position requires turning down paid
-   placement and hype coverage. If that isn't acceptable commercially, say so now
-   — the whole strategy should be rebuilt on a different position rather than
-   quietly compromised, which is the failure mode that kills credibility brands.
+1. 🔶 **Segmentation** (§7.5). Blocking — it sets the rate card, the publication's
+   register, and the identity brief.
+2. 🔶 **Name the studio competitive set.** Currently empty, and it matters more
+   than the media list.
+3. 🔶 **Current numbers** — rates, win rate, inbound share, retainer share.
+4. 🔶 **Sponsorship** (§7.1). If sponsorship revenue is already material, this
+   recommendation has a real cost and needs your call rather than mine.
+5. 🔶 **Capacity.** Everything here assumes the studio can publish consistently
+   *and* deliver client work. If it can't, the publication is the investment and
+   should be resourced as one — an under-fed media arm is worse than none, because
+   it advertises inconsistency to exactly the buyers you're trying to impress.

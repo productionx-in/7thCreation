@@ -4,28 +4,47 @@
 > Every brand and marketing skill reads this file before doing any work.
 > Re-run `/brand-context` to update it.
 >
-> **Confirmed by the founder:** business model (media/content brand), stage and
-> 12-month goal (growth — scale revenue and raise prices), market position
-> (trusted partner — rigorous, credible).
+> **Confirmed by the founder:** business model (creative studio with a media arm),
+> client types (all four — see below), stage and 12-month goal (growth — scale
+> revenue and raise prices), market position (trusted partner — rigorous,
+> credible), and a decision to rebuild the visual identity from strategy up.
 > **Inferred and awaiting confirmation:** everything marked 🔶 below. These were
 > chosen to be strategically coherent with the confirmed answers, not researched.
 > See `/ASSUMPTIONS.md` for what changes if any of them are wrong.
 
 ## Brand
 - **Name**: 7th Creation
-- **Category**: Digital media — research-grade coverage of the digital economy
-- **Description**: A media brand that publishes verified, decision-grade research
-  for people building in the digital world.
+- **Category**: Creative studio — with an owned media property as its trust engine
+- **Description**: A creative studio for people building in the digital world,
+  which earns its client work by publishing research, not by pitching.
+- **Tagline (existing)**: A Creative Studio
 - **Stage**: Growth — revenue exists and is proven; the task is to raise prices,
   not to find product-market fit
 - **Website**: 🔶 TBC (repo only: `github.com/productionxin/7thCreation`)
 - **Parent**: Production X (`productionxin`)
 
+## The Two-Engine Model
+
+7th Creation runs two engines, and only one of them is a business.
+
+**Engine 1 — the media arm (trust).** A publication covering the digital economy.
+It is not monetised for its own sake. Its job is to demonstrate the studio's
+thinking in public, at a standard no pitch deck can match, to exactly the people
+who commission work.
+
+**Engine 2 — the studio (revenue).** Client work, priced on expertise. The media
+arm is what makes the rate defensible: a prospect who has read six months of your
+research arrives already convinced, and negotiates differently from one who found
+you in a directory.
+
+The strategic consequence, stated plainly: **the media arm should barely be
+monetised directly.** One retained client is worth more than a year of sponsorship,
+and every sponsor slot spends the independence that makes the publication persuasive
+in the first place. See `marketing/growth-plan.md` §7.
+
 ## Audience
 
-A media brand has two customers. Keeping them straight is the whole strategy.
-
-**Primary audience — the people who read (the asset)**
+**Primary audience — the people who read (the trust engine)**
 - 🔶 Operators building in the digital economy: founders, marketers, product and
   brand people who ship digital products and are responsible for build/buy calls
   on tools, platforms and services.
@@ -34,9 +53,23 @@ A media brand has two customers. Keeping them straight is the whole strategy.
   authentically rigorous, and (c) is expensive for sponsors to reach anywhere
   else — which is the mechanism that lets prices rise.
 
-**Paying customer — the people who buy access to that attention (the revenue)**
-- 🔶 B2B SaaS, dev tools, platforms and agencies who sell to those operators.
-- They do not buy reach. They buy *evidence of who is reached*.
+**Paying customer — clients (the revenue engine)**
+
+Founder-confirmed: **all four segments.**
+
+| Segment | Buys | Cycle | Budget |
+| --- | --- | --- | --- |
+| Brands needing content & campaigns | Creative output, campaigns | Medium, relationship-led | Mid |
+| Startups needing brand & identity | Positioning, identity, launch | Project, referral-led | Mid |
+| Enterprise / long engagements | Retained creative partnership | Slow, procurement | High |
+| Creators & personal brands | Production, personal brand work | Fast, transactional | Low |
+
+⚠️ **Serving all four has a cost, and it works against the stated goal.** Four
+buyers means four pitches, four price points and four proof sets — and the media
+arm cannot speak to all of them at once without going generic. The specific risk:
+public creator-tier work anchors enterprise pricing *downward*. See
+`marketing/growth-plan.md` §7.5 for the recommendation and the way to keep all four
+without that cost.
 
 - **Key Problem** (audience): They make consequential decisions from material
   that is fast, unsourced and quietly conflicted. Being well-informed currently
@@ -46,11 +79,15 @@ A media brand has two customers. Keeping them straight is the whole strategy.
   "does it hold up at scale", "what's the catch"
 
 ## Positioning
-- **Differentiation**: Publishes only what it can verify — every claim sourced,
-  dated, and revisited when it changes. An institution, not a personality.
-- **Competitors** (🔶 reference set, to be validated): Stratechery,
-  The Information, Lenny's Newsletter, Morning Brew, TechCrunch, platform-owned
-  content operations (a16z and similar).
+- **Differentiation**: A studio that shows its work before it's hired. Everything
+  published is sourced, dated, and revisited — so the thinking is verifiable
+  *before* a client commits, not asserted in a pitch afterwards.
+- **Competitors**: two sets, because there are two engines.
+  - *Studio* 🔶: independent creative studios and brand consultancies competing
+    for the same briefs. To be named — this list matters more than the media one
+    and is currently empty.
+  - *Media* 🔶: Stratechery, The Information, Lenny's Newsletter, Morning Brew,
+    platform-owned content operations.
 - **Market Position**: Premium-niche. Narrow audience, high trust, high rate card.
   Explicitly *not* mass reach.
 
@@ -73,12 +110,18 @@ A media brand has two customers. Keeping them straight is the whole strategy.
   by publishing work that holds up after the news cycle moves on.
 
 ## Goals
-- **Primary Goal**: Raise revenue per reader. Grow revenue materially over
-  12 months *without* growing audience proportionally — the premium comes from
-  who the audience is and how verifiable that is, not from how many.
+- **Primary Goal**: Raise the price of client work. Grow revenue over 12 months by
+  increasing average engagement value, not by taking on more clients — the premium
+  comes from demonstrated expertise and selectivity, not from capacity.
 - **Key Metrics**:
-  - **North star**: Annual revenue per active reader (ARPR)
-  - Sponsor renewal rate
-  - Revenue mix — % from partnerships/products vs. volume-priced ads
-  - Share of audience that is firmographically verified
+  - **North star**: Average engagement value (AEV)
+  - Inbound share — % of new business that arrives already convinced
+  - Proposal win rate, and win rate at raised prices
   - Citation count (who quotes 7th Creation as a source)
+  - Reader→lead conversion — the media arm's actual job
+
+## Identity
+
+- **Status**: Rebuild, founder-confirmed. The existing logo is treated as a
+  direction, not a finished mark. See `brand/identity.md` (audit of what exists)
+  and `brand/identity-brief.md` (the rebuild brief).
