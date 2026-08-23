@@ -217,10 +217,12 @@ research engagement. It does three jobs: gives inbound leads a low-friction entr
 point, qualifies them before they consume proposal time, and converts a share into
 full engagements. It also gives creator-tier demand somewhere to go (§7.5).
 
-### 7.5 The four-segment problem ⚠️
+### 7.5 Segmentation — DECIDED ✅
 
-You confirmed all four client types. This is the one answer in the plan that works
-against the stated goal, and it deserves a direct argument rather than a footnote.
+You confirmed all four client types; the recommendation below was accepted. This
+section is now the plan of record, not a proposal. The reasoning is kept because
+it is the argument you will need when someone asks why creator work is priced and
+presented differently.
 
 **The cost.** Four segments means four pitches, four price points, four proof sets,
 and a publication trying to interest enterprise procurement and individual creators
@@ -233,23 +235,31 @@ low-tier pricing will ask why their quote differs, and "different segment" is a
 weak answer in that conversation. Enterprise and creators are the two ends, and
 carrying both visibly under one brand caps the top.
 
-**Recommendation — keep all four, but not all in one brand:**
+**The decision — all four kept, structured so the cheapest doesn't price the dearest:**
 
 | Segment | Treatment |
 | --- | --- |
 | **Startups — brand & identity** | **Primary.** Best fit for the position; the publication speaks to them natively |
 | **Brands — content & campaigns** | **Primary.** Same buyer sophistication, larger budgets, retainer-friendly |
 | **Enterprise** | **Graduate into.** The 12–24 month target. Won by the credibility the publication builds — don't chase it before the proof exists |
-| **Creators** | **Productise and separate.** Fixed-price packages under a distinct offer name (§7.4). Keeps the revenue, contains the anchoring |
+| **Creators** | **Productise and separate.** Fixed-price, fixed-scope offer under its own name. Keeps the revenue, contains the anchoring |
 
 This keeps every segment. It just stops the cheapest one from setting the price of
 the most expensive one.
 
-**If you'd rather serve all four openly and unsegmented, say so and I'll rebuild
-the plan around volume and throughput instead** — that is a legitimate business,
-it is simply a different one, and it doesn't reach a premium rate card. The failure
-mode to avoid is choosing the premium position and then quietly serving everyone,
-which delivers neither.
+**How it is implemented** — the offer structure, the naming, and the rules that
+keep the containment working are specified in
+[`brand/architecture.md`](../brand/architecture.md). The short version: the creator
+offer is presented as a *product* with a public fixed price, while studio work is
+quoted privately. A product and an engagement are different kinds of thing, so they
+don't invite comparison — which is what defuses the anchoring, more than the
+separate name does.
+
+**What this now forbids**, and it needs holding when revenue is slow:
+- No custom creator work quoted off the studio rate card. It goes through the
+  product or it is declined.
+- No creator projects in the studio's public case studies.
+- No published studio pricing. Enterprise quotes are conversations, not list prices.
 
 ---
 
@@ -259,13 +269,13 @@ which delivers neither.
 - Score the §2 rubric. 🔶
 - Pull real numbers: rates, win rate, inbound share, retainer share, audience. 🔶
 - **Instrument the bridge** — can you attribute a lead to a published piece? *(Acq)*
-- Take the §7.5 segmentation decision. *(Revenue)*
+- ~~Take the §7.5 segmentation decision.~~ ✅ **Done** — see `brand/architecture.md`
 
 **Weeks 3–4 — Foundation**
 - Publish the editorial standards — sourcing, corrections, conflicts. *(Trust)*
 - Publish two case studies that show *reasoning*, not just outcomes. *(Acq)*
 - Name the studio competitive set. 🔶 *(Positioning)*
-- Draft the productised offer. *(Revenue)*
+- Name and scope the productised creator offer per `brand/architecture.md`. *(Revenue)*
 
 **Weeks 5–8 — Velocity**
 - Ship one deliberately canonical piece. *(Acq)*
@@ -286,7 +296,7 @@ which delivers neither.
 
 | Quarter | Milestone |
 | --- | --- |
-| **Q1** | Standards live. Segmentation decided. Rates raised on new business. Bridge instrumented. |
+| **Q1** | Standards live. Creator offer launched. Rates raised on new business. Bridge instrumented. |
 | **Q2** | Identity rebuild shipped. Productised offer converting. Flagship research scoped. |
 | **Q3** | Retainer share materially up. First enterprise conversation sourced from the publication. |
 | **Q4** | Second rate rise, justified by the year's citation and win-rate record. |
@@ -318,8 +328,9 @@ and the media arm is a hobby rather than a growth channel.
 
 ## 11. Open Decisions
 
-1. 🔶 **Segmentation** (§7.5). Blocking — it sets the rate card, the publication's
-   register, and the identity brief.
+1. ✅ **Segmentation** (§7.5) — decided. Startups and brands primary, enterprise
+   as a graduate-into target, creators productised separately. This unblocks the
+   rate card, the publication's register, and the identity direction.
 2. 🔶 **Name the studio competitive set.** Currently empty, and it matters more
    than the media list.
 3. 🔶 **Current numbers** — rates, win rate, inbound share, retainer share.

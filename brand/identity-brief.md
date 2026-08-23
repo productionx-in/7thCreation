@@ -167,15 +167,22 @@ Beyond the wordmark, the identity needs a working type system:
 
 ## 08 — Sequencing
 
-The identity rebuild should follow — not lead — the segmentation decision in
-`growth-plan.md` §7.5.
+✅ **The segmentation decision is made, and it settles the direction.**
 
-An identity aimed primarily at startups and brands is warmer and more expressive
-than one aimed at enterprise. Direction A suits the former; Direction B suits the
-latter. Committing to artwork before that decision risks redrawing twice.
+Primary segments are startups (brand & identity) and brands (content & campaigns),
+with enterprise as a graduate-into target. That calls for the warmer, more
+expressive end of the range — **Direction A, "Refined Ascent", is confirmed.**
+Direction B would have been right had enterprise led; it doesn't, so the aspiration
+in the mark stays.
 
-**Practical order:** take the segmentation decision → confirm direction from §04 →
-commission the redraw → produce the tier ladder → publish usage rules.
+One consequence for the brief: the identity must now also parent a separate
+productised offer for creators (`brand/architecture.md`). The mark needs to work in
+an endorsement lockup — small, alongside another name — which is a further argument
+for the Compact and Icon tiers being properly drawn rather than scaled down.
+
+**Practical order:** ~~segmentation decision~~ ✅ → ~~confirm direction~~ ✅
+Direction A → commission the redraw → produce the tier ladder → draw the
+endorsement lockup → publish usage rules.
 
 ---
 

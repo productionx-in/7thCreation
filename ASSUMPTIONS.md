@@ -16,7 +16,7 @@ assumed truth.
 | 2 | Stage | Growth — revenue proven |
 | 3 | 12-month goal | Scale revenue and raise prices |
 | 4 | Market position | Trusted partner — rigorous, credible |
-| 5 | Client segments | All four: brands, startups, enterprise, creators (see the open disagreement below) |
+| 5 | Client segments | All four, segmented: startups + brands primary · enterprise graduate-into · creators productised separately |
 | 6 | Identity | Rebuild from strategy up; current logo treated as a direction |
 
 ## Inferred — confirm before spending against these
@@ -85,7 +85,7 @@ assumption 5 changes who the work speaks to and where it's distributed. It does
 not change the commercial logic.
 
 
-## Open disagreement — logged, not blocking
+## ✅ Resolved disagreement — recommendation accepted
 
 **All four client segments, unsegmented, works against the goal of raising prices.**
 
@@ -96,11 +96,12 @@ rates harder to defend, and a publication addressing all four at once goes gener
 Recommended: keep all four, separate them — startups and brands primary, enterprise
 as a graduate-into target, creators productised under a distinct offer name.
 
-The founder has not yet responded to this. It is recorded here so it doesn't
-disappear into a document nobody re-reads. If the answer is "serve all four openly",
-that is a legitimate business and the plan should be rebuilt around volume and
-throughput — the failure mode to avoid is choosing the premium position and then
-quietly serving everyone.
+**Accepted by the founder.** Implemented in `brand/architecture.md` and
+`marketing/growth-plan.md` §7.5. All four segments kept; creators productised under
+a separate offer name; enterprise reclassified from current target to graduate-into.
+
+The argument is retained above because it is what has to be repeated internally the
+first time someone wants to quote a creator custom job off the studio rate card.
 
 ## Newly opened — needs an answer
 

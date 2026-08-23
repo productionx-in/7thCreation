@@ -64,12 +64,17 @@ Founder-confirmed: **all four segments.**
 | Enterprise / long engagements | Retained creative partnership | Slow, procurement | High |
 | Creators & personal brands | Production, personal brand work | Fast, transactional | Low |
 
-⚠️ **Serving all four has a cost, and it works against the stated goal.** Four
-buyers means four pitches, four price points and four proof sets — and the media
-arm cannot speak to all of them at once without going generic. The specific risk:
-public creator-tier work anchors enterprise pricing *downward*. See
-`marketing/growth-plan.md` §7.5 for the recommendation and the way to keep all four
-without that cost.
+✅ **Segmentation decided.** All four are kept, but structured so the cheapest
+doesn't set the price of the dearest:
+
+- **Primary** — startups (brand & identity) and brands (content & campaigns).
+  The publication speaks to these two natively.
+- **Graduate into** — enterprise. The 12–24 month target, won by accumulated
+  credibility rather than pursued now.
+- **Productised and separate** — creators, via a fixed-price product under its own
+  name.
+
+Structure and rules: `brand/architecture.md`. Reasoning: `marketing/growth-plan.md` §7.5.
 
 - **Key Problem** (audience): They make consequential decisions from material
   that is fast, unsourced and quietly conflicted. Being well-informed currently
