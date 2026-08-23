@@ -14,6 +14,7 @@ This repository holds the brand and marketing strategy.
 | [`.agents/brand-context.md`](.agents/brand-context.md) | **Start here.** Identity, audience, positioning, values, goals. Every brand skill reads this file first |
 | [`brand/positioning.md`](brand/positioning.md) | Category definition, competitive map, territory, moat, positioning statement |
 | [`brand/messaging.md`](brand/messaging.md) | Core message, value proposition, taglines, messaging hierarchy, proof points |
+| [`brand/identity.md`](brand/identity.md) | Logo audit, colour palette, typography, usage rules, and what still needs producing |
 | [`brand/voice.md`](brand/voice.md) | Verbal identity — tone, voice qualities, vocabulary, style rules |
 | [`marketing/growth-plan.md`](marketing/growth-plan.md) | 12-month AARRR growth plan, 90-day roadmap, pricing and revenue strategy |
 | [`ASSUMPTIONS.md`](ASSUMPTIONS.md) | What's confirmed, what's inferred, and what breaks if the inferences are wrong |
@@ -48,6 +49,6 @@ Strategy foundation, v1. Six assumptions are flagged in
 [`ASSUMPTIONS.md`](ASSUMPTIONS.md); two are inferred and should be confirmed before
 budget is committed against them.
 
-**Not yet built:** visual identity, brand story, content strategy, editorial
+**Not yet built:** brand story, content strategy, editorial
 standards documents (sourcing standard, correction policy, conflicts policy —
 these are the first execution deliverable, see the 90-day roadmap).
