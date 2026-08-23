@@ -13,6 +13,23 @@ just an adjective — these are what make it checkable.
 | [`corrections-policy.md`](./corrections-policy.md) | How we correct in public, and the correction log |
 | [`conflicts-policy.md`](./conflicts-policy.md) | The studio/publication conflict, named openly, and how it's managed |
 
+## ⚠️ Timing — do not publish these yet
+
+**The publication does not exist yet.** Standards describing an editorial practice
+that has published nothing read as aspiration, not commitment — and the correction
+log would be an empty page.
+
+**Publish them with the first research piece**, not before. Until then they are
+working documents that define the standard you're building toward.
+
+**Two parts apply immediately**, to the case studies in `marketing/growth-plan.md`
+Phase 1:
+- The sourcing standard's requirements on claims, numbers and company-supplied
+  figures. A case study citing an unsourced result is the same failure as an
+  article doing it.
+- The conflicts policy's rule that case studies are labelled as case studies, never
+  presented as neutral assessment.
+
 ## Before publishing these
 
 🔶 markers indicate what must be filled or confirmed:

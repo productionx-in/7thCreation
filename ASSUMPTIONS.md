@@ -121,12 +121,28 @@ been done.
 `DAY 7`. Recommended — it separates the name in writing and in search, and ties
 to the logo's own numeral monogram. Needs a decision.
 
+## ✅ Stage — confirmed, and it re-phased the plan
+
+**The studio operates with paying clients. The publication does not exist yet.**
+
+The growth plan assumed both engines running. It now runs in two phases: Phase 1
+raises prices using assets available today (case studies showing reasoning, higher
+quotes, Day 7), and Phase 2 builds the publication as a compounding asset that will
+not pay for itself inside the year.
+
+The consequence worth holding onto: **the media arm is an investment with a lag and
+should be budgeted as one.** If capacity is tight, do Phase 1 properly and start
+Phase 2 late rather than doing both badly.
+
+Also confirmed: **no sponsorship revenue today**, so §7.1's recommendation to decline
+it costs nothing. And **the logo is AI-generated with no vector masters** — the
+identity work is a redraw, not an edit.
+
 ## Newly opened — needs an answer
 
 - **Studio competitive set is empty.** Who else bids for these briefs? This matters
   more than the media competitor list and currently doesn't exist.
-- **Is sponsorship revenue already material?** `growth-plan.md` §7.1 recommends not
-  building it. If it's already a real line, that recommendation has a cost.
+- ~~Is sponsorship revenue already material?~~ ✅ None today. No cost to declining it.
 - **Capacity.** Can the studio publish consistently *and* deliver client work? An
   under-fed media arm advertises inconsistency to the exact buyers it's meant to
   impress.

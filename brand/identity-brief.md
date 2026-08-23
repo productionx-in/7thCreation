@@ -63,7 +63,7 @@ Any proposed direction must satisfy all of these:
 | 2 | Works in one colour | Fax test — solid black, no gradients, no tints |
 | 3 | One mark, many colourways | No redrawn interiors between versions |
 | 4 | Four-tier ladder | Full / Standard / Compact / Icon (`identity.md` §5.2) |
-| 5 | Vector-native | Drawn as curves, not traced from a render |
+| 5 | Vector-native | Drawn as curves, not traced from a render. ⚠️ Confirmed necessary — the current logo is AI-generated with no vector master, so there is nothing to edit. This is a redraw, using the raster only as reference |
 | 6 | Passes contrast | 4.5:1 for any functional use |
 | 7 | Reads on both grounds | Light and dark, equally resolved |
 | 8 | Holds both engines | Credible on a research report *and* on a studio deck |

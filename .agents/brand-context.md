@@ -18,8 +18,8 @@
 - **Description**: A creative studio for people building in the digital world,
   which earns its client work by publishing research, not by pitching.
 - **Tagline (existing)**: A Creative Studio
-- **Stage**: Growth — revenue exists and is proven; the task is to raise prices,
-  not to find product-market fit
+- **Stage**: Studio in growth (revenue proven, task is to raise prices).
+  Publication pre-launch. See `marketing/growth-plan.md` §1 for the two-phase plan
 - **Website**: 🔶 TBC (repo only: `github.com/productionxin/7thCreation`)
 - **Parent**: Production X (`productionxin`)
 
@@ -27,12 +27,14 @@
 
 7th Creation runs two engines, and only one of them is a business.
 
-**Engine 1 — the media arm (trust).** A publication covering the digital economy.
+**Engine 1 — the media arm (trust).** ⚠️ **Does not exist yet — a build project.**
+A publication covering the digital economy.
 It is not monetised for its own sake. Its job is to demonstrate the studio's
 thinking in public, at a standard no pitch deck can match, to exactly the people
 who commission work.
 
-**Engine 2 — the studio (revenue).** Client work, priced on expertise. The media
+**Engine 2 — the studio (revenue).** ✅ **Operating, with paying clients.**
+Client work, priced on expertise. The media
 arm is what makes the rate defensible: a prospect who has read six months of your
 research arrives already convinced, and negotiates differently from one who found
 you in a directory.
@@ -127,6 +129,7 @@ Structure and rules: `brand/architecture.md`. Reasoning: `marketing/growth-plan.
 
 ## Identity
 
-- **Status**: Rebuild, founder-confirmed. The existing logo is treated as a
-  direction, not a finished mark. See `brand/identity.md` (audit of what exists)
+- **Status**: Full rebuild, founder-confirmed. The existing logo is AI-generated
+  with no vector masters, so there is nothing to edit — it is redrawn from the
+  raster as reference. Treated as a direction, not a finished mark. See `brand/identity.md` (audit of what exists)
   and `brand/identity-brief.md` (the rebuild brief).

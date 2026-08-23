@@ -1,6 +1,8 @@
 # 7th Creation — 12-Month Growth Plan
 
 > **Model (founder-confirmed):** creative studio with a media arm.
+> **Reality (founder-confirmed):** the studio operates and has paying clients.
+> **The publication does not exist yet.** It is a build project, not a running engine.
 > **Goal (founder-confirmed):** scale revenue and raise prices.
 > **Structure:** AARRR, applied to a two-engine business.
 > Reads from `.agents/brand-context.md` and `brand/positioning.md`.
@@ -12,108 +14,111 @@
 
 **The media arm is not a business. It is the reason the studio can charge more.**
 
-That reframing changes the plan's economics completely, and for the better.
+A publication monetised through sponsorship earns, at healthy rates, a few tens of
+dollars per thousand impressions. The *same* audience pointed at a studio converts a
+handful of readers a year into engagements worth orders of magnitude more. So the
+original thesis holds in its strongest form: *monetise trust, not reach.*
 
-A publication monetised through sponsorship earns, at healthy rates, somewhere in
-the region of a few tens of dollars per thousand impressions. The *same* audience,
-pointed at a studio, converts a handful of readers a year into engagements worth
-orders of magnitude more. The audience isn't a small revenue stream — it is a
-large one that has been pointed at the wrong buyer.
+**But the publication doesn't exist yet, and that changes the sequencing entirely.**
 
-So the original thesis holds, in a stronger form. It was: *monetise trust, not
-reach.* For a studio with a media arm, that becomes literal — the publication
-generates trust at deliberately low direct monetisation, and the studio captures
-it at high value.
+A media arm built from zero takes six to twelve months before it produces a single
+lead. The goal — raise prices — cannot wait that long. So this plan runs in two
+phases, and the first one deliberately does not depend on the publication at all.
 
-**Three bets for the year:**
+### Phase 1 (months 1–3) — raise prices on what you already have
 
-1. **Stop selling sponsorship. Sell the studio.** Every sponsor slot spends
-   independence — the exact asset that makes the publication persuasive — for
-   revenue that is a rounding error against one retained client. Independence is
-   worth more unspent.
+Three levers, all available now, none requiring a single published piece:
 
-2. **Make the publication the portfolio.** Not content marketing. The studio doing
-   its actual craft in public: the research, the reasoning, the decisions. Prospects
-   should arrive having already watched you work. This is the single highest-leverage
-   lever on price, because it removes the pitch from the sale.
+1. **Case studies that show reasoning.** Not finished-work galleries — the
+   constraint, the options rejected, the trade-off taken. This is the minimum
+   viable version of the entire strategy: *showing your work*, using projects you
+   have already delivered. Cheapest, fastest, and it is the same asset the
+   publication will later be built from.
+2. **Quote higher on new business.** No new proof required. 🔶 Sized from your win
+   rate — above ~70% is strong evidence you're underpriced.
+3. **Ship Day 7.** Gives inbound somewhere to go and qualifies before it consumes
+   proposal time.
 
-3. **Narrow the client list, or segment it deliberately.** You confirmed all four
-   segments. Serving all four unsegmented is the one thing in this plan that
-   actively fights the goal — see §7.5. There is a way to keep all four without
-   paying that cost, and it needs a decision.
+### Phase 2 (months 3–12) — build the compounding asset
 
-**90-day priorities:** publish the standards, ship one piece that proves the
-studio's thinking, rebuild the rate card on demonstrated expertise, instrument
-reader→lead conversion.
+The publication, launched properly and fed consistently. It won't pay for itself
+inside the year. It is what makes the *next* price rise defensible, and the one
+after that.
 
-**12-month outcome:** higher average engagement value, a majority-inbound pipeline,
-and prospects who arrive already convinced.
+**The honest framing: the media arm is an investment with a lag, and it should be
+budgeted as one.** An under-fed publication is worse than none — it advertises
+inconsistency to exactly the buyers you're trying to impress. If capacity is tight,
+do Phase 1 properly and start Phase 2 late rather than doing both badly.
 
----
+**12-month outcome:** higher average engagement value from Phase 1, and a
+publication with enough published work to start producing leads in year two.
 
 ## 2. Current State
 
-🔶 **A rubric, not an assessment.** Score honestly before committing spend.
+**Confirmed:** the studio operates with paying clients. The publication does not
+exist. Day 7 does not exist yet.
 
-| Area | Score (0–5) |
+🔶 Scores still needed — see `INTAKE.md` §2.
+
+| Area | Status |
 | --- | --- |
-| **Studio** — positioning documented and distinct from competitors | 🔶 |
-| **Studio** — rate card, and whether it's defended or discounted | 🔶 |
-| **Studio** — inbound vs. outbound share of new business | 🔶 |
-| **Studio** — proposal win rate | 🔶 |
-| **Studio** — case studies published, with outcomes | 🔶 |
-| **Studio** — named competitive set | 🔶 |
-| **Media** — audience size, and how much is owned vs. rented | 🔶 |
-| **Media** — publishing cadence and capacity | 🔶 |
-| **Media** — editorial standards published | 🔶 |
-| **Bridge** — reader→lead conversion, instrumented at all | 🔶 |
-| **Bridge** — can you name a client the publication produced? | 🔶 |
+| **Studio** — positioning documented and distinct | 🔶 |
+| **Studio** — rate card, defended or discounted | 🔶 |
+| **Studio** — inbound vs. outbound share | 🔶 |
+| **Studio** — proposal win rate | 🔶 **the key number** |
+| **Studio** — case studies published, with reasoning | 🔶 — likely the biggest Phase 1 gap |
+| **Studio** — named competitive set | ❌ Empty. Flagged four times |
+| **Media** — anything published | ❌ **Does not exist** |
+| **Media** — owned audience (email list) | ❌ Does not exist |
+| **Media** — editorial standards | ✅ Drafted, unpublished (`editorial/`) |
+| **Bridge** — reader→lead conversion | ❌ Nothing to instrument yet |
+| **Day 7** — scope and price | 🔶 Not yet defined |
 
-**The two that matter most:** *inbound share* and *reader→lead conversion*. The
-entire model rests on the bridge between the engines. If nobody has ever measured
-it, that is the first job — you cannot improve a mechanism you can't see.
-
----
+**What this tells you:** every media and bridge row is a build, not an improvement.
+That's not a bad position — it means Phase 1's returns are available immediately and
+uncontested by the publication's timeline. It does mean the plan's centre of gravity
+for the next quarter is the studio, not the publication.
 
 ## 3. Acquisition
 
-Two funnels, one publication.
+### Now — the studio (Phase 1)
 
-**Funnel A — readers (trust)**
+- **Case studies showing reasoning.** The highest-value acquisition asset available
+  today, built from work already delivered. Three good ones beat a portfolio of
+  twenty thumbnails, because a prospect can see how you think — which is the thing
+  they're actually buying and the thing competitors' galleries don't show.
+- **Referral, formalised.** Consistently the highest-converting channel in studio
+  businesses and the most neglected. See §6.
+- **Selective, research-led outbound.** A small number of named targets, approached
+  with something specific about their actual problem. Expensive per contact,
+  converts at rates cold volume never will.
 
-- **Citation-led publishing.** One genuinely canonical piece per quarter beats
-  twelve competent ones. The piece other people have to link to.
-- **Show the work.** Publish the reasoning behind real projects — the constraint,
-  the options rejected, the trade-off taken. Most studios publish finished
-  artefacts; almost nobody publishes the thinking. The thinking is what a
-  prospective client is actually buying, and it is the part competitors can't copy.
-- **Practitioner-network distribution.** Optimise for forwardability by someone
-  whose reputation is attached to the share.
+### Later — the publication (Phase 2)
 
-**Funnel B — clients (revenue)**
+Sequenced as a launch, not an optimisation:
 
-- **Inbound from the publication.** The primary channel by design. Every piece
-  should make it obvious that a studio produced it, without ever reading as an ad.
-- **Referral from delivered work.** In studio businesses this is consistently the
-  highest-converting channel and the most neglected. Formalise it — see §6.
-- **Selective, research-led outbound.** Not volume prospecting. A small number of
-  named target accounts, approached with something specific you've published about
-  their actual problem. Rare and expensive; converts at rates cold outreach never
-  will.
+1. **Case studies first** — they *are* the proto-publication. Same discipline, same
+   voice, zero new research required.
+2. **Owned distribution from day one.** Email, not platform. An audience you rent
+   can't be measured, moved, or counted as an asset.
+3. **Then one real research piece** — original work nobody else has done. One is
+   enough to establish the standard.
+4. **Then cadence** — whatever is genuinely sustainable. Consistency matters more
+   than frequency, and a slow reliable rhythm beats a fast one that breaks.
+5. **Then the canonical piece** — the thing others have to cite. This is a year-two
+   ambition, not a launch requirement.
 
-**Don't**
+### Don't
 
-- Paid audience acquisition at CPM. It buys the reader least likely to become a
-  client.
-- Volume SEO or programmatic content. It contradicts the position, and here the
-  position *is* the sales asset.
-- Directory listings and marketplace platforms. They compete on price by
-  construction, which is the opposite of the goal.
+- Paid audience acquisition at CPM — buys the reader least likely to become a client
+- Volume SEO or programmatic content — contradicts the position, and here the
+  position *is* the sales asset
+- Directory listings and marketplaces — they compete on price by construction
+- **Launching the publication before you can sustain it.** The most likely failure
+  mode from here, and the most damaging
 
-**Metric:** qualified readers · citations · **inbound leads attributable to a
-published piece** (the bridge metric — instrument this first).
-
----
+**Metric — now:** inbound share · referral share · case-study→enquiry.
+**Metric — later:** qualified readers · citations · leads attributable to a piece.
 
 ## 4. Activation
 
@@ -268,45 +273,48 @@ separate name does.
 
 ## 8. 90-Day Roadmap
 
+Rebuilt for Phase 1. **The publication is not launched in this window** — it is
+prepared. The revenue work does not wait for it.
+
 **Weeks 1–2 — Unblock**
-- Score the §2 rubric. 🔶
-- Pull real numbers: rates, win rate, inbound share, retainer share, audience. 🔶
-- **Instrument the bridge** — can you attribute a lead to a published piece? *(Acq)*
-- ~~Take the §7.5 segmentation decision.~~ ✅ **Done** — see `brand/architecture.md`
+- Answer `INTAKE.md` Tier 1. Nothing here is properly sized without it. 🔶
+- Pull the numbers: rates, win rate, inbound share, retainer share. 🔶
+- Name the studio competitive set. 🔶 *(Four times flagged; it gates the positioning)*
+- Trademark search on Day 7 before any spend. *(Brand risk)*
 
 **Weeks 3–4 — Foundation**
-- Publish the editorial standards — ✅ drafted in `editorial/`. Fill the 🔶 markers,
-  **build the correction log before publishing the policy that claims it**, then ship. *(Trust)*
-- Publish two case studies that show *reasoning*, not just outcomes. *(Acq)*
-- Name the studio competitive set. 🔶 *(Positioning)*
-- Scope and price **Day 7** per `brand/architecture.md` §03.3. *(Revenue)*
-- Run the trademark search on Day 7 before any spend. *(Brand risk)*
+- **Write three case studies that show reasoning.** The single highest-value action
+  in the quarter. *(Acquisition)*
+- Scope and price Day 7 — `brand/architecture.md` §03.3. *(Revenue)*
+- Draft a stated point of view on what you do and don't take on. *(Positioning)*
+- Ask every recently-delighted client the referral question. *(Referral)*
 
 **Weeks 5–8 — Velocity**
-- Ship one deliberately canonical piece. *(Acq)*
 - **Raise rates on new business.** Quote the new number without preamble. *(Revenue)*
-- Launch the productised offer. *(Revenue)*
-- Ask every recently-delighted client the referral question. *(Referral)*
-- Begin the identity rebuild against `brand/identity-brief.md`. *(Brand)*
+- Launch Day 7. *(Revenue)*
+- Commission the identity redraw — `brand/identity-brief.md`, Direction A. *(Brand)*
+- Set up email capture. Start the list before there's anything to send. *(Media)*
 
 **Weeks 9–12 — Compound**
 - Convert one project client to retainer. *(Retention)*
-- Recruit one practitioner contributor. *(Referral)*
-- Convert top evergreen pieces to living pieces. *(Retention)*
-- Review: did any inbound lead cite a piece? Ask every one of them. *(Bridge)*
-
----
+- Publish the case studies wherever your buyers actually are. *(Acquisition)*
+- Fill the `editorial/` markers and hold them ready for launch. *(Media)*
+- Plan the first research piece: the question, the method, the data. *(Media)*
+- Review: did the raised rate cost you any work? *(Revenue)*
 
 ## 9. 12-Month Outlook
 
-| Quarter | Milestone |
-| --- | --- |
-| **Q1** | Standards live. Day 7 launched. Rates raised on new business. Bridge instrumented. |
-| **Q2** | Identity rebuild shipped. Productised offer converting. Flagship research scoped. |
-| **Q3** | Retainer share materially up. First enterprise conversation sourced from the publication. |
-| **Q4** | Second rate rise, justified by the year's citation and win-rate record. |
+| Quarter | Milestone | Phase |
+| --- | --- | --- |
+| **Q1** | Case studies live. Rates raised. Day 7 launched. Competitive set named. | 1 |
+| **Q2** | Identity rebuilt. First research piece published with the standards. Email list started. | 2 begins |
+| **Q3** | Sustainable publishing cadence. Retainer share materially up. | 2 |
+| **Q4** | Ten-plus pieces published. First lead attributable to a piece. Second rate rise. | 2 |
 
----
+**Be realistic about Q4.** One attributable lead inside twelve months is a genuine
+success for a publication started from zero, not a disappointment. The asset
+compounds in year two. Judging it on year-one revenue is the mistake that kills
+most media arms before they work.
 
 ## 10. Measurement
 
@@ -333,15 +341,21 @@ and the media arm is a hobby rather than a growth channel.
 
 ## 11. Open Decisions
 
-1. ✅ **Segmentation** (§7.5) — decided. Startups and brands primary, enterprise
-   as a graduate-into target, creators productised separately. This unblocks the
-   rate card, the publication's register, and the identity direction.
-2. 🔶 **Name the studio competitive set.** Currently empty, and it matters more
-   than the media list.
-3. 🔶 **Current numbers** — rates, win rate, inbound share, retainer share.
-4. 🔶 **Sponsorship** (§7.1). If sponsorship revenue is already material, this
-   recommendation has a real cost and needs your call rather than mine.
-5. 🔶 **Capacity.** Everything here assumes the studio can publish consistently
-   *and* deliver client work. If it can't, the publication is the investment and
-   should be resourced as one — an under-fed media arm is worse than none, because
-   it advertises inconsistency to exactly the buyers you're trying to impress.
+**Resolved**
+- ✅ Segmentation — startups + brands primary, enterprise graduate-into, creators via Day 7
+- ✅ Day 7 named and set in numerals
+- ✅ Sponsorship — none today, free to decline. §7.1 stands at no cost
+- ✅ Stage — studio operating, publication not yet built. Plan re-phased accordingly
+- ✅ Logo — AI-generated, no vector masters. Full redraw, per `identity-brief.md`
+
+**Open — see `INTAKE.md`**
+1. 🔶 **Current numbers.** Tier 1 §2. The rate rise can't be sized without them
+2. 🔶 **Studio competitive set.** Tier 1 §3. Empty, and it gates the positioning
+3. 🔶 **Day 7 scope and price.** Tier 2 §5
+4. 🔶 **Capacity to publish.** Tier 3 §8. This decides whether Phase 2 starts in Q2
+   or Q3 — and starting late is much better than starting badly
+5. 🔶 **The independence commitment.** `editorial/conflicts-policy.md` promises no
+   client ever sees a piece pre-publication. You had no preference; I've kept it,
+   because it is the strongest thing the policy says and a studio that publishes
+   has nothing else to trade on. **It is untested — you've never had to hold it.**
+   Decide before publishing, not the first time a large client asks
