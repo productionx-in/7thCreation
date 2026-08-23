@@ -103,6 +103,24 @@ a separate offer name; enterprise reclassified from current target to graduate-i
 The argument is retained above because it is what has to be repeated internally the
 first time someone wants to quote a creator custom job off the studio rate card.
 
+## ✅ Naming — decided, with one open item
+
+**The productised creator offer is named Day Seven.** Founder-confirmed.
+
+**Open: clearance.** A web check found *Day Seven Design* — an existing design studio
+doing visual branding and identity, i.e. the same category. The name is being used
+anyway, on the reasoning in `brand/architecture.md` §03.2: it is a product name
+inside a parent brand, always endorsed, never standalone, sold to traffic that
+arrives through the publication.
+
+**Still required before spend:** a real trademark search in the relevant
+jurisdiction and class. A web search is not a clearance search, and this has not
+been done.
+
+**Also unresolved:** whether to set it as `DAY 7` in numerals rather than
+`DAY SEVEN`. Recommended — it separates the name in writing and in search, and ties
+to the logo's own numeral monogram. Needs a decision.
+
 ## Newly opened — needs an answer
 
 - **Studio competitive set is empty.** Who else bids for these briefs? This matters

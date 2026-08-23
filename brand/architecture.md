@@ -57,7 +57,7 @@ too strong.
 
 ## 03 — The Productised Offer
 
-### 03.1 — Naming
+### 03.1 — Naming — DECIDED ✅
 
 The name must sound like a product with a defined shape, not a budget tier. Anything
 that reads as "7th Creation Lite" reintroduces the exact anchoring the separation
@@ -71,7 +71,7 @@ exists to prevent.
 | Waypoint | A defined marker on a journey; bounded, like the offer | Cold for a creator audience |
 | Origin | Natural for identity work | Very common in branding; no link to the parent |
 
-**Recommended: Day Seven.**
+**Decided: Day Seven.** ✅
 
 It is the only option that reinforces "7th Creation" while sounding like a
 *thing you buy* rather than a service level. The completion association does useful
@@ -83,7 +83,60 @@ off-brand rather than merely disallowed.
 co-equality. This is the lockup that needs the Compact/Icon tiers from
 `identity-brief.md` §04 to be properly drawn.
 
-### 03.2 — Specification
+---
+
+### 03.2 — Clearance ⚠️ — one unresolved conflict
+
+**A name isn't decided until it's cleared. This one isn't, and the check found
+something that has to be on the record before any money is spent on it.**
+
+**The conflict.** *Day Seven Design* ([daysevendesign.com](https://daysevendesign.com/))
+is an existing design studio offering visual branding and identity work. That is the
+same category as this offer, which makes it the highest-risk kind of collision —
+not a distant-sector coincidence.
+
+**Wider context.** The "Seven" territory in design is saturated:
+[Seven](https://www.seven.co.nz/) (Auckland), [Seven Design](https://sevendesign.in/),
+[Seven Creative Studio](https://www.sevencreativestudio.com/),
+[Studio Seven](https://studioseven.pro/), [Seven Creative](https://www.sevencreative.com/),
+[7 Days Design Studio](https://7daysdesignstudio.com/), [Studio 7](https://s7designs.net/).
+The runner-up name fared worse still — at least five branding studios trade as some
+form of *First Light*
+([NYC](https://www.firstlight.nyc/) · [Design](https://www.firstlightdesign.com/) ·
+[Creative](https://firstlightcreative.ca/) · [Studios](https://flstudios.website/) ·
+[Lights Design](https://www.linkedin.com/company/first-lights-design)).
+
+The lesson generalises: **evocative two-word English phrases in the design sector
+are effectively exhausted.** Any further candidate must be cleared before it is
+recommended, not after.
+
+**Why this is survivable.** A product name inside a parent brand plays by different
+rules from a company name. Day Seven never appears alone — it is always *Day Seven
+by 7th Creation*, endorsed, on your own property, sold to traffic that arrived
+through the publication. It does not need to win a search result for "Day Seven",
+and it isn't competing for the same clients as a US or Indian design studio.
+
+**What it costs.** You cannot own the search term. You cannot safely register the
+name standalone. And if the offer grows into something larger, the conflict grows
+with it — at which point renaming is far more expensive than it is today.
+
+**Mitigations — adopt all three:**
+
+1. **Never use the name unendorsed.** "Day Seven" alone, anywhere, is the failure
+   mode. Always the lockup.
+2. **Set it as `DAY 7`, in numerals.** 🔶 *Recommendation, needs your call.* The
+   numeral distinguishes it in writing and in search from *Day Seven Design*, and it
+   ties directly to the logo's monogram — which is itself a numeral 7. It is a small
+   change that buys real separation and strengthens the tie to the parent.
+3. **Run a proper trademark search before any spend** on domain, signage or paid
+   promotion — in your jurisdiction, in the relevant class. I can't do this; it
+   needs registry lookups, and a web search is not a clearance search.
+
+**Revisit if:** Day Seven exceeds roughly a third of revenue (§07), you want to
+promote it independently of 7th Creation, or the trademark search returns a
+registered mark in class.
+
+### 03.3 — Specification
 
 | | |
 | --- | --- |
@@ -98,7 +151,7 @@ co-equality. This is the lockup that needs the Compact/Icon tiers from
 Day Seven engagement requires a custom quote, it has become studio work at studio
 prices — or it has become unprofitable. There is no third outcome.
 
-### 03.3 — Its Second Job
+### 03.4 — Its Second Job
 
 Day Seven isn't only creator containment. It also gives inbound studio leads a
 low-friction entry point: a prospect who isn't ready for a full engagement can buy
@@ -129,6 +182,7 @@ different in kind.
 These are what get tested in a slow quarter. They are worth holding.
 
 **Never**
+- Use the Day Seven name unendorsed (§03.2). This is the one that protects you.
 - Quote creator custom work off the studio rate card. It goes through Day Seven or
   it is declined.
 - Put creator work in the studio's public case studies.

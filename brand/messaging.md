@@ -133,10 +133,12 @@ that is evidently available.
 - **Don't say:** anything about being small, scrappy or fast-moving. Reassurance
   beats energy here.
 
-### Creators — via Day Seven *(productised)*
+### Creators — via **Day Seven** *(productised)*
 
 - **Lead with:** the fixed shape. Price, scope and timeline, stated up front.
 - **Say:** "Fixed price, fixed scope, done by [date]."
+- **Always endorsed:** "Day Seven by 7th Creation" — never the name alone.
+  See `brand/architecture.md` §03.2 for why this one matters.
 - **Don't say:** anything that invites custom scoping. The offer's discipline *is*
   its message. See `brand/architecture.md` §3.
 

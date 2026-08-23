@@ -210,12 +210,15 @@ defined deliverable — support a materially higher effective rate.
 
 **Target by month 12:** a meaningful majority of revenue on retained or repeat work.
 
-### 7.4 Productise one offer
+### 7.4 Productise one offer — **Day Seven**
 
-One fixed-scope, fixed-price offer — a positioning sprint, an identity audit, a
+One fixed-scope, fixed-price offer, now named and specified in
+`brand/architecture.md` §03 — a positioning sprint, an identity audit, a
 research engagement. It does three jobs: gives inbound leads a low-friction entry
 point, qualifies them before they consume proposal time, and converts a share into
 full engagements. It also gives creator-tier demand somewhere to go (§7.5).
+
+⚠️ Note the naming conflict and required trademark search in `brand/architecture.md` §03.2.
 
 ### 7.5 Segmentation — DECIDED ✅
 
@@ -275,7 +278,8 @@ separate name does.
 - Publish the editorial standards — sourcing, corrections, conflicts. *(Trust)*
 - Publish two case studies that show *reasoning*, not just outcomes. *(Acq)*
 - Name the studio competitive set. 🔶 *(Positioning)*
-- Name and scope the productised creator offer per `brand/architecture.md`. *(Revenue)*
+- Scope and price **Day Seven** per `brand/architecture.md` §03.3. *(Revenue)*
+- Run the trademark search on Day Seven before any spend. *(Brand risk)*
 
 **Weeks 5–8 — Velocity**
 - Ship one deliberately canonical piece. *(Acq)*
@@ -296,7 +300,7 @@ separate name does.
 
 | Quarter | Milestone |
 | --- | --- |
-| **Q1** | Standards live. Creator offer launched. Rates raised on new business. Bridge instrumented. |
+| **Q1** | Standards live. Day Seven launched. Rates raised on new business. Bridge instrumented. |
 | **Q2** | Identity rebuild shipped. Productised offer converting. Flagship research scoped. |
 | **Q3** | Retainer share materially up. First enterprise conversation sourced from the publication. |
 | **Q4** | Second rate rise, justified by the year's citation and win-rate record. |
