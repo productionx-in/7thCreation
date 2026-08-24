@@ -1,6 +1,7 @@
+import { Instagram, Youtube } from 'lucide-react';
 import { FadeIn } from '@/components/FadeIn';
 import { ContactButton } from '@/components/ContactButton';
-import { NAV, HERO } from '@/data/content';
+import { NAV, HERO, CONTACT } from '@/data/content';
 import { Logo } from '@/components/Logo';
 import { RealImage } from '@/components/RealImage';
 import heroVision from '@/assets/stock/hero-vision.jpg';
@@ -53,6 +54,14 @@ export function HeroSection() {
                 {n.label}
               </a>
             ))}
+          </div>
+          <div className="flex items-center gap-4 text-[#E6DECD]/80">
+            <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="transition-colors hover:text-[#E6DECD]">
+              <Instagram className="h-[18px] w-[18px]" strokeWidth={1.5} />
+            </a>
+            <a href={CONTACT.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="transition-colors hover:text-[#E6DECD]">
+              <Youtube className="h-[18px] w-[18px]" strokeWidth={1.5} />
+            </a>
           </div>
         </div>
       </FadeIn>
