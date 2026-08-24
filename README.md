@@ -15,10 +15,9 @@
 > document §4-5. The identity work is unaffected.
 >
 > **[`site/`](site/) is a real, buildable website** — React, TypeScript,
-> Tailwind, Framer Motion — carrying the real copy and structure from the
-> Lovable build. Every photo in it is a labelled local placeholder, not a
-> stock image; see [`site/README.md`](site/README.md) for why and what to
-> swap before it ships.
+> Vite, Tailwind, lucide-react, no animation library. Real copy, real
+> licensed reference photography, the real logo, and real contact channels;
+> see [`site/README.md`](site/README.md) for what's still a placeholder.
 
 ---
 

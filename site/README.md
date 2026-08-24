@@ -1,10 +1,11 @@
 # 7th Creation — Site
 
-React + TypeScript + Tailwind CSS + Framer Motion + lucide-react. Real copy
-and structure carried over from the published Lovable build
-([seventh-creation-studio.lovable.app](https://seventh-creation-studio.lovable.app)) —
-see `../brand/resolution-2026-08-24.md` for how that was confirmed as the
-actual business.
+React + TypeScript + Vite + Tailwind CSS + lucide-react. No animation
+library — entrance/scroll effects are IntersectionObserver + CSS
+transitions (`src/components/FadeIn.tsx`). Real copy, real licensed
+reference photography, the real commissioned logo mark, and real contact
+channels — see `../brand/brand-brief-2026-08-24.md` for the brand direction
+this was built against.
 
 ## Run it
 
@@ -15,61 +16,35 @@ npm run build     # production build, type-checked
 npm run preview   # serve the production build locally
 ```
 
-## What's real vs. mock
+## What's real vs. reference
 
-**Real:** all copy, the service list, the process steps, the "7C" wordmark
-concept, the dark/gold/ember palette, and the section structure.
+**Real:** all copy, the service list, the process steps, the logo mark
+(`src/assets/logo/logo-mark.png`, background-removed from the founder's
+supplied file), the dark/gold/ember palette, contact details (email, phone,
+WhatsApp, Instagram, YouTube), and the enquiry form (submits straight to
+WhatsApp via a `wa.me` link — no backend).
 
-**Mock — replace before shipping:** every photo/frame in the site is a
-locally-rendered placeholder (`src/components/MockPlate.tsx`), not a real
-image. Look for `⚠️ MOCK` comments in `src/data/images.ts` and swap each
-entry's `icon`/`label` pair for a real asset:
+**Reference photography, not client work:** the five photos in
+`src/assets/stock/` are licensed Adobe Stock images standing in for real
+shoot stills — each is wrapped in `RealImage.tsx`, which adds a small
+"Reference" corner tag so it's never mistaken for actual client work. Swap
+these for real portfolio photography when it exists.
 
-```tsx
-// before (placeholder)
-<MockPlate label="Industrial, frame 1" icon={Factory} className="..." />
-
-// after (real asset)
-<img src={industrialFrame1} alt="..." className="..." />
-```
-
-**Why placeholders instead of stock photos:** this environment's outbound
-network policy blocks arbitrary external image hosts — confirmed by testing
-`picsum.photos` and the Lovable preview domain, both rejected at the proxy
-with a 403 on CONNECT (see `/root/.ccr/README.md` if you hit this again).
-Rather than depend on an external host that may or may not be reachable
-wherever this gets built next, every "photo" is generated locally: no
-network calls, nothing to break, and the `⚠️ MOCK` labelling makes it obvious
-at a glance which frames are placeholders. Same reasoning for the logo
-(`src/components/Logo.tsx`) — the real mark is AI-generated with no vector
-master (see `../brand/identity-brief.md`) and only reachable via a Lovable
-preview URL, so a simple placeholder wordmark stands in until the real
-identity redraw exists as a local SVG.
-
-## Reused patterns
-
-Built to a spec referencing a MotionSites "3D Creator" portfolio template.
-The *content* of that template (persona "Jack", 3D modelling/rendering
-services, third-party project images) had nothing to do with this business —
-see the resolution doc — but the *interaction techniques* were worth keeping
-and are reused here with real content:
-
-- **`FadeIn`** — scroll-triggered reveal wrapper (`whileInView`, once only)
-- **`Magnet`** — mouse-following magnetic hover on the hero portrait
-- **`AnimatedText`** — word-by-word scroll-driven opacity reveal (About copy)
-- **`MarqueeSection`** — two rows of tiles translating opposite directions,
-  driven by scroll position rather than a CSS loop
-- **`ProjectsSection`** — sticky-stacking cards that scale down as the next
-  one arrives underneath (Framer Motion `useScroll` + `useTransform`)
+**Still a placeholder:** a handful of marquee tiles (Corporate,
+Documentary, Pre-Wedding, LED Wall, Birthday, Podcast, Portfolio) have no
+photo yet and fall back to `MockPlate.tsx`, a locally-rendered icon tile
+labelled `Mock · <name>` — see `src/data/images.ts`.
 
 ## Structure
 
 ```
 src/
-  data/content.ts    real copy, services, process steps, nav
-  data/images.ts      mock footage — label + icon pairs, see ⚠️ comments
-  components/         reusable: FadeIn, Magnet, AnimatedText, MockPlate,
-                       Logo, ContactButton, GhostButton
-  components/sections/  Hero, Marquee, About, Services, Projects,
-                         Process, Contact
+  data/content.ts       real copy, services, process steps, nav, contact info
+  data/images.ts         marquee tiles — real photo or MockPlate fallback per entry
+  components/            FadeIn, Magnet, RealImage, MockPlate, Logo,
+                          EnquiryForm, WhatsAppButton, ContactButton, GhostButton
+  components/sections/   Hero, Projects, Marquee, About, Services, Process, Contact
 ```
+
+Section order: Hero → Projects (lead with proof) → Marquee (breadth) →
+About (manifesto) → Services (capability index) → Process → Contact.

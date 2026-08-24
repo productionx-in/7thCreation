@@ -1,5 +1,4 @@
-import { motion } from 'framer-motion';
-import type { ReactNode, ElementType } from 'react';
+import { useEffect, useRef, useState, type ReactNode, type ElementType, type CSSProperties } from 'react';
 
 interface FadeInProps {
   children: ReactNode;
@@ -11,26 +10,38 @@ interface FadeInProps {
   className?: string;
 }
 
-// Reused from the MotionSites reference pattern: reveal-on-scroll, once only.
-export function FadeIn({
-  children,
-  delay = 0,
-  duration = 0.7,
-  x = 0,
-  y = 30,
-  as = 'div',
-  className,
-}: FadeInProps) {
-  const MotionTag = motion.create(as as ElementType);
+// Reveal-on-scroll via IntersectionObserver + a CSS transition — no
+// animation library. Fires once, first time the element enters the viewport.
+export function FadeIn({ children, delay = 0, duration = 0.7, x = 0, y = 30, as = 'div', className }: FadeInProps) {
+  const ref = useRef<HTMLElement>(null);
+  const [shown, setShown] = useState(false);
+  const Tag = as as ElementType;
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShown(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '0px 0px -50px 0px', threshold: 0 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const style: CSSProperties = {
+    opacity: shown ? 1 : 0,
+    transform: shown ? 'translate3d(0,0,0)' : `translate3d(${x}px, ${y}px, 0)`,
+    transition: `opacity ${duration}s cubic-bezier(0.25,0.1,0.25,1) ${delay}s, transform ${duration}s cubic-bezier(0.25,0.1,0.25,1) ${delay}s`,
+  };
+
   return (
-    <MotionTag
-      initial={{ opacity: 0, x, y }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: '50px', amount: 0 }}
-      transition={{ delay, duration, ease: [0.25, 0.1, 0.25, 1] }}
-      className={className}
-    >
+    <Tag ref={ref} className={className} style={style}>
       {children}
-    </MotionTag>
+    </Tag>
   );
 }
