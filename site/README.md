@@ -24,16 +24,14 @@ ember palette, contact details (email, phone, WhatsApp, Instagram,
 YouTube), and the enquiry form (submits straight to WhatsApp via a `wa.me`
 link — no backend).
 
-**Reference photography, not client work:** the five photos in
+**Reference photography, not client work:** the thirteen photos in
 `src/assets/stock/` are licensed Adobe Stock images standing in for real
 shoot stills — each is wrapped in `RealImage.tsx`, which adds a small
 "Reference" corner tag so it's never mistaken for actual client work. Swap
-these for real portfolio photography when it exists.
-
-**Still a placeholder:** a handful of marquee tiles (Corporate,
-Documentary, Pre-Wedding, LED Wall, Birthday, Podcast, Portfolio) have no
-photo yet and fall back to `MockPlate.tsx`, a locally-rendered icon tile
-labelled `Mock · <name>` — see `src/data/images.ts`.
+these for real portfolio photography when it exists. `MockPlate.tsx` (a
+locally-rendered icon tile labelled `Mock · <name>`) is still there as the
+fallback in `MarqueeSection`/`images.ts` for any category that loses its
+photo, but every category currently has one.
 
 ## Reused patterns
 
