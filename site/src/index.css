@@ -9,7 +9,7 @@
 html,
 body,
 #root {
-  background: #0b0a08;
+  background: #11151a;
   margin: 0;
   padding: 0;
 }
@@ -25,7 +25,7 @@ body {
 
 /* Gradient headline text, in the studio's own gold rather than a cool grey-blue */
 .hero-heading {
-  background: linear-gradient(180deg, #efe0b8 0%, #c9a84c 55%, #8a6f2e 100%);
+  background: linear-gradient(180deg, #e4cfa0 0%, #c6a15b 55%, #8f723d 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -45,6 +45,6 @@ body {
 }
 
 ::selection {
-  background: #c9a84c;
-  color: #0b0a08;
+  background: #c6a15b;
+  color: #11151a;
 }

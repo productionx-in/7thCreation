@@ -19,7 +19,7 @@ export function AboutSection() {
     <section className="relative flex min-h-screen flex-col items-center justify-center bg-ink px-5 py-20 sm:px-8 md:px-10">
       {CORNERS.map(({ Icon, pos, delay, x }, i) => (
         <FadeIn key={i} delay={delay} x={x} y={0} duration={0.9} className={`pointer-events-none absolute hidden ${pos} md:block`}>
-          <Icon className="h-16 w-16 text-[#B99B4A]/25 md:h-20 md:w-20" strokeWidth={1} />
+          <Icon className="h-16 w-16 text-[#C6A15B]/25 md:h-20 md:w-20" strokeWidth={1} />
         </FadeIn>
       ))}
 
@@ -32,7 +32,7 @@ export function AboutSection() {
       <div className="mt-10 flex max-w-[600px] flex-col items-center gap-10 sm:mt-14 sm:gap-14 md:mt-16 md:gap-16">
         <AnimatedText
           text={ABOUT_COPY}
-          className="text-center font-medium leading-relaxed text-[#D7CBAE] text-[clamp(1rem,2vw,1.35rem)]"
+          className="text-center font-medium leading-relaxed text-[#E6DECD] text-[clamp(1rem,2vw,1.35rem)]"
         />
         <ContactButton />
       </div>

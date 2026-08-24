@@ -49,22 +49,22 @@ function ProjectCard({
     <div ref={ref} className="sticky top-20 mb-7 h-[85vh] sm:top-24 md:top-28">
       <motion.div
         style={{ scale, top: `${index * 28}px` }}
-        className="relative flex h-full flex-col overflow-hidden rounded-[32px] border-2 border-[#D7CBAE]/40 bg-ink p-4 sm:rounded-[44px] sm:p-6 md:rounded-[56px] md:p-8"
+        className="relative flex h-full flex-col overflow-hidden rounded-[32px] border-2 border-[#767F83]/40 bg-ink p-4 sm:rounded-[44px] sm:p-6 md:rounded-[56px] md:p-8"
       >
         {/* Top row */}
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="flex items-baseline gap-4 sm:gap-6">
             <span
-              className="font-display font-black leading-none text-[#B99B4A]/30"
+              className="font-display font-black leading-none text-[#C6A15B]/30"
               style={{ fontSize: 'clamp(2.5rem, 8vw, 100px)' }}
             >
               {project.n}
             </span>
             <div>
-              <p className="text-[0.65rem] uppercase tracking-[0.3em] text-[#D9541E] sm:text-xs">
+              <p className="text-[0.65rem] uppercase tracking-[0.3em] text-[#B6421D] sm:text-xs">
                 {project.category} · {project.kind}
               </p>
-              <h3 className="mt-1 font-display text-xl text-[#EFE4C6] sm:text-2xl md:text-3xl">{project.name}</h3>
+              <h3 className="mt-1 font-display text-xl text-[#E6DECD] sm:text-2xl md:text-3xl">{project.name}</h3>
             </div>
           </div>
           <GhostButton href="#contact" label="Enquire" />

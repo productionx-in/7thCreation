@@ -133,3 +133,10 @@ Structure and rules: `brand/architecture.md`. Reasoning: `marketing/growth-plan.
   with no vector masters, so there is nothing to edit — it is redrawn from the
   raster as reference. Treated as a direction, not a finished mark. See `brand/identity.md` (audit of what exists)
   and `brand/identity-brief.md` (the rebuild brief).
+
+## Authoritative brand brief
+
+**See `brand/brand-brief-2026-08-24.md`.** Supplied directly by the founder,
+2026-08-24 — full palette (official hex values), personality, logo symbolism,
+what to avoid, typography direction, logo-system requirements, and website
+art direction. Where this document and that brief conflict, the brief wins.

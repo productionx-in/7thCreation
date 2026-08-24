@@ -17,7 +17,7 @@ export function ContactButton({ href = '#contact', label = 'Start a Project', cl
         (className ?? '')
       }
       style={{
-        background: 'linear-gradient(123deg, #F7E7B8 7%, #C9A84C 45%, #A67C1E 72%, #D9541E 100%)',
+        background: 'linear-gradient(123deg, #E4CFA0 7%, #C6A15B 45%, #8F723D 72%, #B6421D 100%)',
         boxShadow: '0px 4px 12px rgba(201, 168, 76, 0.35), inset 0px 2px 6px rgba(255, 255, 255, 0.25)',
       }}
     >

@@ -1,5 +1,15 @@
 # 7th Creation — Identity Rebuild Brief
 
+> ## ⚠️ See `brand/brand-brief-2026-08-24.md` first
+>
+> The founder supplied a full, detailed brand brief on 2026-08-24 — palette
+> (now official, applied), personality, logo symbolism, what to avoid, and
+> explicit website art direction. It supersedes anything below that conflicts
+> with it, most notably: Direction A's typography assumptions should be
+> re-checked against the brief's "sophisticated modern sans-serif" requirement,
+> and the current `site/` build does not yet meet the brief's website direction
+> (§07-08 of that document).
+
 > **Founder decision: rebuild properly.** The current logo is treated as a
 > direction, not a finished mark.
 > Companion to `brand/identity.md` (audit of what exists). This document briefs

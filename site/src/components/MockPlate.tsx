@@ -18,7 +18,7 @@ export function MockPlate({ label, icon: Icon, className, style }: MockPlateProp
   return (
     <div
       className={`grain-overlay relative flex items-center justify-center overflow-hidden ${className ?? ''}`}
-      style={{ background: 'linear-gradient(155deg, #241D12 0%, #171209 55%, #0B0A08 100%)', ...style }}
+      style={{ background: 'linear-gradient(155deg, #1A1F26 0%, #11151A 55%, #11151A 100%)', ...style }}
     >
       {/* Corner brackets — a viewfinder motif, legible as "placeholder" rather than accidental content */}
       {[
@@ -27,12 +27,12 @@ export function MockPlate({ label, icon: Icon, className, style }: MockPlateProp
         'left-3 bottom-3 border-l-2 border-b-2',
         'right-3 bottom-3 border-r-2 border-b-2',
       ].map((pos) => (
-        <span key={pos} className={`absolute h-4 w-4 border-[#C9A84C]/30 ${pos}`} />
+        <span key={pos} className={`absolute h-4 w-4 border-[#C6A15B]/30 ${pos}`} />
       ))}
 
-      <Icon className="h-[22%] w-[22%] text-[#C9A84C]/25" strokeWidth={1} />
+      <Icon className="h-[22%] w-[22%] text-[#C6A15B]/25" strokeWidth={1} />
 
-      <span className="absolute bottom-3 left-4 text-[0.6rem] font-medium uppercase tracking-[0.25em] text-[#C9A84C]/50 sm:text-[0.65rem]">
+      <span className="absolute bottom-3 left-4 text-[0.6rem] font-medium uppercase tracking-[0.25em] text-[#C6A15B]/50 sm:text-[0.65rem]">
         Mock · {label}
       </span>
     </div>

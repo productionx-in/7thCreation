@@ -14,7 +14,7 @@ export function HeroSection() {
         <div className="flex items-center justify-between px-6 pt-6 md:px-10 md:pt-8">
           <a href="#top" className="flex items-center gap-3">
             <Logo className="h-9 w-9 md:h-11 md:w-11" />
-            <span className="font-display text-sm uppercase tracking-[0.3em] text-[#D7CBAE] md:text-base">
+            <span className="font-display text-sm uppercase tracking-[0.3em] text-[#E6DECD] md:text-base">
               7th Creation
             </span>
           </a>
@@ -23,7 +23,7 @@ export function HeroSection() {
               <a
                 key={n.href}
                 href={n.href}
-                className="text-sm font-medium uppercase tracking-wider text-[#D7CBAE] transition-opacity duration-200 hover:opacity-70 lg:text-[1.1rem]"
+                className="text-sm font-medium uppercase tracking-wider text-[#E6DECD] transition-opacity duration-200 hover:opacity-70 lg:text-[1.1rem]"
               >
                 {n.label}
               </a>
@@ -35,7 +35,7 @@ export function HeroSection() {
       {/* Heading */}
       <div className="relative z-10 mt-auto flex flex-1 flex-col justify-center px-6 md:px-10">
         <FadeIn delay={0.15} y={40}>
-          <p className="text-xs uppercase tracking-[0.35em] text-[#B99B4A] md:text-sm">{HERO.eyebrow}</p>
+          <p className="text-xs uppercase tracking-[0.35em] text-[#767F83] md:text-sm">{HERO.eyebrow}</p>
         </FadeIn>
         <div className="overflow-hidden">
           <FadeIn delay={0.2} y={40}>
@@ -51,14 +51,14 @@ export function HeroSection() {
       {/* Bottom bar */}
       <div className="relative z-10 flex items-end justify-between gap-6 px-6 pb-8 md:px-10 md:pb-10">
         <FadeIn delay={0.35} y={20} className="max-w-[220px] sm:max-w-[320px] md:max-w-[420px]">
-          <p className="text-xs font-light leading-snug tracking-wide text-[#B9AC8C] sm:text-sm md:text-base">
+          <p className="text-xs font-light leading-snug tracking-wide text-[#767F83] sm:text-sm md:text-base">
             {HERO.sub}
           </p>
         </FadeIn>
         <FadeIn delay={0.5} y={20} className="flex flex-col items-end gap-3 sm:flex-row sm:items-center">
           <a
             href="#services"
-            className="hidden whitespace-nowrap text-xs font-medium uppercase tracking-widest text-[#D7CBAE]/80 transition-colors hover:text-[#D7CBAE] sm:inline"
+            className="hidden whitespace-nowrap text-xs font-medium uppercase tracking-widest text-[#E6DECD]/80 transition-colors hover:text-[#E6DECD] sm:inline"
           >
             {HERO.ctaSecondary}
           </a>
@@ -81,7 +81,7 @@ export function HeroSection() {
       </div>
 
       <div className="absolute inset-x-0 bottom-3 hidden justify-center sm:flex">
-        <span className="animate-pulse text-[0.65rem] uppercase tracking-[0.4em] text-[#B99B4A]">Scroll</span>
+        <span className="animate-pulse text-[0.65rem] uppercase tracking-[0.4em] text-[#767F83]">Scroll</span>
       </div>
     </section>
   );

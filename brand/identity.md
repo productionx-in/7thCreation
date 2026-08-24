@@ -35,38 +35,44 @@ are two related logos, not one logo in two colourways. Fixing this is §5, item 
 
 ---
 
-## 02 — Colour Palette
+## 02 — Colour Palette ✅ RESOLVED — official, founder-supplied
 
-🔶 Approximate. Sample from source artwork and replace.
+Everything below supersedes the approximated swatches this section originally
+carried, and the "drop the olive" recommendation that went with them. The founder
+supplied the real palette directly, with hex values and explicit usage ratios —
+this is no longer a visual estimate.
 
-**Primary**
-
-| Role | Swatch | Approx. | Notes |
+| Role | Swatch | Hex | Use |
 | --- | --- | --- | --- |
-| Brand Gold | Metallic brass | `#C9A84C` | The signature. Note this is the exact value Production X already uses as its badge colour — the parent link is real, and worth making deliberate rather than coincidental |
-| Signal Orange | Burnt sienna | `#D9541E` | The star, and the "A" in CREATION. The only true accent |
-| Ink | Charcoal | `#2B2B2B` | Wordmark on light |
-| Paper | Warm off-white | `#FAFAF8` | Light ground |
-| Void | Near-black | `#0A0A0A` | Dark ground |
+| Midnight | Near-black, cool | `#11151A` | Dark backgrounds, core applications. Foundation. |
+| Cloud | Warm off-white | `#E6DECD` | Primary light background/neutral. Foundation. |
+| Deep Olive | Muted moss | `#484933` | Editorial/creative sections, supporting backgrounds |
+| Lunar Steel | Cool grey-blue | `#767F83` | Secondary text, UI elements, borders |
+| Antique Gold | Warm brass | `#C6A15B` | **Sparingly** — logo, highlights, premium/cinematic detail |
+| Burnt Orange | Terracotta | `#B6421D` | **Sparingly** — the energetic accent: CTAs, the "A" in CREATION |
 
-**Unresolved**
+**Usage ratio, stated explicitly by the founder — do not use all six equally:**
 
-| Role | Approx. | Problem |
-| --- | --- | --- |
-| Deep Olive | `#3A4A32` | Colours "7TH" in the light version only, appears nowhere else, and is absent from the mono version. Right now it reads as accidental rather than chosen |
+> Midnight + Cloud ≈ 60% (foundation) · Olive + Steel ≈ 20% (editorial character)
+> · Gold ≈ 15% (cinematic/premium) · Burnt Orange ≈ 5% (creative spark)
 
-**Recommendation on the olive.** Either promote it to a real secondary — give it a
-job (section rules, data, secondary UI) and put it in both versions — or drop it
-and set "7TH" in Ink. A colour that appears once, in one lockup, is not a palette
-member; it is an inconsistency. **Dropping it is the cleaner call** — the identity
-is already carrying gold *and* orange, and a third hue at this level dilutes the
-accent's power.
+This settles the earlier open question cleanly: **the olive is not accidental —
+it's a real, deliberately-scoped secondary colour**, on the record with its own
+usage share. Every application (this identity, the site, future collateral) should
+carry that ratio, not let gold or orange dominate just because they're the most
+visually exciting.
 
 **On gold as a metallic.** Metallic gradients don't survive most real uses: single-
-colour print, embroidery, favicons, dark-mode UI, video overlays. The identity needs
-a **flat gold** defined alongside the metallic one — same hue, no gradient — as the
-default for anything digital. Treat the metallic as a special-occasion finish, not
-the primary.
+colour print, embroidery, favicons, dark-mode UI, video overlays. The founder's
+brief confirms this independently — "normal brand applications should primarily use
+flat colours so the identity remains reproducible across print, web, signage,
+merchandise, embroidery, video and social media." Treat the metallic rendering in
+the current logo file as a special-occasion finish, never the default.
+
+*(Superseded eyeballed values, for reference only: Brand Gold `#C9A84C`, Signal
+Orange `#D9541E`, Ink `#2B2B2B`, Paper `#FAFAF8`, Void `#0A0A0A`, Deep Olive
+`#3A4A32`. Close in hue to the real thing — visual estimation from a screenshot
+gets you that far and no further.)
 
 ---
 

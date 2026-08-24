@@ -11,7 +11,7 @@ interface LogoProps {
 export function Logo({ className }: LogoProps) {
   return (
     <svg viewBox="0 0 44 44" className={className} aria-label="7th Creation">
-      <circle cx="22" cy="22" r="21" fill="none" stroke="#C9A84C" strokeWidth="1.2" opacity="0.5" />
+      <circle cx="22" cy="22" r="21" fill="none" stroke="#C6A15B" strokeWidth="1.2" opacity="0.5" />
       <text
         x="22"
         y="29"
@@ -19,7 +19,7 @@ export function Logo({ className }: LogoProps) {
         fontFamily="'Fraunces', Georgia, serif"
         fontSize="20"
         fontWeight="500"
-        fill="#C9A84C"
+        fill="#C6A15B"
       >
         7C
       </text>

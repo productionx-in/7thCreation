@@ -39,6 +39,7 @@ This repository holds the brand and marketing strategy.
 | [`brand/identity.md`](brand/identity.md) | Audit of the existing logo — palette, typography, what works and what breaks |
 | [`brand/identity-brief.md`](brand/identity-brief.md) | The rebuild brief — constraints, three art directions, deliverables |
 | [`brand/voice.md`](brand/voice.md) | Verbal identity — tone, voice qualities, vocabulary, style rules |
+| [`brand/brand-brief-2026-08-24.md`](brand/brand-brief-2026-08-24.md) | **Authoritative.** Full brand brief from the founder — palette, personality, logo symbolism, website direction |
 | [`brand/architecture.md`](brand/architecture.md) | How the studio, publication and Day 7 relate — and the rules that keep them separate |
 | [`marketing/growth-plan.md`](marketing/growth-plan.md) | 12-month AARRR growth plan, 90-day roadmap, pricing and revenue strategy |
 | [`ASSUMPTIONS.md`](ASSUMPTIONS.md) | What's confirmed, what's inferred, and what breaks if the inferences are wrong |

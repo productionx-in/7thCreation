@@ -19,22 +19,22 @@ export function ServicesSection() {
       <div className="mx-auto mt-16 max-w-5xl sm:mt-20 md:mt-28">
         {FLAGSHIP_SERVICES.map((s, i) => (
           <FadeIn key={s.n} delay={i * 0.1}>
-            <div className="flex items-start gap-6 border-t border-[#D7CBAE]/15 py-8 last:border-b sm:gap-10 sm:py-10 md:py-12">
+            <div className="flex items-start gap-6 border-t border-[#767F83]/15 py-8 last:border-b sm:gap-10 sm:py-10 md:py-12">
               <span
-                className="flex-shrink-0 font-display font-black leading-none text-[#B99B4A]/30"
+                className="flex-shrink-0 font-display font-black leading-none text-[#C6A15B]/30"
                 style={{ fontSize: 'clamp(2.5rem, 8vw, 100px)' }}
               >
                 {s.n}
               </span>
               <div className="flex flex-col gap-2 pt-1 sm:gap-3">
                 <h3
-                  className="font-medium uppercase tracking-wide text-[#EFE4C6]"
+                  className="font-medium uppercase tracking-wide text-[#E6DECD]"
                   style={{ fontSize: 'clamp(1rem, 2.2vw, 1.9rem)' }}
                 >
                   {s.name}
                 </h3>
                 <p
-                  className="max-w-2xl font-light leading-relaxed text-[#B9AC8C]"
+                  className="max-w-2xl font-light leading-relaxed text-[#767F83]"
                   style={{ fontSize: 'clamp(0.85rem, 1.6vw, 1.15rem)' }}
                 >
                   {s.copy}
