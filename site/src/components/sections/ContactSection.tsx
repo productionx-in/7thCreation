@@ -1,8 +1,8 @@
 import { Instagram, Youtube } from 'lucide-react';
 import { FadeIn } from '@/components/FadeIn';
-import { GhostButton } from '@/components/GhostButton';
 import { CONTACT } from '@/data/content';
 import { Logo } from '@/components/Logo';
+import { EnquiryForm } from '@/components/EnquiryForm';
 
 export function ContactSection() {
   return (
@@ -13,18 +13,19 @@ export function ContactSection() {
           <h2 className="mt-4 font-display text-3xl font-light leading-tight text-[#E6DECD] sm:text-5xl">
             Tell us what you want people to feel.
           </h2>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <p className="mt-3 text-sm text-[#767F83]">
+            Fill this in and it goes straight to our WhatsApp — or reach us directly at{' '}
             <a href={`mailto:${CONTACT.email}`} className="text-[#C6A15B] hover:text-[#E4CFA0]">
               {CONTACT.email}
-            </a>
+            </a>{' '}
+            /{' '}
             <a href={CONTACT.phoneHref} className="text-[#C6A15B] hover:text-[#E4CFA0]">
               {CONTACT.phone}
             </a>
-            <span className="text-[#767F83]">{CONTACT.location}</span>
-          </div>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <GhostButton href={`mailto:${CONTACT.email}`} label="Send the brief" />
-            <GhostButton href={CONTACT.whatsappHref} label="WhatsApp us" />
+            .
+          </p>
+          <div className="mt-10">
+            <EnquiryForm />
           </div>
         </FadeIn>
       </div>
