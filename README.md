@@ -1,20 +1,18 @@
 # 7th Creation
 
-> ## ⏸️ On hold — read this first
+> ## ✅ Resolved — read this first
 >
-> The Feb 2025 portfolio deck showed **7th Creation is N.V.R. Sai Kiran, a
-> professional photographer** (product, industrial, wedding, baby, landscape).
-> Much of the strategy below was built for a different business — a studio
-> publishing research on the digital economy — and is **wrong for this one**.
+> **7th Creation is a full-service media production studio in India** —
+> photography, film, live events, brand content, marketing and web
+> development. Confirmed by the founder's own project brief and a real site
+> built from it, live at
+> [seventh-creation-studio.lovable.app](https://seventh-creation-studio.lovable.app).
 >
-> **Start at [`brand/audit-2025-portfolio.md`](brand/audit-2025-portfolio.md)** —
-> it sets out what survives, what doesn't, and the strategic read. `editorial/`
-> is suspended and should not be published.
->
-> **Three questions to resume:** is the business still photography-led? Are
-> weddings and baby shoots still running? Is it still just you?
->
-> *Paused 2026-08-23. Nothing here should be executed on until this is settled.*
+> **Start at [`brand/resolution-2026-08-24.md`](brand/resolution-2026-08-24.md).**
+> Most of the strategy below (positioning, messaging, growth plan, editorial
+> standards) was built for a different, incorrect picture of the business and
+> has **not** been rewritten again pending a scoping decision — see that
+> document §4-5. The identity work is unaffected.
 
 ---
 

@@ -1,3 +1,5 @@
+> **See `brand/resolution-2026-08-24.md` — this supersedes the assumptions below with founder-confirmed evidence.**
+
 # Assumptions Register
 
 Everything in `brand/` and `marketing/` is built on six inputs. Four were confirmed
