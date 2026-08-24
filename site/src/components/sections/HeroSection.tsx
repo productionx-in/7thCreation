@@ -13,7 +13,7 @@ export function HeroSection() {
       <FadeIn delay={0} y={-20} as="nav">
         <div className="flex items-center justify-between px-6 pt-6 md:px-10 md:pt-8">
           <a href="#top" className="flex items-center gap-3">
-            <Logo variant="full" className="h-9 w-9 text-[#C6A15B] md:h-11 md:w-11" />
+            <Logo className="h-9 w-9 md:h-11 md:w-11" />
             <span className="font-display text-sm uppercase tracking-[0.3em] text-[#E6DECD] md:text-base">
               7th Creation
             </span>

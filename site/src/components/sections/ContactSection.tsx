@@ -30,7 +30,7 @@ export function ContactSection() {
 
       <footer className="mx-auto flex max-w-5xl flex-col items-center gap-4 border-t border-[#767F83]/10 px-5 py-8 text-center sm:flex-row sm:justify-between sm:px-8 sm:text-left md:px-10">
         <div className="flex items-center gap-3">
-          <Logo className="h-7 w-7 text-[#C6A15B]" />
+          <Logo className="h-7 w-7" />
           <span className="text-xs uppercase tracking-[0.3em] text-[#767F83]">A Creative Studio</span>
         </div>
         <div className="flex items-center gap-5 text-xs uppercase tracking-[0.25em] text-[#767F83]">
