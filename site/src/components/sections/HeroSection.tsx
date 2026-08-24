@@ -9,55 +9,22 @@ import heroLogoMp4 from '@/assets/video/hero-logo.mp4';
 import heroPoster from '@/assets/video/hero-poster.jpg';
 
 export function HeroSection() {
-  const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Scroll-scrubbed: the logo reveal plays forward and back as the hero
-  // scrolls past, not on its own — no frame, no card, full-bleed on the
-  // section itself.
+  // Plays once on landing, then holds on its last frame — the formed 7C
+  // mark — instead of scrubbing with scroll (that read as janky).
   useEffect(() => {
-    const section = sectionRef.current;
     const video = videoRef.current;
-    if (!section || !video) return;
-
-    // Priming a muted video with a play/pause is what makes later
-    // programmatic currentTime seeks reliable on mobile Safari.
-    video.play().then(() => video.pause()).catch(() => {});
-
-    let duration = 0;
-    const onLoaded = () => {
-      duration = video.duration || 0;
-    };
-    video.addEventListener('loadedmetadata', onLoaded);
-
-    let ticking = false;
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        if (duration) {
-          const rect = section.getBoundingClientRect();
-          const total = rect.height || window.innerHeight;
-          const scrolled = Math.min(Math.max(-rect.top, 0), total);
-          video.currentTime = (scrolled / total) * duration;
-        }
-        ticking = false;
-      });
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    return () => {
-      video.removeEventListener('loadedmetadata', onLoaded);
-      window.removeEventListener('scroll', onScroll);
-    };
+    if (!video) return;
+    video.play().catch(() => {});
   }, []);
 
   return (
-    <section id="top" ref={sectionRef} className="grain-overlay relative flex h-screen min-h-[640px] flex-col overflow-hidden bg-ink">
-      {/* The logo reveal itself — full-bleed, no frame, driven entirely by scroll */}
+    <section id="top" className="grain-overlay relative flex h-screen min-h-[640px] flex-col overflow-hidden bg-ink">
+      {/* The logo reveal itself — full-bleed, no frame, plays once on load */}
       <video
         ref={videoRef}
+        autoPlay
         muted
         playsInline
         preload="auto"
