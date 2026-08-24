@@ -1,3 +1,4 @@
+import { Instagram, Youtube } from 'lucide-react';
 import { FadeIn } from '@/components/FadeIn';
 import { GhostButton } from '@/components/GhostButton';
 import { CONTACT } from '@/data/content';
@@ -33,12 +34,12 @@ export function ContactSection() {
           <Logo className="h-7 w-7" />
           <span className="text-xs uppercase tracking-[0.3em] text-[#767F83]">A Creative Studio</span>
         </div>
-        <div className="flex items-center gap-5 text-xs uppercase tracking-[0.25em] text-[#767F83]">
-          <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-[#E6DECD]">
-            Instagram
+        <div className="flex items-center gap-4 text-[#767F83]">
+          <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="transition-colors hover:text-[#E6DECD]">
+            <Instagram className="h-[18px] w-[18px]" strokeWidth={1.5} />
           </a>
-          <a href={CONTACT.youtube} target="_blank" rel="noopener noreferrer" className="hover:text-[#E6DECD]">
-            YouTube
+          <a href={CONTACT.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="transition-colors hover:text-[#E6DECD]">
+            <Youtube className="h-[18px] w-[18px]" strokeWidth={1.5} />
           </a>
         </div>
         <p className="text-xs text-[#767F83]">© {new Date().getFullYear()} 7th Creation</p>
