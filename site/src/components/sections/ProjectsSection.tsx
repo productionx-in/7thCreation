@@ -6,14 +6,23 @@ import { RealImage } from '@/components/RealImage';
 import industrialImg from '@/assets/stock/industrial.jpg';
 import weddingImg from '@/assets/stock/wedding-candle.jpg';
 import productImg from '@/assets/stock/product-podium.jpg';
+import corporateImg from '@/assets/stock/corporate.jpg';
+import liveImg from '@/assets/stock/live-event.jpg';
+import documentaryImg from '@/assets/stock/documentary.jpg';
 
 // Real, licensed reference photography — see RealImage.tsx. One full-bleed
 // image per card rather than a mixed grid: editorial and legible, and it
-// doesn't force mismatched real/placeholder frames into the same card.
+// doesn't force mismatched real/placeholder frames into the same card. Six
+// entries spans the business's core pillars without turning an 85vh-per-card
+// sticky stack into a scroll marathon — the 20-item marquee already covers
+// full breadth.
 const PROJECTS = [
   { n: '01', name: 'Steel & Sparks', category: 'Industrial Film', kind: 'Client', img: industrialImg },
   { n: '02', name: 'Two Lamps, One Night', category: 'Wedding', kind: 'Client', img: weddingImg },
   { n: '03', name: 'Object of Desire', category: 'Product', kind: 'Client', img: productImg },
+  { n: '04', name: 'Before the Applause', category: 'Corporate Event', kind: 'Client', img: corporateImg },
+  { n: '05', name: 'Lights Down, Sound Up', category: 'Live Coverage', kind: 'Client', img: liveImg },
+  { n: '06', name: 'Nobody Was Acting', category: 'Documentary', kind: 'Client', img: documentaryImg },
 ];
 
 // Sticky-stacking cards: each card pins and scales down slightly as the
