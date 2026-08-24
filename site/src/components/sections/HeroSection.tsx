@@ -1,39 +1,32 @@
-import { useEffect, useRef } from 'react';
 import { Instagram, Youtube } from 'lucide-react';
 import { FadeIn } from '@/components/FadeIn';
 import { ContactButton } from '@/components/ContactButton';
 import { NAV, HERO, CONTACT } from '@/data/content';
 import { Logo } from '@/components/Logo';
-import heroLogoWebm from '@/assets/video/hero-logo.webm';
-import heroLogoMp4 from '@/assets/video/hero-logo.mp4';
+import heroBtsWebm from '@/assets/video/hero-bts.webm';
+import heroBtsMp4 from '@/assets/video/hero-bts.mp4';
 import heroPoster from '@/assets/video/hero-poster.jpg';
 
 export function HeroSection() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  // Plays once on landing, then holds on its last frame — the formed 7C
-  // mark — instead of scrubbing with scroll (that read as janky).
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.play().catch(() => {});
-  }, []);
-
   return (
     <section id="top" className="grain-overlay relative flex h-screen min-h-[640px] flex-col overflow-hidden bg-ink">
-      {/* The logo reveal itself — full-bleed, no frame, plays once on load */}
+      {/* Licensed reference footage — a creative studio's own production
+          floor, full-bleed with no frame. Ambient, so it loops. */}
       <video
-        ref={videoRef}
         autoPlay
+        loop
         muted
         playsInline
         preload="auto"
         poster={heroPoster}
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src={heroLogoWebm} type="video/webm" />
-        <source src={heroLogoMp4} type="video/mp4" />
+        <source src={heroBtsWebm} type="video/webm" />
+        <source src={heroBtsMp4} type="video/mp4" />
       </video>
+      <span className="pointer-events-none absolute right-6 top-24 z-10 hidden text-[0.55rem] font-medium uppercase tracking-[0.2em] text-[#E6DECD]/40 sm:block md:right-10">
+        Reference footage
+      </span>
       <div
         className="pointer-events-none absolute inset-0"
         style={{
