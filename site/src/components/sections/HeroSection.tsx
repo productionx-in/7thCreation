@@ -1,17 +1,81 @@
+import { useEffect, useRef } from 'react';
 import { Instagram, Youtube } from 'lucide-react';
 import { FadeIn } from '@/components/FadeIn';
-import { Magnet } from '@/components/Magnet';
 import { ContactButton } from '@/components/ContactButton';
 import { NAV, HERO, CONTACT } from '@/data/content';
 import { Logo } from '@/components/Logo';
-import { RealImage } from '@/components/RealImage';
-import heroVision from '@/assets/stock/hero-vision.jpg';
+import heroLogoWebm from '@/assets/video/hero-logo.webm';
+import heroLogoMp4 from '@/assets/video/hero-logo.mp4';
+import heroPoster from '@/assets/video/hero-poster.jpg';
 
 export function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Scroll-scrubbed: the logo reveal plays forward and back as the hero
+  // scrolls past, not on its own — no frame, no card, full-bleed on the
+  // section itself.
+  useEffect(() => {
+    const section = sectionRef.current;
+    const video = videoRef.current;
+    if (!section || !video) return;
+
+    // Priming a muted video with a play/pause is what makes later
+    // programmatic currentTime seeks reliable on mobile Safari.
+    video.play().then(() => video.pause()).catch(() => {});
+
+    let duration = 0;
+    const onLoaded = () => {
+      duration = video.duration || 0;
+    };
+    video.addEventListener('loadedmetadata', onLoaded);
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        if (duration) {
+          const rect = section.getBoundingClientRect();
+          const total = rect.height || window.innerHeight;
+          const scrolled = Math.min(Math.max(-rect.top, 0), total);
+          video.currentTime = (scrolled / total) * duration;
+        }
+        ticking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    return () => {
+      video.removeEventListener('loadedmetadata', onLoaded);
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
+
   return (
-    <section id="top" className="grain-overlay relative flex min-h-screen flex-col overflow-hidden bg-ink">
-      {/* Navbar */}
-      <FadeIn delay={0} y={-20} as="nav">
+    <section id="top" ref={sectionRef} className="grain-overlay relative flex h-screen min-h-[640px] flex-col overflow-hidden bg-ink">
+      {/* The logo reveal itself — full-bleed, no frame, driven entirely by scroll */}
+      <video
+        ref={videoRef}
+        muted
+        playsInline
+        preload="auto"
+        poster={heroPoster}
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src={heroLogoWebm} type="video/webm" />
+        <source src={heroLogoMp4} type="video/mp4" />
+      </video>
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(17,21,26,0.7) 0%, rgba(17,21,26,0.15) 30%, rgba(17,21,26,0.25) 60%, rgba(17,21,26,0.92) 100%)',
+        }}
+      />
+
+      <FadeIn delay={0} y={-20} as="nav" className="relative z-10">
         <div className="flex items-center justify-between px-6 pt-6 md:px-10 md:pt-8">
           <a href="#top" className="flex items-center gap-3">
             <Logo className="h-9 w-9 md:h-11 md:w-11" />
@@ -41,60 +105,33 @@ export function HeroSection() {
         </div>
       </FadeIn>
 
-      {/* Text + image, side by side on desktop, stacked on mobile */}
-      <div className="mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center gap-10 px-6 py-10 md:grid md:grid-cols-[1.25fr_1fr] md:items-center md:gap-12 md:px-10 md:py-0">
-        <div>
-          <FadeIn delay={0.15} y={40}>
-            <p className="text-xs uppercase tracking-[0.35em] text-[#767F83] md:text-sm">{HERO.eyebrow}</p>
+      <div className="relative z-10 mt-auto flex flex-col gap-6 px-6 pb-10 md:px-10 md:pb-14">
+        <FadeIn delay={0.1} y={30}>
+          <p className="text-xs uppercase tracking-[0.35em] text-[#E6DECD]/70 md:text-sm">{HERO.eyebrow}</p>
+        </FadeIn>
+        <div className="overflow-hidden">
+          <FadeIn delay={0.2} y={50}>
+            <h1 className="hero-heading max-w-4xl font-display text-[13vw] font-light leading-[0.92] sm:text-[9vw] md:text-[6.5vw] lg:text-[5.5rem] xl:text-[6.25rem]">
+              {HERO.headingLine1}
+              <br />
+              <span className="italic">{HERO.headingLine2}</span>
+            </h1>
           </FadeIn>
-          <div className="overflow-hidden">
-            <FadeIn delay={0.2} y={40}>
-              <h1 className="hero-heading mt-3 font-display text-[13vw] font-light leading-[0.92] sm:text-[10vw] md:text-[5.5vw] lg:text-[4.75rem] xl:text-[5.5rem]">
-                {HERO.headingLine1}
-                <br />
-                <span className="italic">{HERO.headingLine2}</span>
-              </h1>
-            </FadeIn>
-          </div>
-          <FadeIn delay={0.35} y={20} className="mt-6 max-w-[420px] sm:mt-8">
-            <p className="text-xs font-light leading-snug tracking-wide text-[#767F83] sm:text-sm md:text-base">
-              {HERO.sub}
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.5} y={20} className="mt-8 flex flex-wrap items-center gap-6 sm:mt-10">
-            <ContactButton href="#work" label={HERO.ctaPrimary} />
+        </div>
+        <FadeIn delay={0.35} y={20} className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <p className="max-w-[380px] text-xs font-light leading-snug tracking-wide text-[#E6DECD]/60 sm:text-sm md:text-base">
+            {HERO.sub}
+          </p>
+          <div className="flex flex-wrap items-center gap-6">
             <a
               href="#services"
               className="whitespace-nowrap text-xs font-medium uppercase tracking-widest text-[#E6DECD]/80 transition-colors hover:text-[#E6DECD] sm:text-sm"
             >
               {HERO.ctaSecondary}
             </a>
-          </FadeIn>
-        </div>
-
-        {/* Portrait — contained card, not a full-bleed crop */}
-        <FadeIn delay={0.25} y={30} className="order-first md:order-last">
-          <Magnet padding={120} strength={8} className="mx-auto block w-full max-w-[300px] sm:max-w-[380px] md:max-w-none">
-            <div
-              className="relative overflow-hidden rounded-[32px] border border-[#767F83]/25 sm:rounded-[40px]"
-              style={{ aspectRatio: '4 / 5' }}
-            >
-              <RealImage
-                src={heroVision}
-                alt="Silhouetted figure on a mountain ridge at sunset — reference image"
-                className="h-full w-full"
-              />
-              <div
-                className="pointer-events-none absolute inset-0"
-                style={{ background: 'linear-gradient(to top, rgba(17,21,26,0.5) 0%, transparent 35%)' }}
-              />
-            </div>
-          </Magnet>
+            <ContactButton href="#work" label={HERO.ctaPrimary} />
+          </div>
         </FadeIn>
-      </div>
-
-      <div className="hidden justify-center pb-6 sm:flex">
-        <span className="animate-pulse text-[0.65rem] uppercase tracking-[0.4em] text-[#767F83]">Scroll</span>
       </div>
     </section>
   );
