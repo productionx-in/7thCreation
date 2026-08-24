@@ -15,9 +15,9 @@
 > document §4-5. The identity work is unaffected.
 >
 > **[`site/`](site/) is a real, buildable website** — React, TypeScript,
-> Vite, Tailwind, lucide-react, no animation library. Real copy, real
-> licensed reference photography, the real logo, and real contact channels;
-> see [`site/README.md`](site/README.md) for what's still a placeholder.
+> Vite, Tailwind, Framer Motion, lucide-react. Real copy, real licensed
+> reference photography, the real logo, and real contact channels; see
+> [`site/README.md`](site/README.md) for what's still a placeholder.
 
 ---
 

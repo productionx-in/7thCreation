@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { FadeIn } from '@/components/FadeIn';
 import { MockPlate } from '@/components/MockPlate';
 import { RealImage } from '@/components/RealImage';
 import { MARQUEE_ROW_1, MARQUEE_ROW_2, type MockImage } from '@/data/images';
@@ -8,8 +7,8 @@ function tripled<T>(arr: T[]): T[] {
   return [...arr, ...arr, ...arr];
 }
 
-// Two rows of tiles translating opposite directions, tied to scroll position
-// (plain scroll listener — no animation library needed for this).
+// Reused from the MotionSites reference pattern: two rows of tiles that
+// translate opposite directions based on scroll position (not a CSS loop).
 export function MarqueeSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
@@ -30,17 +29,12 @@ export function MarqueeSection() {
   const row1 = tripled(MARQUEE_ROW_1);
   const row2 = tripled(MARQUEE_ROW_2);
 
-  const tileClass = 'group relative h-[170px] w-[260px] flex-shrink-0 overflow-hidden rounded-lg border border-[#767F83]/20 sm:h-[210px] sm:w-[320px] md:h-[250px] md:w-[380px]';
+  const tileClass =
+    'h-[180px] w-[280px] flex-shrink-0 rounded-2xl sm:h-[220px] sm:w-[340px] md:h-[270px] md:w-[420px]';
 
   return (
-    <section ref={sectionRef} className="bg-ink pb-10 pt-20 sm:pt-24 md:pt-28">
-      <div className="px-5 sm:px-8 md:px-10">
-        <FadeIn>
-          <p className="text-xs uppercase tracking-[0.3em] text-[#767F83]">The full range</p>
-          <h2 className="mt-3 font-display text-2xl font-light text-[#E6DECD] sm:text-3xl">Twenty things we shoot</h2>
-        </FadeIn>
-      </div>
-      <div className="mt-10 flex flex-col gap-3 sm:mt-12">
+    <section ref={sectionRef} className="bg-ink pb-10 pt-24 sm:pt-32 md:pt-40">
+      <div className="flex flex-col gap-3">
         <Row images={row1} offset={offset - 200} tileClass={tileClass} />
         <Row images={row2} offset={-(offset - 200)} tileClass={tileClass} />
       </div>
@@ -54,15 +48,7 @@ function Row({ images, offset, tileClass }: { images: MockImage[]; offset: numbe
       <div className="flex gap-3" style={{ transform: `translateX(${offset}px)`, willChange: 'transform' }}>
         {images.map((img, i) =>
           img.photo ? (
-            <div key={i} className={tileClass}>
-              <RealImage src={img.photo} alt={`${img.label} — reference image`} className="h-full w-full" />
-              <div
-                className="pointer-events-none absolute inset-x-0 bottom-0 px-4 py-3"
-                style={{ background: 'linear-gradient(to top, rgba(17,21,26,0.85), transparent)' }}
-              >
-                <span className="text-xs font-medium uppercase tracking-[0.2em] text-[#E6DECD]">{img.label}</span>
-              </div>
-            </div>
+            <RealImage key={i} src={img.photo} alt={`${img.label} — reference image`} className={`${tileClass} rounded-2xl`} />
           ) : (
             <MockPlate key={i} label={img.label} icon={img.icon} className={tileClass} />
           ),
