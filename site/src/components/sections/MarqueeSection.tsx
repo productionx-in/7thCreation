@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { MockPlate } from '@/components/MockPlate';
+import { RealImage } from '@/components/RealImage';
 import { MARQUEE_ROW_1, MARQUEE_ROW_2, type MockImage } from '@/data/images';
 
 function tripled<T>(arr: T[]): T[] {
@@ -45,9 +46,13 @@ function Row({ images, offset, tileClass }: { images: MockImage[]; offset: numbe
   return (
     <div className="overflow-hidden">
       <div className="flex gap-3" style={{ transform: `translateX(${offset}px)`, willChange: 'transform' }}>
-        {images.map((img, i) => (
-          <MockPlate key={i} label={img.label} icon={img.icon} className={tileClass} />
-        ))}
+        {images.map((img, i) =>
+          img.photo ? (
+            <RealImage key={i} src={img.photo} alt={`${img.label} — reference image`} className={`${tileClass} rounded-2xl`} />
+          ) : (
+            <MockPlate key={i} label={img.label} icon={img.icon} className={tileClass} />
+          ),
+        )}
       </div>
     </div>
   );

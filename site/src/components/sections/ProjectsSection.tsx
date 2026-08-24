@@ -2,11 +2,22 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FadeIn } from '@/components/FadeIn';
 import { GhostButton } from '@/components/GhostButton';
-import { MockPlate } from '@/components/MockPlate';
-import { PROJECTS } from '@/data/images';
+import { RealImage } from '@/components/RealImage';
+import industrialImg from '@/assets/stock/industrial.jpg';
+import weddingImg from '@/assets/stock/wedding-candle.jpg';
+import productImg from '@/assets/stock/product-podium.jpg';
 
-// Sticky-stacking cards, reused from the MotionSites reference: each card
-// pins and scales down slightly as the next one arrives underneath it.
+// Real, licensed reference photography — see RealImage.tsx. One full-bleed
+// image per card rather than a mixed grid: editorial and legible, and it
+// doesn't force mismatched real/placeholder frames into the same card.
+const PROJECTS = [
+  { n: '01', name: 'Steel & Sparks', category: 'Industrial Film', kind: 'Client', img: industrialImg },
+  { n: '02', name: 'Two Lamps, One Night', category: 'Wedding', kind: 'Client', img: weddingImg },
+  { n: '03', name: 'Object of Desire', category: 'Product', kind: 'Client', img: productImg },
+];
+
+// Sticky-stacking cards: each card pins and scales down slightly as the
+// next one arrives underneath it — a film-reel layering effect.
 export function ProjectsSection() {
   const total = PROJECTS.length;
   return (
@@ -49,48 +60,35 @@ function ProjectCard({
     <div ref={ref} className="sticky top-20 mb-7 h-[85vh] sm:top-24 md:top-28">
       <motion.div
         style={{ scale, top: `${index * 28}px` }}
-        className="relative flex h-full flex-col overflow-hidden rounded-[32px] border-2 border-[#767F83]/40 bg-ink p-4 sm:rounded-[44px] sm:p-6 md:rounded-[56px] md:p-8"
+        className="relative h-full overflow-hidden rounded-[32px] border-2 border-[#767F83]/40 bg-ink sm:rounded-[44px] md:rounded-[56px]"
       >
-        {/* Top row */}
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <div className="flex items-baseline gap-4 sm:gap-6">
+        <RealImage
+          src={project.img}
+          alt={`${project.name} — ${project.category}, reference image`}
+          className="absolute inset-0 h-full w-full"
+        />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: 'linear-gradient(to top, #11151A 0%, rgba(17,21,26,0.55) 30%, transparent 60%)' }}
+        />
+
+        <div className="relative flex h-full flex-col justify-between p-4 sm:p-6 md:p-8">
+          <div className="flex flex-wrap items-start justify-between gap-4">
             <span
-              className="font-display font-black leading-none text-[#C6A15B]/30"
+              className="font-display font-black leading-none text-[#C6A15B]/60"
               style={{ fontSize: 'clamp(2.5rem, 8vw, 100px)' }}
             >
               {project.n}
             </span>
-            <div>
-              <p className="text-[0.65rem] uppercase tracking-[0.3em] text-[#B6421D] sm:text-xs">
-                {project.category} · {project.kind}
-              </p>
-              <h3 className="mt-1 font-display text-xl text-[#E6DECD] sm:text-2xl md:text-3xl">{project.name}</h3>
-            </div>
+            <GhostButton href="#contact" label="Enquire" />
           </div>
-          <GhostButton href="#contact" label="Enquire" />
-        </div>
 
-        {/* Image grid — mock footage */}
-        <div className="mt-4 flex flex-1 gap-3 sm:mt-6 md:mt-8">
-          <div className="flex w-2/5 flex-col gap-3">
-            <MockPlate
-              label={project.images.col1[0].label}
-              icon={project.images.col1[0].icon}
-              className="w-full flex-shrink-0 rounded-[24px] sm:rounded-[32px] md:rounded-[40px]"
-              style={{ height: 'clamp(100px, 16vw, 200px)' }}
-            />
-            <MockPlate
-              label={project.images.col1[1].label}
-              icon={project.images.col1[1].icon}
-              className="w-full flex-1 rounded-[24px] sm:rounded-[32px] md:rounded-[40px]"
-              style={{ minHeight: 0 }}
-            />
+          <div>
+            <p className="text-[0.65rem] uppercase tracking-[0.3em] text-[#B6421D] sm:text-xs">
+              {project.category} · {project.kind}
+            </p>
+            <h3 className="mt-1 font-display text-2xl text-[#E6DECD] sm:text-4xl md:text-5xl">{project.name}</h3>
           </div>
-          <MockPlate
-            label={project.images.col2.label}
-            icon={project.images.col2.icon}
-            className="w-3/5 rounded-[24px] sm:rounded-[32px] md:rounded-[40px]"
-          />
         </div>
       </motion.div>
     </div>

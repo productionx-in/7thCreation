@@ -86,6 +86,13 @@ export const HERO = {
 };
 
 export const CONTACT = {
+  // ⚠️ Inherited from the Lovable build, unconfirmed — verify this inbox
+  // exists before publishing. Everything below is founder-confirmed, real.
   email: 'hello@7thcreation.in',
-  location: '7thcreation.in · India',
+  location: 'India',
+  phone: '+91 90321 80743',
+  phoneHref: 'tel:+919032180743',
+  whatsappHref: 'https://wa.me/919032180743',
+  instagram: 'https://www.instagram.com/7th_creation27/',
+  youtube: 'https://www.youtube.com/@7thcreation524',
 };

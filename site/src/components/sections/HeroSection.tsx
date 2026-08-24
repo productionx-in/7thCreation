@@ -3,8 +3,8 @@ import { Magnet } from '@/components/Magnet';
 import { ContactButton } from '@/components/ContactButton';
 import { NAV, HERO } from '@/data/content';
 import { Logo } from '@/components/Logo';
-import { MockPlate } from '@/components/MockPlate';
-import { HERO_PORTRAIT } from '@/data/images';
+import { RealImage } from '@/components/RealImage';
+import heroVision from '@/assets/stock/hero-vision.jpg';
 
 export function HeroSection() {
   return (
@@ -13,7 +13,7 @@ export function HeroSection() {
       <FadeIn delay={0} y={-20} as="nav">
         <div className="flex items-center justify-between px-6 pt-6 md:px-10 md:pt-8">
           <a href="#top" className="flex items-center gap-3">
-            <Logo className="h-9 w-9 md:h-11 md:w-11" />
+            <Logo variant="full" className="h-9 w-9 text-[#C6A15B] md:h-11 md:w-11" />
             <span className="font-display text-sm uppercase tracking-[0.3em] text-[#E6DECD] md:text-base">
               7th Creation
             </span>
@@ -66,16 +66,21 @@ export function HeroSection() {
         </FadeIn>
       </div>
 
-      {/* Portrait — magnetic hover, mock footage */}
+      {/* Portrait — magnetic hover, licensed reference photo */}
       <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-end pr-0 sm:pr-6 md:pr-12">
-        <div className="pointer-events-auto w-[55vw] max-w-[320px] opacity-80 sm:w-[38vw] sm:max-w-[420px] md:max-w-[480px]">
+        <div className="pointer-events-auto w-[55vw] max-w-[320px] opacity-90 sm:w-[38vw] sm:max-w-[420px] md:max-w-[480px]">
           <Magnet padding={150} strength={5}>
-            <MockPlate
-              label={HERO_PORTRAIT.label}
-              icon={HERO_PORTRAIT.icon}
-              className="w-full rounded-t-full"
-              style={{ aspectRatio: '3 / 4' }}
-            />
+            <div className="relative rounded-t-full" style={{ aspectRatio: '3 / 4' }}>
+              <RealImage
+                src={heroVision}
+                alt="Silhouetted figure on a mountain ridge at sunset — reference image"
+                className="h-full w-full rounded-t-full"
+              />
+              <div
+                className="pointer-events-none absolute inset-0 rounded-t-full"
+                style={{ background: 'linear-gradient(to top, #11151A 0%, transparent 45%, rgba(17,21,26,0.35) 100%)' }}
+              />
+            </div>
           </Magnet>
         </div>
       </div>

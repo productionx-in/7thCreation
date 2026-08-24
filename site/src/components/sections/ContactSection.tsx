@@ -12,22 +12,34 @@ export function ContactSection() {
           <h2 className="mt-4 font-display text-3xl font-light leading-tight text-[#E6DECD] sm:text-5xl">
             Tell us what you want people to feel.
           </h2>
-          <div className="mt-8 flex flex-wrap items-center gap-6">
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
             <a href={`mailto:${CONTACT.email}`} className="text-[#C6A15B] hover:text-[#E4CFA0]">
               {CONTACT.email}
             </a>
+            <a href={CONTACT.phoneHref} className="text-[#C6A15B] hover:text-[#E4CFA0]">
+              {CONTACT.phone}
+            </a>
             <span className="text-[#767F83]">{CONTACT.location}</span>
           </div>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <GhostButton href={`mailto:${CONTACT.email}`} label="Send the brief" />
+            <GhostButton href={CONTACT.whatsappHref} label="WhatsApp us" />
           </div>
         </FadeIn>
       </div>
 
       <footer className="mx-auto flex max-w-5xl flex-col items-center gap-4 border-t border-[#767F83]/10 px-5 py-8 text-center sm:flex-row sm:justify-between sm:px-8 sm:text-left md:px-10">
         <div className="flex items-center gap-3">
-          <Logo className="h-7 w-7" />
+          <Logo className="h-7 w-7 text-[#C6A15B]" />
           <span className="text-xs uppercase tracking-[0.3em] text-[#767F83]">A Creative Studio</span>
+        </div>
+        <div className="flex items-center gap-5 text-xs uppercase tracking-[0.25em] text-[#767F83]">
+          <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-[#E6DECD]">
+            Instagram
+          </a>
+          <a href={CONTACT.youtube} target="_blank" rel="noopener noreferrer" className="hover:text-[#E6DECD]">
+            YouTube
+          </a>
         </div>
         <p className="text-xs text-[#767F83]">© {new Date().getFullYear()} 7th Creation</p>
       </footer>
