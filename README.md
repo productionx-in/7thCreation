@@ -13,6 +13,12 @@
 > standards) was built for a different, incorrect picture of the business and
 > has **not** been rewritten again pending a scoping decision — see that
 > document §4-5. The identity work is unaffected.
+>
+> **[`site/`](site/) is a real, buildable website** — React, TypeScript,
+> Tailwind, Framer Motion — carrying the real copy and structure from the
+> Lovable build. Every photo in it is a labelled local placeholder, not a
+> stock image; see [`site/README.md`](site/README.md) for why and what to
+> swap before it ships.
 
 ---
 
