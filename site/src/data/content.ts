@@ -1,10 +1,8 @@
-// Real copy and structure, carried over from the published Lovable build
-// (seventh-creation-studio.lovable.app) — see brand/resolution-2026-08-24.md
-// for how this was confirmed as the actual business. Scope narrowed to one
-// niche — creative production (photography, film, live events) — per the
-// founder's direction: no web development, no marketing-as-a-service.
-
-export type Category = 'Photo & Film' | 'Events' | 'Brand' | 'Content';
+// Real copy and structure. Scope: one niche — creative production
+// (photography, film, live events) — per the founder's direction: no web
+// development, no marketing-as-a-service. Services below mirror the six
+// categories in the Selected Work gallery 1:1, so the site tells one
+// consistent story instead of two overlapping taxonomies.
 
 export const NAV = [
   { label: 'Work', href: '#work' },
@@ -13,55 +11,38 @@ export const NAV = [
   { label: 'Contact', href: '#contact' },
 ];
 
-export const CAPABILITIES: { name: string; category: Category; note: string }[] = [
-  { name: 'Industrial Shoots', category: 'Photo & Film', note: 'Factories, plants, process films' },
-  { name: 'Wedding Shoots', category: 'Photo & Film', note: 'Full-day candid & cinematic' },
-  { name: 'Pre-Wedding', category: 'Photo & Film', note: 'Story-led location films' },
-  { name: 'Ad Films', category: 'Photo & Film', note: 'Script to final grade' },
-  { name: 'Documentary', category: 'Photo & Film', note: 'Long-form, real people' },
-  { name: 'Product Shoots', category: 'Photo & Film', note: 'Tabletop, e-comm, hero stills' },
-  { name: 'Baby Shoots', category: 'Photo & Film', note: 'Newborn & milestone sessions' },
-  { name: 'Portfolio Shoots', category: 'Photo & Film', note: 'Actors, models, founders' },
-  { name: 'Birthday Parties', category: 'Events', note: 'Candid coverage & highlights' },
-  { name: 'Corporate Events', category: 'Events', note: 'Conferences, launches, AGMs' },
-  { name: 'Live Coverage', category: 'Events', note: 'Multi-cam live production' },
-  { name: 'LED Walls', category: 'Events', note: 'Screens, feeds & content' },
-  { name: 'DJ & Sound', category: 'Events', note: 'Artist, rig and show flow' },
-  { name: 'Brand Content', category: 'Brand', note: 'Always-on visual content' },
-  { name: 'Logo & Identity', category: 'Brand', note: 'Marks, systems, guidelines' },
-  { name: 'Reels', category: 'Content', note: 'Short-form built to travel' },
-  { name: 'Podcast Videos', category: 'Content', note: 'Multi-cam studio setups' },
-];
-
-export const CATEGORIES: Category[] = ['Photo & Film', 'Events', 'Brand', 'Content'];
-
-// Flagship subset for the numbered Services list — full breadth lives in the
-// scroll marquee instead, so this stays scannable.
+// Mirrors WORK_CATEGORIES in data/workCategories.ts — same six disciplines,
+// same order. Also feeds the service dropdown in EnquiryForm.
 export const FLAGSHIP_SERVICES = [
   {
     n: '01',
-    name: 'Industrial & Corporate',
-    copy: 'Factory floors, plants and process films, plus conferences, launches and AGMs shot for people who were not in the room.',
+    name: 'Commercial Films',
+    copy: 'Industrial and brand films — factory floors, product launches, corporate stories — for businesses that need their work shown, not just described.',
   },
   {
     n: '02',
-    name: 'Weddings & Pre-Wedding',
-    copy: 'Full-day candid and cinematic coverage, and story-led location films — carried with the same craft as the corporate work.',
+    name: 'Weddings',
+    copy: 'Full-day candid and cinematic coverage, from the first ritual to the last dance, shot with the same discipline as our commercial work.',
   },
   {
     n: '03',
-    name: 'Live & Events',
-    copy: 'Multi-cam live production, LED walls, DJ and sound — the crew and kit for a show that has to run once and run right.',
+    name: 'Advertising',
+    copy: 'Ad films and product photography built to sell on sight — a single hero still or a full campaign shoot, script to final grade.',
   },
   {
     n: '04',
-    name: 'Product & Brand',
-    copy: 'Tabletop and e-commerce hero stills, always-on brand content, logo and identity work — visual craft, not a strategy deck.',
+    name: 'Events',
+    copy: 'Conferences, launches, birthdays and small gatherings alike — multi-cam coverage, LED walls, DJ and sound, for a show that runs once and has to run right.',
   },
   {
     n: '05',
-    name: 'Documentary & Content',
-    copy: 'Long-form documentary, multi-cam podcast setups, and reels built to travel — the same discipline at every length.',
+    name: 'Music Videos',
+    copy: 'Performance and narrative videos for singles, albums and live sessions — built around the track, not fitted to a template.',
+  },
+  {
+    n: '06',
+    name: 'Portrait & Fashion',
+    copy: 'Considered portraits and editorial fashion shoots — for actors, founders, models and anyone who needs to be seen clearly.',
   },
 ];
 
@@ -76,15 +57,15 @@ export const PROCESS = [
 // it does, who it's for — before the texture. Answer engines and search
 // crawlers both read this as the canonical description of the business.
 export const ABOUT_COPY =
-  "7th Creation is a creative production studio based in India, shooting photography, film and live events for people who need the real thing done right. We have shot factory floors, wedding mandaps and product on black with the same discipline — treatment first, then a calm set, then a grade that holds up on any screen. If the brief is real, we want it.";
+  "7th Creation is a creative production studio based in India, shooting photography, film and live events for people who need the real thing done right. One week that means a factory floor for a corporate film, the next a wedding mandap or a model on a fashion set — treatment first, then a calm set, then a grade that holds up on any screen. Small shoot or full production, if the brief is real, we want it.";
 
 export const HERO = {
   eyebrow: 'Photography · Film · Live Events',
   headingLine1: 'We make the frame',
   headingLine2: 'worth keeping.',
-  sub: '7th Creation is a creative production studio in India — photography, film and live event coverage, from an industrial floor to a wedding mandap to a product on black.',
+  sub: '7th Creation is a creative production studio in India — commercial films, weddings, advertising, events, music videos and portrait & fashion work, all shot with one standard of craft.',
   ctaPrimary: 'See the work',
-  ctaSecondary: '17 things we shoot',
+  ctaSecondary: 'See what we shoot',
 };
 
 export const CONTACT = {
