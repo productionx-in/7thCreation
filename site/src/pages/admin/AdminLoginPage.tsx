@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { Navigate } from 'react-router-dom';
-import { supabase, phoneToAuthEmail } from '@/lib/supabase';
+import { supabase, usernameToAuthEmail } from '@/lib/supabase';
 import { useAuth } from '@/lib/useAuth';
 import { Logo } from '@/components/Logo';
 
@@ -10,7 +10,7 @@ const fieldClass =
 
 export function AdminLoginPage() {
   const { session, loading } = useAuth();
-  const [phone, setPhone] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -22,13 +22,12 @@ export function AdminLoginPage() {
     e.preventDefault();
     setSubmitting(true);
     setError(null);
-    const digits = phone.replace(/\D/g, '');
     const { error: signInError } = await supabase.auth.signInWithPassword({
-      email: phoneToAuthEmail(digits),
+      email: usernameToAuthEmail(username),
       password,
     });
     setSubmitting(false);
-    if (signInError) setError('Incorrect mobile number or password.');
+    if (signInError) setError('Incorrect username or password.');
   };
 
   return (
@@ -41,10 +40,10 @@ export function AdminLoginPage() {
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
             required
-            type="tel"
-            placeholder="Mobile number"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             className={fieldClass}
             autoComplete="username"
           />
