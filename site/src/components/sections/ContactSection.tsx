@@ -1,8 +1,7 @@
-import { Instagram, Youtube } from 'lucide-react';
 import { FadeIn } from '@/components/FadeIn';
 import { CONTACT } from '@/data/content';
-import { Logo } from '@/components/Logo';
 import { EnquiryForm } from '@/components/EnquiryForm';
+import { SiteFooter } from '@/components/SiteFooter';
 
 export function ContactSection() {
   return (
@@ -31,21 +30,7 @@ export function ContactSection() {
         </FadeIn>
       </div>
 
-      <footer className="mx-auto flex max-w-5xl flex-col items-center gap-4 border-t border-[#767F83]/10 px-5 py-8 text-center sm:flex-row sm:justify-between sm:px-8 sm:text-left md:px-10">
-        <div className="flex items-center gap-3">
-          <Logo className="h-7 w-7" />
-          <span className="text-xs uppercase tracking-[0.3em] text-[#767F83]">A Creative Studio</span>
-        </div>
-        <div className="flex items-center gap-4 text-[#767F83]">
-          <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="transition-colors hover:text-[#E6DECD]">
-            <Instagram className="h-[18px] w-[18px]" strokeWidth={1.5} />
-          </a>
-          <a href={CONTACT.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="transition-colors hover:text-[#E6DECD]">
-            <Youtube className="h-[18px] w-[18px]" strokeWidth={1.5} />
-          </a>
-        </div>
-        <p className="text-xs text-[#767F83]">© {new Date().getFullYear()} 7th Creation</p>
-      </footer>
+      <SiteFooter />
     </section>
   );
 }

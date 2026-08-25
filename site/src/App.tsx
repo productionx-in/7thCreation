@@ -1,26 +1,37 @@
-import { HeroSection } from '@/components/sections/HeroSection';
-import { MarqueeSection } from '@/components/sections/MarqueeSection';
-import { AboutSection } from '@/components/sections/AboutSection';
-import { ServicesSection } from '@/components/sections/ServicesSection';
-import { ProjectsSection } from '@/components/sections/ProjectsSection';
-import { ProcessSection } from '@/components/sections/ProcessSection';
-import { ContactSection } from '@/components/sections/ContactSection';
+import { Suspense, lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { LandingPage } from '@/pages/LandingPage';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { ShutterCursor } from '@/components/ShutterCursor';
 
-// Section order per the reused MotionSites structure: Hero, Marquee, About,
-// Services, Projects — with Process and Contact appended, carried over from
-// the real Lovable build (seventh-creation-studio.lovable.app).
+// Blog and admin pull in react-markdown, remark-gfm, and the Supabase
+// client — code the landing page (the entry point for almost every
+// visitor) has no reason to pay for on first load.
+const BlogListPage = lazy(() => import('@/pages/BlogListPage').then((m) => ({ default: m.BlogListPage })));
+const BlogPostPage = lazy(() => import('@/pages/BlogPostPage').then((m) => ({ default: m.BlogPostPage })));
+const AdminLoginPage = lazy(() => import('@/pages/admin/AdminLoginPage').then((m) => ({ default: m.AdminLoginPage })));
+const AdminLayout = lazy(() => import('@/pages/admin/AdminLayout').then((m) => ({ default: m.AdminLayout })));
+const AdminDashboardPage = lazy(() => import('@/pages/admin/AdminDashboardPage').then((m) => ({ default: m.AdminDashboardPage })));
+const AdminPostEditorPage = lazy(() => import('@/pages/admin/AdminPostEditorPage').then((m) => ({ default: m.AdminPostEditorPage })));
+const AdminSettingsPage = lazy(() => import('@/pages/admin/AdminSettingsPage').then((m) => ({ default: m.AdminSettingsPage })));
+
 export default function App() {
   return (
     <main className="bg-ink" style={{ overflowX: 'clip' }}>
-      <HeroSection />
-      <MarqueeSection />
-      <AboutSection />
-      <ServicesSection />
-      <ProjectsSection />
-      <ProcessSection />
-      <ContactSection />
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/blog" element={<BlogListPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboardPage />} />
+            <Route path="new" element={<AdminPostEditorPage />} />
+            <Route path="edit/:id" element={<AdminPostEditorPage />} />
+            <Route path="settings" element={<AdminSettingsPage />} />
+          </Route>
+        </Routes>
+      </Suspense>
       <WhatsAppButton />
       <ShutterCursor />
     </main>

@@ -58,6 +58,12 @@ export function HeroSection() {
                 {n.label}
               </a>
             ))}
+            <a
+              href="/blog"
+              className="text-sm font-medium uppercase tracking-wider text-[#C6A15B] transition-opacity duration-200 hover:opacity-70 lg:text-[1.1rem]"
+            >
+              Blog
+            </a>
           </div>
           <div className="flex items-center gap-4 text-[#E6DECD]/80">
             <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="transition-colors hover:text-[#E6DECD]">
