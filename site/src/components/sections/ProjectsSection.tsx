@@ -1,34 +1,91 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FadeIn } from '@/components/FadeIn';
 import { GhostButton } from '@/components/GhostButton';
 import { RealImage } from '@/components/RealImage';
+import { ProjectReel } from '@/components/ProjectReel';
 import industrialImg from '@/assets/stock/industrial.jpg';
 import weddingImg from '@/assets/stock/wedding-candle.jpg';
 import productImg from '@/assets/stock/product-podium.jpg';
 import corporateImg from '@/assets/stock/corporate.jpg';
 import liveImg from '@/assets/stock/live-event.jpg';
-import documentaryImg from '@/assets/stock/documentary.jpg';
+import portfolioImg from '@/assets/stock/portfolio.jpg';
 
-// Real, licensed reference photography — see RealImage.tsx. One full-bleed
-// image per card rather than a mixed grid: editorial and legible, and it
-// doesn't force mismatched real/placeholder frames into the same card. Six
-// entries spans the business's core pillars without turning an 85vh-per-card
-// sticky stack into a scroll marathon — the 20-item marquee already covers
-// full breadth.
+import weddingsVideoMp4 from '@/assets/video/projects/weddings.mp4';
+import weddingsVideoWebm from '@/assets/video/projects/weddings.webm';
+import eventsVideoMp4 from '@/assets/video/projects/events.mp4';
+import eventsVideoWebm from '@/assets/video/projects/events.webm';
+import advertisingVideoMp4 from '@/assets/video/projects/advertising.mp4';
+import advertisingVideoWebm from '@/assets/video/projects/advertising.webm';
+import portraitVideoMp4 from '@/assets/video/projects/portrait.mp4';
+import portraitVideoWebm from '@/assets/video/projects/portrait.webm';
+import commercialVideoMp4 from '@/assets/video/projects/commercial.mp4';
+import commercialVideoWebm from '@/assets/video/projects/commercial.webm';
+import musicVideoMp4 from '@/assets/video/projects/musicvideos.mp4';
+import musicVideoWebm from '@/assets/video/projects/musicvideos.webm';
+
+// Six categories of work, not six literal projects — each opens into a
+// full-screen reel. Stand-in stock footage throughout (⚠️ replace with real
+// client reels as they're delivered — see site/README.md); names are
+// placeholders too, easy to swap once there's a real project to credit.
 const PROJECTS = [
-  { n: '01', name: 'Steel & Sparks', category: 'Industrial Film', kind: 'Client', img: industrialImg },
-  { n: '02', name: 'Two Lamps, One Night', category: 'Wedding', kind: 'Client', img: weddingImg },
-  { n: '03', name: 'Object of Desire', category: 'Product', kind: 'Client', img: productImg },
-  { n: '04', name: 'Before the Applause', category: 'Corporate Event', kind: 'Client', img: corporateImg },
-  { n: '05', name: 'Lights Down, Sound Up', category: 'Live Coverage', kind: 'Client', img: liveImg },
-  { n: '06', name: 'Nobody Was Acting', category: 'Documentary', kind: 'Client', img: documentaryImg },
+  {
+    n: '01',
+    name: 'Steel & Sparks',
+    category: 'Commercial Films',
+    img: industrialImg,
+    videoMp4: commercialVideoMp4,
+    videoWebm: commercialVideoWebm,
+  },
+  {
+    n: '02',
+    name: 'Two Lamps, One Night',
+    category: 'Weddings',
+    img: weddingImg,
+    videoMp4: weddingsVideoMp4,
+    videoWebm: weddingsVideoWebm,
+  },
+  {
+    n: '03',
+    name: 'Object of Desire',
+    category: 'Advertising',
+    img: productImg,
+    videoMp4: advertisingVideoMp4,
+    videoWebm: advertisingVideoWebm,
+  },
+  {
+    n: '04',
+    name: 'Before the Applause',
+    category: 'Events',
+    img: corporateImg,
+    videoMp4: eventsVideoMp4,
+    videoWebm: eventsVideoWebm,
+  },
+  {
+    n: '05',
+    name: 'Lights Down, Sound Up',
+    category: 'Music Videos',
+    img: liveImg,
+    videoMp4: musicVideoMp4,
+    videoWebm: musicVideoWebm,
+  },
+  {
+    n: '06',
+    name: 'Held, Not Posed',
+    category: 'Portrait Photography',
+    img: portfolioImg,
+    videoMp4: portraitVideoMp4,
+    videoWebm: portraitVideoWebm,
+  },
 ];
 
 // Sticky-stacking cards: each card pins and scales down slightly as the
-// next one arrives underneath it — a film-reel layering effect.
+// next one arrives underneath it — a film-reel layering effect. Clicking a
+// card opens the full-screen reel viewer at that category.
 export function ProjectsSection() {
   const total = PROJECTS.length;
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
     <section id="work" className="relative -mt-10 rounded-t-[40px] bg-ink pb-10 pt-16 sm:-mt-12 sm:rounded-t-[50px] sm:pt-20 md:-mt-14 md:rounded-t-[60px] md:pt-24">
       <div className="px-5 sm:px-8 md:px-10">
@@ -44,9 +101,18 @@ export function ProjectsSection() {
 
       <div className="relative mt-10 px-5 sm:px-8 md:px-10">
         {PROJECTS.map((p, i) => (
-          <ProjectCard key={p.n} project={p} index={i} total={total} />
+          <ProjectCard key={p.n} project={p} index={i} total={total} onOpen={() => setOpenIndex(i)} />
         ))}
       </div>
+
+      {openIndex !== null && (
+        <ProjectReel
+          projects={PROJECTS}
+          index={openIndex}
+          onClose={() => setOpenIndex(null)}
+          onIndexChange={setOpenIndex}
+        />
+      )}
     </section>
   );
 }
@@ -55,10 +121,12 @@ function ProjectCard({
   project,
   index,
   total,
+  onOpen,
 }: {
   project: (typeof PROJECTS)[number];
   index: number;
   total: number;
+  onOpen: () => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'start start'] });
@@ -75,8 +143,12 @@ function ProjectCard({
   return (
     <div ref={ref} className="sticky top-20 mb-7 h-[85vh] sm:top-24 md:top-28">
       <motion.div
+        role="button"
+        tabIndex={0}
+        onClick={onOpen}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpen()}
         style={{ scale, top: `${stackOffset}px` }}
-        className="relative h-full overflow-hidden rounded-[32px] border-2 border-[#767F83]/40 bg-ink sm:rounded-[44px] md:rounded-[56px]"
+        className="group relative h-full cursor-pointer overflow-hidden rounded-[32px] border-2 border-[#767F83]/40 bg-ink sm:rounded-[44px] md:rounded-[56px]"
       >
         {/* RealImage hardcodes `relative`; passing `absolute` straight into
             its className loses the position-utility tie-break in Tailwind's
@@ -86,7 +158,7 @@ function ProjectCard({
           <RealImage
             src={project.img}
             alt={`${project.name} — ${project.category}, reference image`}
-            className="h-full w-full"
+            className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
         </div>
         <div
@@ -102,14 +174,15 @@ function ProjectCard({
             >
               {project.n}
             </span>
-            <GhostButton href="#contact" label="Enquire" />
+            <span onClick={(e) => e.stopPropagation()}>
+              <GhostButton href="#contact" label="Enquire" />
+            </span>
           </div>
 
           <div className="mt-4 sm:mt-6">
-            <p className="text-[0.65rem] uppercase tracking-[0.3em] text-[#B6421D] sm:text-xs">
-              {project.category} · {project.kind}
-            </p>
+            <p className="text-[0.65rem] uppercase tracking-[0.3em] text-[#B6421D] sm:text-xs">{project.category}</p>
             <h3 className="mt-1 font-display text-2xl text-[#E6DECD] sm:text-4xl md:text-5xl">{project.name}</h3>
+            <p className="mt-2 text-xs uppercase tracking-[0.25em] text-[#E6DECD]/50">Watch the reel →</p>
           </div>
         </div>
       </motion.div>
