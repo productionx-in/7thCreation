@@ -65,7 +65,7 @@ export const HERO = {
   headingLine2: 'worth keeping.',
   sub: '7th Creation is a creative production studio in India — commercial films, weddings, advertising, events, music videos and portrait & fashion work, all shot with one standard of craft.',
   ctaPrimary: 'See the work',
-  ctaSecondary: 'See what we shoot',
+  ctaSecondary: 'Explore our services',
 };
 
 export const CONTACT = {
