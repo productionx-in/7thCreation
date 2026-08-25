@@ -14,6 +14,10 @@ const AdminLayout = lazy(() => import('@/pages/admin/AdminLayout').then((m) => (
 const AdminDashboardPage = lazy(() => import('@/pages/admin/AdminDashboardPage').then((m) => ({ default: m.AdminDashboardPage })));
 const AdminPostEditorPage = lazy(() => import('@/pages/admin/AdminPostEditorPage').then((m) => ({ default: m.AdminPostEditorPage })));
 const AdminSettingsPage = lazy(() => import('@/pages/admin/AdminSettingsPage').then((m) => ({ default: m.AdminSettingsPage })));
+const AdminLeadsPage = lazy(() => import('@/pages/admin/AdminLeadsPage').then((m) => ({ default: m.AdminLeadsPage })));
+const AdminQuotationsPage = lazy(() => import('@/pages/admin/AdminQuotationsPage').then((m) => ({ default: m.AdminQuotationsPage })));
+const AdminQuotationEditorPage = lazy(() => import('@/pages/admin/AdminQuotationEditorPage').then((m) => ({ default: m.AdminQuotationEditorPage })));
+const AdminQuotationPrintPage = lazy(() => import('@/pages/admin/AdminQuotationPrintPage').then((m) => ({ default: m.AdminQuotationPrintPage })));
 
 export default function App() {
   return (
@@ -29,6 +33,11 @@ export default function App() {
             <Route path="new" element={<AdminPostEditorPage />} />
             <Route path="edit/:id" element={<AdminPostEditorPage />} />
             <Route path="settings" element={<AdminSettingsPage />} />
+            <Route path="leads" element={<AdminLeadsPage />} />
+            <Route path="quotations" element={<AdminQuotationsPage />} />
+            <Route path="quotations/new" element={<AdminQuotationEditorPage />} />
+            <Route path="quotations/:id" element={<AdminQuotationEditorPage />} />
+            <Route path="quotations/:id/print" element={<AdminQuotationPrintPage />} />
           </Route>
         </Routes>
       </Suspense>

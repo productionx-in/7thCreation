@@ -25,6 +25,59 @@ export interface Post {
   updated_at: string;
 }
 
+export type LeadStatus = 'new' | 'contacted' | 'quoted' | 'won' | 'lost';
+
+export interface Lead {
+  id: string;
+  name: string;
+  email: string | null;
+  phone: string;
+  service: string | null;
+  event_date: string | null;
+  location: string | null;
+  budget_range: string | null;
+  details: string | null;
+  status: LeadStatus;
+  source: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export type QuotationStatus = 'draft' | 'sent' | 'accepted' | 'rejected';
+
+export interface Quotation {
+  id: string;
+  quotation_number: string;
+  lead_id: string | null;
+  client_name: string;
+  client_email: string | null;
+  client_phone: string | null;
+  client_address: string | null;
+  project_title: string;
+  issue_date: string;
+  valid_until: string | null;
+  notes: string;
+  terms: string;
+  include_tax: boolean;
+  tax_label: string;
+  tax_rate: number;
+  subtotal: number;
+  tax_amount: number;
+  total: number;
+  status: QuotationStatus;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface QuotationItem {
+  id: string;
+  quotation_id: string;
+  description: string;
+  quantity: number;
+  unit_price: number;
+  sort_order: number;
+}
+
 // The admin logs in with a fixed username (not email, not phone); internally
 // that maps to Supabase email/password auth via a pseudo-email format
 // that's never shown in the UI. Trimmed and lowercased so "7thAdmin",

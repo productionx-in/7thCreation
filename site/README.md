@@ -75,14 +75,24 @@ so publishing a post never requires a deploy.
   content [Markdown], tags, author, published, published_at). RLS: anyone
   can read published posts; only an authenticated user can read drafts or
   write.
-- **Auth:** the admin signs in at `/admin` with a mobile number + password.
-  Under the hood that's plain Supabase email/password auth — the phone
-  number is mapped to a fixed pseudo-email (`phoneToAuthEmail` in
-  `lib/supabase.ts`) so there's no SMS/OTP provider to pay for or configure.
-  There is exactly one admin account, created directly via SQL against
-  `auth.users`/`auth.identities` (not through the Supabase Admin API — see
-  git history around 2026-08-25 if this ever needs redoing); credentials
-  were handed to the founder directly, not committed here.
+- **Auth:** the admin signs in at `/admin` with a fixed username + password
+  (not phone, not email). Under the hood that's plain Supabase email/
+  password auth — the username is mapped to a fixed pseudo-email
+  (`usernameToAuthEmail` in `lib/supabase.ts`) so there's no SMS/OTP
+  provider to pay for or configure. There is exactly one admin account.
+  **Important:** it must be created through Supabase's real Admin API
+  (`auth.admin.createUser`), never by hand-inserting rows into
+  `auth.users`/`auth.identities` — that was tried first and produced a row
+  that looked completely valid (correct bcrypt hash, confirmed, not
+  banned — all verified via direct SQL) but still broke GoTrue's own
+  internal login query with "Database error querying schema". If this
+  sandbox's network can't reach `*.supabase.co` directly, invoke the Admin
+  API from *inside* the database instead — deploy a short-lived Edge
+  Function wrapping `auth.admin.createUser`, then call it with
+  `pg_net.http_post(...)` from a SQL migration (pg_net runs server-side on
+  Supabase's own network, so it isn't affected by an egress block). See
+  git history around 2026-08-25 for the exact pattern. Credentials were
+  handed to the founder directly, not committed here.
 - **Storage:** admin-uploaded cover images go to the `blog-images` Storage
   bucket (public read, authenticated write). The 30 launch posts' cover
   images are the exception — they're committed as static files in
@@ -103,6 +113,35 @@ so publishing a post never requires a deploy.
   late) sees the base `index.html` metadata first. If organic blog traffic
   becomes the primary growth channel, migrating to a framework with real
   SSR/SSG would close that gap.
+
+## CRM: leads + quotations
+
+Also in the same Supabase project, alongside the blog.
+
+- **Leads (`public.leads`):** the site's contact form (`EnquiryForm.tsx`,
+  in the Contact section) writes every submission here — name, service,
+  event date, location, budget range, free-text details — *in addition to*
+  opening WhatsApp with the same details pre-filled, so nothing is lost if
+  the founder doesn't act on the WhatsApp message right away. RLS: anyone
+  can insert a lead (that's the public form); only the admin can read,
+  update status (`new → contacted → quoted → won/lost`), or delete.
+  Managed at `/admin/leads`.
+- **Quotations (`public.quotations` + `public.quotation_items`):** built at
+  `/admin/quotations` — add line items (description/qty/unit price), the
+  totals compute live, optionally flip on "Include tax invoice" (label +
+  rate are both editable, defaults to GST 18%), save. No public access at
+  all — these are internal documents. `quotation_number` auto-increments
+  as `7TC-Q-0001`, `7TC-Q-0002`, ... via a Postgres sequence, so numbering
+  never collides or needs manual tracking. A quotation can be created
+  standalone or from a lead (`/admin/quotations/new?leadId=...` prefills
+  the client fields from that lead).
+- **Generating the actual quotation document:** `/admin/quotations/:id/print`
+  is a plain, light-themed, letterhead-style page (deliberately outside the
+  dark admin theme — it's meant to be read as a real document) with a
+  "Print / Save as PDF" button that just calls `window.print()`. That's the
+  entire PDF pipeline — no PDF-generation library, no server-side
+  rendering. The admin header/nav carries `print:hidden` so it never ends
+  up in the printed output.
 
 ## A Tailwind gotcha worth knowing
 
