@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import type { ReactNode, ElementType } from 'react';
+import { useMemo, type ReactNode, type ElementType } from 'react';
 
 interface FadeInProps {
   children: ReactNode;
@@ -21,7 +21,12 @@ export function FadeIn({
   as = 'div',
   className,
 }: FadeInProps) {
-  const MotionTag = motion.create(as as ElementType);
+  // `motion.create` must be memoized: calling it fresh on every render (e.g.
+  // every time a parent re-renders from an unrelated hover state change)
+  // produces a new component type each time, so React unmounts and
+  // remounts the node instead of updating it — replaying the fade-in from
+  // opacity 0 and reading as a flicker on any interaction near this tree.
+  const MotionTag = useMemo(() => motion.create(as as ElementType), [as]);
   return (
     <MotionTag
       initial={{ opacity: 0, x, y }}
