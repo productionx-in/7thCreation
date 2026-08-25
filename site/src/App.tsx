@@ -6,6 +6,7 @@ import { ProjectsSection } from '@/components/sections/ProjectsSection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { ShutterCursor } from '@/components/ShutterCursor';
 
 // Section order per the reused MotionSites structure: Hero, Marquee, About,
 // Services, Projects — with Process and Contact appended, carried over from
@@ -21,6 +22,7 @@ export default function App() {
       <ProcessSection />
       <ContactSection />
       <WhatsAppButton />
+      <ShutterCursor />
     </main>
   );
 }

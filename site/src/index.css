@@ -48,3 +48,19 @@ body {
   background: #c6a15b;
   color: #11151a;
 }
+
+/* Custom shutter cursor: hide the system arrow only where the JS cursor
+   is actually running (fine pointer devices — see ShutterCursor.tsx). */
+@media (pointer: fine) {
+  html.shutter-cursor-active,
+  html.shutter-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+.shutter-cursor svg {
+  transition: transform 150ms ease;
+}
+.shutter-cursor.is-clicking svg {
+  transform: scale(0.6) rotate(30deg);
+}
