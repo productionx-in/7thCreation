@@ -10,10 +10,13 @@ import heroPoster from '@/assets/video/hero-poster.jpg';
 export function HeroSection() {
   return (
     <section id="top" className="grain-overlay relative flex h-screen min-h-[640px] flex-col overflow-hidden bg-ink">
-      {/* Licensed reference footage — a cinematographer checking a monitor
-          rig, full-bleed with no frame. Dark and low-key throughout (not
-          just at one frame), so the text overlay never fights a bright
-          background regardless of where playback lands. Ambient, so it loops. */}
+      {/* Licensed reference footage — a photographer silhouetted against a
+          desert sunset, shot from behind. A true silhouette (no face, no
+          ethnicity implied) rather than a close-up of a specific person,
+          since the studio is India-based and the earlier close-up shots
+          read as a mismatch. Wide open sky on the right leaves the text
+          plenty of clean, low-detail space regardless of where playback
+          lands. Ambient, so it loops. */}
       <video
         autoPlay
         loop
