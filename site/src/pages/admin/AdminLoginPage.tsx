@@ -27,7 +27,10 @@ export function AdminLoginPage() {
       password,
     });
     setSubmitting(false);
-    if (signInError) setError('Incorrect username or password.');
+    // TEMP: surfacing the raw Supabase error (not just a generic message)
+    // to root-cause a login failure that isn't explained by the account
+    // itself — the stored password hash verifies correctly via direct SQL.
+    if (signInError) setError(`${signInError.message} (status ${signInError.status ?? 'n/a'}, code ${signInError.code ?? 'n/a'})`);
   };
 
   return (
