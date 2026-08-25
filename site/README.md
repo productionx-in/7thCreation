@@ -125,7 +125,8 @@ Also in the same Supabase project, alongside the blog.
   the founder doesn't act on the WhatsApp message right away. RLS: anyone
   can insert a lead (that's the public form); only the admin can read,
   update status (`new → contacted → quoted → won/lost`), or delete.
-  Managed at `/admin/leads`.
+  Managed at `/admin/leads`, which also has a "+ Add lead" form for entries
+  that didn't come through the site (phone calls, walk-ins, referrals).
 - **Quotations (`public.quotations` + `public.quotation_items`):** built at
   `/admin/quotations` — add line items (description/qty/unit price), the
   totals compute live, optionally flip on "Include tax invoice" (label +
@@ -142,6 +143,46 @@ Also in the same Supabase project, alongside the blog.
   entire PDF pipeline — no PDF-generation library, no server-side
   rendering. The admin header/nav carries `print:hidden` so it never ends
   up in the printed output.
+
+## WhatsApp campaigns — `/admin/campaigns`
+
+Select any set of leads, write one message (`{{name}}` personalizes per
+contact), and step through them one at a time — each "Open WhatsApp →"
+opens a pre-filled chat (`wa.me/<phone>?text=...`) for the founder to
+review and send. **This is not automated bulk sending** — it's a
+click-through assistant, deliberately, because real automated WhatsApp
+marketing requires Meta's WhatsApp Business Platform: a registered
+WhatsApp Business API phone number and pre-approved message templates
+(freeform bulk messages to people outside a 24-hour reply window violate
+WhatsApp's policy and get numbers banned). If that's ever wanted, it needs
+the founder's own Meta Business/WhatsApp Business API account first — then
+it's a Supabase Edge Function calling the Cloud API instead of this page.
+
+## Site analytics — `/admin/analytics`
+
+Self-hosted, not a third-party embed: `public.page_views` (path, referrer,
+session_id, timestamp) is written by `lib/tracking.ts` on every real
+navigation (admin routes excluded). Deliberately a raw `fetch()` POST to
+Supabase's PostgREST endpoint, not the full `supabase-js` client — logging
+a page view doesn't need auth/realtime/storage, and every visitor's first
+load would otherwise pay for the ~220KB supabase-js chunk just for that.
+No IP address or other PII is stored; `session_id` is a random UUID kept
+in `sessionStorage`, not tied to identity. The admin page shows today/7d/
+30d totals, a 14-day bar chart, top pages, and a "live now" count (unique
+sessions active in the last 5 minutes, polled every 20s) — all computed
+client-side from the raw rows, no separate aggregation job.
+
+## Meta & Google ad account tracking — not built (needs your accounts)
+
+Embedding real Meta Ads / Google Ads / Google Analytics data in the admin
+board requires OAuth-connecting *your* actual ad accounts — a Meta
+Business/developer app with `ads_read` permission, and/or a Google Cloud
+OAuth client for the Google Ads API or GA4 Data API. These can't be
+self-provisioned the way the Supabase backend was; they need the account
+owner to register the app and complete an OAuth consent flow. If you set
+those up (or hand over API credentials), the natural home for this is a
+Supabase Edge Function per platform (keeping the tokens server-side) with
+a new `/admin/ad-accounts` page reading from it.
 
 ## A Tailwind gotcha worth knowing
 

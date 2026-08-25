@@ -20,6 +20,8 @@ export function AdminLayout() {
           <Link to="/admin" className="hover:text-[#E6DECD]">Posts</Link>
           <Link to="/admin/leads" className="hover:text-[#E6DECD]">Leads</Link>
           <Link to="/admin/quotations" className="hover:text-[#E6DECD]">Quotations</Link>
+          <Link to="/admin/campaigns" className="hover:text-[#E6DECD]">Campaigns</Link>
+          <Link to="/admin/analytics" className="hover:text-[#E6DECD]">Analytics</Link>
           <Link to="/admin/settings" className="hover:text-[#E6DECD]">Settings</Link>
           <Link to="/" className="hover:text-[#E6DECD]">View site</Link>
           <button onClick={() => signOut()} className="hover:text-[#E6DECD]">Sign out</button>

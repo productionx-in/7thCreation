@@ -1,8 +1,9 @@
-import { Suspense, lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Suspense, lazy, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { LandingPage } from '@/pages/LandingPage';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { ShutterCursor } from '@/components/ShutterCursor';
+import { logPageView } from '@/lib/tracking';
 
 // Blog and admin pull in react-markdown, remark-gfm, and the Supabase
 // client — code the landing page (the entry point for almost every
@@ -18,10 +19,24 @@ const AdminLeadsPage = lazy(() => import('@/pages/admin/AdminLeadsPage').then((m
 const AdminQuotationsPage = lazy(() => import('@/pages/admin/AdminQuotationsPage').then((m) => ({ default: m.AdminQuotationsPage })));
 const AdminQuotationEditorPage = lazy(() => import('@/pages/admin/AdminQuotationEditorPage').then((m) => ({ default: m.AdminQuotationEditorPage })));
 const AdminQuotationPrintPage = lazy(() => import('@/pages/admin/AdminQuotationPrintPage').then((m) => ({ default: m.AdminQuotationPrintPage })));
+const AdminAnalyticsPage = lazy(() => import('@/pages/admin/AdminAnalyticsPage').then((m) => ({ default: m.AdminAnalyticsPage })));
+const AdminCampaignsPage = lazy(() => import('@/pages/admin/AdminCampaignsPage').then((m) => ({ default: m.AdminCampaignsPage })));
+
+// Logs a page view for every real navigation — skips /admin/* so the
+// founder's own work in the CMS doesn't inflate "site visitor" numbers.
+function PageViewTracker() {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname.startsWith('/admin')) return;
+    logPageView(location.pathname);
+  }, [location.pathname]);
+  return null;
+}
 
 export default function App() {
   return (
     <main className="bg-ink" style={{ overflowX: 'clip' }}>
+      <PageViewTracker />
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -38,6 +53,8 @@ export default function App() {
             <Route path="quotations/new" element={<AdminQuotationEditorPage />} />
             <Route path="quotations/:id" element={<AdminQuotationEditorPage />} />
             <Route path="quotations/:id/print" element={<AdminQuotationPrintPage />} />
+            <Route path="analytics" element={<AdminAnalyticsPage />} />
+            <Route path="campaigns" element={<AdminCampaignsPage />} />
           </Route>
         </Routes>
       </Suspense>
