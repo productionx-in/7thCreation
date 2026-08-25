@@ -10,8 +10,10 @@ import heroPoster from '@/assets/video/hero-poster.jpg';
 export function HeroSection() {
   return (
     <section id="top" className="grain-overlay relative flex h-screen min-h-[640px] flex-col overflow-hidden bg-ink">
-      {/* Licensed reference footage — a creative studio's own production
-          floor, full-bleed with no frame. Ambient, so it loops. */}
+      {/* Licensed reference footage — a cinematographer checking a monitor
+          rig, full-bleed with no frame. Dark and low-key throughout (not
+          just at one frame), so the text overlay never fights a bright
+          background regardless of where playback lands. Ambient, so it loops. */}
       <video
         autoPlay
         loop
