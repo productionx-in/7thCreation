@@ -24,6 +24,7 @@ export function ContactSection() {
             </a>
             .
           </p>
+          <p className="mt-1 text-sm text-[#767F83]">Based in {CONTACT.location}.</p>
           <div className="mt-10">
             <EnquiryForm />
           </div>

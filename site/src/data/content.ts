@@ -6,6 +6,7 @@
 
 export const NAV = [
   { label: 'Work', href: '#work' },
+  { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
   { label: 'Process', href: '#process' },
   { label: 'Contact', href: '#contact' },
@@ -57,13 +58,13 @@ export const PROCESS = [
 // it does, who it's for — before the texture. Answer engines and search
 // crawlers both read this as the canonical description of the business.
 export const ABOUT_COPY =
-  "7th Creation is a creative production studio based in India, shooting photography, film and live events for people who need the real thing done right. One week that means a factory floor for a corporate film, the next a wedding mandap or a model on a fashion set — treatment first, then a calm set, then a grade that holds up on any screen. Small shoot or full production, if the brief is real, we want it.";
+  "7th Creation is a creative production studio based in Visakhapatnam and Hyderabad, shooting photography, film and live events for people who need the real thing done right. One week that means a factory floor for a corporate film, the next a wedding mandap or a model on a fashion set — treatment first, then a calm set, then a grade that holds up on any screen. Small shoot or full production, if the brief is real, we want it.";
 
 export const HERO = {
   eyebrow: 'Photography · Film · Live Events',
   headingLine1: 'We make the frame',
   headingLine2: 'worth keeping.',
-  sub: '7th Creation is a creative production studio in India — commercial films, weddings, advertising, events, music videos and portrait & fashion work, all shot with one standard of craft.',
+  sub: '7th Creation is a creative production studio in Visakhapatnam and Hyderabad — commercial films, weddings, advertising, events, music videos and portrait & fashion work, all shot with one standard of craft.',
   ctaPrimary: 'See the work',
   ctaSecondary: 'Explore our services',
 };
@@ -72,7 +73,7 @@ export const CONTACT = {
   // ⚠️ Inherited from the Lovable build, unconfirmed — verify this inbox
   // exists before publishing. Everything below is founder-confirmed, real.
   email: 'hello@7thcreation.in',
-  location: 'India',
+  location: 'Visakhapatnam & Hyderabad, India',
   phone: '+91 90321 80743',
   phoneHref: 'tel:+919032180743',
   whatsappHref: 'https://wa.me/919032180743',

@@ -16,7 +16,7 @@ const CORNERS = [
 
 export function AboutSection() {
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center bg-ink px-5 py-20 sm:px-8 md:px-10">
+    <section id="about" className="relative flex min-h-screen flex-col items-center justify-center bg-ink px-5 py-20 sm:px-8 md:px-10">
       {CORNERS.map(({ Icon, pos, delay, x }, i) => (
         <FadeIn key={i} delay={delay} x={x} y={0} duration={0.9} className={`pointer-events-none absolute hidden ${pos} md:block`}>
           <Icon className="h-16 w-16 text-[#C6A15B]/25 md:h-20 md:w-20" strokeWidth={1} />
