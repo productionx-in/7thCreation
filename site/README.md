@@ -64,6 +64,46 @@ src/
 Section order: Hero → Marquee → About → Services → Projects → Process →
 Contact.
 
+## Blog + admin CMS
+
+`/blog` and `/blog/:slug` are real, live pages — not reference/mock content
+like the marquee photos above. They read from a dedicated Supabase project
+("7th Creation", project ref `wdsnhciwuhkwkwuvxrru`) rather than this repo,
+so publishing a post never requires a deploy.
+
+- **Schema:** `public.posts` (slug, title, excerpt, cover_image_url,
+  content [Markdown], tags, author, published, published_at). RLS: anyone
+  can read published posts; only an authenticated user can read drafts or
+  write.
+- **Auth:** the admin signs in at `/admin` with a mobile number + password.
+  Under the hood that's plain Supabase email/password auth — the phone
+  number is mapped to a fixed pseudo-email (`phoneToAuthEmail` in
+  `lib/supabase.ts`) so there's no SMS/OTP provider to pay for or configure.
+  There is exactly one admin account, created directly via SQL against
+  `auth.users`/`auth.identities` (not through the Supabase Admin API — see
+  git history around 2026-08-25 if this ever needs redoing); credentials
+  were handed to the founder directly, not committed here.
+- **Storage:** admin-uploaded cover images go to the `blog-images` Storage
+  bucket (public read, authenticated write). The 30 launch posts' cover
+  images are the exception — they're committed as static files in
+  `public/blog-covers/` instead, because Storage's public API wasn't
+  reachable from the sandbox that seeded them; new posts uploaded through
+  the admin UI use real Storage as intended.
+- **The anon/publishable key in `lib/supabase.ts` is meant to be public** —
+  it carries no privilege by itself. Every table and bucket it can touch is
+  gated by RLS policies in Supabase, not by keeping that key secret.
+- **Routing:** `react-router-dom`, with `vercel.json` rewriting everything
+  to `/index.html` so direct navigation/refresh on `/blog/*` or `/admin/*`
+  doesn't 404 on Vercel's static hosting. Blog and admin pages are
+  code-split (`React.lazy`) so `react-markdown` and `supabase-js` never
+  load for a visitor who only looks at the landing page.
+- **SEO caveat:** per-page `<title>`/meta/JSON-LD on blog pages are set
+  client-side (`lib/seo.ts`), since this is a CSR SPA with no server step.
+  Modern Googlebot renders JS, but a crawler that doesn't (or executes it
+  late) sees the base `index.html` metadata first. If organic blog traffic
+  becomes the primary growth channel, migrating to a framework with real
+  SSR/SSG would close that gap.
+
 ## A Tailwind gotcha worth knowing
 
 `RealImage` hardcodes `relative` on its wrapper div. Passing `absolute`
