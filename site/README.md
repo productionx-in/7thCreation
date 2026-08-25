@@ -126,7 +126,14 @@ Also in the same Supabase project, alongside the blog.
   can insert a lead (that's the public form); only the admin can read,
   update status (`new → contacted → quoted → won/lost`), or delete.
   Managed at `/admin/leads`, which also has a "+ Add lead" form for entries
-  that didn't come through the site (phone calls, walk-ins, referrals).
+  that didn't come through the site (phone calls, walk-ins, referrals), an
+  "Import CSV" flow for bulk-adding an existing contact list (first row must
+  be headers; `name`/`phone` required, `email`/`service`/`location`/
+  `budget_range`/`details` optional — a few common header spellings for each
+  are matched automatically), an "Edit" action per lead to fix any field
+  after the fact (not just status), click-to-sort columns (name/service/
+  status/date), and "Download CSV" to export the full table. All of this is
+  client-side against the existing `leads` table — no new backend.
 - **Quotations (`public.quotations` + `public.quotation_items`):** built at
   `/admin/quotations` — add line items (description/qty/unit price), the
   totals compute live, optionally flip on "Include tax invoice" (label +
@@ -183,6 +190,21 @@ owner to register the app and complete an OAuth consent flow. If you set
 those up (or hand over API credentials), the natural home for this is a
 Supabase Edge Function per platform (keeping the tokens server-side) with
 a new `/admin/ad-accounts` page reading from it.
+
+## Email — not built (needs a provider account)
+
+Sending real email (campaigns, or emailing a quotation/invoice straight from
+`/admin/quotations` instead of only print/PDF) needs a transactional email
+API — this can't be self-provisioned the way Supabase was; there's no
+equivalent "just create an account" tool available here. The
+lowest-friction option is [Resend](https://resend.com): sign up, verify a
+sending domain (or use their shared test domain to start), generate an API
+key. Once that key exists, it's a short Supabase Edge Function
+(`send-email`, holding the key server-side, never in client code) called
+from a new "Email" button on the quotation page and from `/admin/campaigns`
+for a mail counterpart to the WhatsApp flow. Any provider with an HTTP API
+works the same way (SendGrid, Postmark, plain SMTP) — Resend's just the
+simplest to stand up from zero.
 
 ## A Tailwind gotcha worth knowing
 
