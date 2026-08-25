@@ -108,7 +108,7 @@ function CategoryCard({
             {count > 0 && (
               <p className="mt-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-[#C6A15B]">
                 <Play className="h-3 w-3 fill-current" />
-                {count} {count === 1 ? 'film' : 'films'} — view gallery
+                {count} {count === 1 ? 'piece' : 'pieces'} — view gallery
               </p>
             )}
           </div>

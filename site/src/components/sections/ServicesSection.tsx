@@ -25,11 +25,10 @@ export function ServicesSection() {
           const active = hover === i;
           return (
             <FadeIn key={s.n} delay={i * 0.1}>
-              <a
-                href="#contact"
+              <div
                 onMouseEnter={() => setHover(i)}
                 onMouseLeave={() => setHover(null)}
-                className="group flex items-start gap-6 border-t border-[#767F83]/15 py-8 pl-0 transition-[padding,background-color] duration-300 last:border-b hover:bg-[#E6DECD]/[0.03] hover:pl-3 sm:gap-10 sm:py-10 md:py-12"
+                className="group flex items-start gap-6 border-t border-[#767F83]/15 py-8 last:border-b hover:bg-[#E6DECD]/[0.03] sm:gap-10 sm:py-10 md:py-12"
               >
                 <span
                   className={`flex-shrink-0 font-display font-black leading-none transition-colors duration-300 ${active ? 'text-[#C6A15B]/70' : 'text-[#C6A15B]/30'}`}
@@ -56,7 +55,7 @@ export function ServicesSection() {
                     {s.copy}
                   </p>
                 </div>
-              </a>
+              </div>
             </FadeIn>
           );
         })}
