@@ -27,7 +27,11 @@ export interface Post {
 
 // The admin logs in with a phone number; internally that maps to Supabase
 // email/password auth (no SMS provider to configure, no cost) via a fixed
-// pseudo-email format that's never shown in the UI.
-export function phoneToAuthEmail(phoneDigits: string): string {
-  return `${phoneDigits.replace(/\D/g, '')}@admin.7thcreation.internal`;
+// pseudo-email format that's never shown in the UI. Normalized to the last
+// 10 digits so it doesn't matter whether the +91 country code, spaces, or a
+// leading 0 were typed — "9032180743" and "+91 90321 80743" resolve to the
+// same account.
+export function phoneToAuthEmail(phone: string): string {
+  const digits = phone.replace(/\D/g, '').slice(-10);
+  return `${digits}@admin.7thcreation.internal`;
 }
