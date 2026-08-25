@@ -1,8 +1,10 @@
 // Real copy and structure, carried over from the published Lovable build
 // (seventh-creation-studio.lovable.app) — see brand/resolution-2026-08-24.md
-// for how this was confirmed as the actual business.
+// for how this was confirmed as the actual business. Scope narrowed to one
+// niche — creative production (photography, film, live events) — per the
+// founder's direction: no web development, no marketing-as-a-service.
 
-export type Category = 'Photo & Film' | 'Events' | 'Brand' | 'Digital';
+export type Category = 'Photo & Film' | 'Events' | 'Brand' | 'Content';
 
 export const NAV = [
   { label: 'Work', href: '#work' },
@@ -16,28 +18,25 @@ export const CAPABILITIES: { name: string; category: Category; note: string }[] 
   { name: 'Wedding Shoots', category: 'Photo & Film', note: 'Full-day candid & cinematic' },
   { name: 'Pre-Wedding', category: 'Photo & Film', note: 'Story-led location films' },
   { name: 'Ad Films', category: 'Photo & Film', note: 'Script to final grade' },
-  { name: 'Reels', category: 'Digital', note: 'Short-form built to travel' },
+  { name: 'Documentary', category: 'Photo & Film', note: 'Long-form, real people' },
+  { name: 'Product Shoots', category: 'Photo & Film', note: 'Tabletop, e-comm, hero stills' },
+  { name: 'Baby Shoots', category: 'Photo & Film', note: 'Newborn & milestone sessions' },
+  { name: 'Portfolio Shoots', category: 'Photo & Film', note: 'Actors, models, founders' },
   { name: 'Birthday Parties', category: 'Events', note: 'Candid coverage & highlights' },
   { name: 'Corporate Events', category: 'Events', note: 'Conferences, launches, AGMs' },
   { name: 'Live Coverage', category: 'Events', note: 'Multi-cam live production' },
   { name: 'LED Walls', category: 'Events', note: 'Screens, feeds & content' },
   { name: 'DJ & Sound', category: 'Events', note: 'Artist, rig and show flow' },
-  { name: 'Documentary', category: 'Photo & Film', note: 'Long-form, real people' },
-  { name: 'Podcast Videos', category: 'Digital', note: 'Multi-cam studio setups' },
-  { name: 'Product Shoots', category: 'Photo & Film', note: 'Tabletop, e-comm, hero stills' },
-  { name: 'Baby Shoots', category: 'Photo & Film', note: 'Newborn & milestone sessions' },
-  { name: 'Portfolio Shoots', category: 'Photo & Film', note: 'Actors, models, founders' },
-  { name: 'Brand Content', category: 'Brand', note: 'Always-on content systems' },
-  { name: 'Brand Marketing', category: 'Brand', note: 'Campaigns, positioning, launch' },
+  { name: 'Brand Content', category: 'Brand', note: 'Always-on visual content' },
   { name: 'Logo & Identity', category: 'Brand', note: 'Marks, systems, guidelines' },
-  { name: 'Web Development', category: 'Digital', note: 'Fast, bespoke websites' },
-  { name: 'Social Management', category: 'Digital', note: 'Calendar, edit, publish, report' },
+  { name: 'Reels', category: 'Content', note: 'Short-form built to travel' },
+  { name: 'Podcast Videos', category: 'Content', note: 'Multi-cam studio setups' },
 ];
 
-export const CATEGORIES: Category[] = ['Photo & Film', 'Events', 'Brand', 'Digital'];
+export const CATEGORIES: Category[] = ['Photo & Film', 'Events', 'Brand', 'Content'];
 
-// Flagship subset for the numbered Services list — full 20-item breadth lives
-// in the scroll marquee instead, so this stays scannable.
+// Flagship subset for the numbered Services list — full breadth lives in the
+// scroll marquee instead, so this stays scannable.
 export const FLAGSHIP_SERVICES = [
   {
     n: '01',
@@ -57,12 +56,12 @@ export const FLAGSHIP_SERVICES = [
   {
     n: '04',
     name: 'Product & Brand',
-    copy: 'Tabletop and e-commerce hero stills, brand content systems, logo and identity work, campaigns and positioning.',
+    copy: 'Tabletop and e-commerce hero stills, always-on brand content, logo and identity work — visual craft, not a strategy deck.',
   },
   {
     n: '05',
-    name: 'Documentary & Digital',
-    copy: 'Long-form documentary, multi-cam podcast setups, reels built to travel, and fast, bespoke websites.',
+    name: 'Documentary & Content',
+    copy: 'Long-form documentary, multi-cam podcast setups, and reels built to travel — the same discipline at every length.',
   },
 ];
 
@@ -73,16 +72,19 @@ export const PROCESS = [
   { step: '04', title: 'Deliver', copy: 'Grade, sound, cutdowns and formats for every screen you publish on.' },
 ];
 
+// One clear, factual definition sentence up front — what the studio is, what
+// it does, who it's for — before the texture. Answer engines and search
+// crawlers both read this as the canonical description of the business.
 export const ABOUT_COPY =
-  "7th Creation is a creative studio for photography, film, live events and the brand work that surrounds them. We have shot factory floors, wedding mandaps and product on black with the same discipline — treatment first, then a calm set, then a grade that holds up on any screen. If the brief is real, we want it.";
+  "7th Creation is a creative production studio based in India, shooting photography, film and live events for people who need the real thing done right. We have shot factory floors, wedding mandaps and product on black with the same discipline — treatment first, then a calm set, then a grade that holds up on any screen. If the brief is real, we want it.";
 
 export const HERO = {
-  eyebrow: 'Media production · Branding · Web',
+  eyebrow: 'Photography · Film · Live Events',
   headingLine1: 'We make the frame',
   headingLine2: 'worth keeping.',
-  sub: '7th Creation is a creative studio for photography, film, live events and the brand work that surrounds them — from an industrial floor to a wedding mandap to a product on black.',
+  sub: '7th Creation is a creative production studio in India — photography, film and live event coverage, from an industrial floor to a wedding mandap to a product on black.',
   ctaPrimary: 'See the work',
-  ctaSecondary: '20 things we shoot',
+  ctaSecondary: '17 things we shoot',
 };
 
 export const CONTACT = {

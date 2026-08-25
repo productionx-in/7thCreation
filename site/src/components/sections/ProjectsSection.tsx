@@ -37,7 +37,7 @@ export function ProjectsSection() {
             className="hero-heading font-display font-light leading-none"
             style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
           >
-            Project
+            Selected work
           </h2>
         </FadeIn>
       </div>
@@ -65,10 +65,17 @@ function ProjectCard({
   const targetScale = 1 - (total - 1 - index) * 0.03;
   const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale]);
 
+  // Capped stacking offset: with six cards, `index * 28px` compounded on top
+  // of the sticky offset pushed later cards' bottom-anchored title below the
+  // fold on shorter viewports. Content is now clustered near the top instead
+  // of spanning the full card height, so it's never at the mercy of exactly
+  // how much of the card is visible.
+  const stackOffset = Math.min(index, 3) * 14;
+
   return (
     <div ref={ref} className="sticky top-20 mb-7 h-[85vh] sm:top-24 md:top-28">
       <motion.div
-        style={{ scale, top: `${index * 28}px` }}
+        style={{ scale, top: `${stackOffset}px` }}
         className="relative h-full overflow-hidden rounded-[32px] border-2 border-[#767F83]/40 bg-ink sm:rounded-[44px] md:rounded-[56px]"
       >
         {/* RealImage hardcodes `relative`; passing `absolute` straight into
@@ -87,7 +94,7 @@ function ProjectCard({
           style={{ background: 'linear-gradient(to top, #11151A 0%, rgba(17,21,26,0.55) 30%, transparent 60%)' }}
         />
 
-        <div className="relative flex h-full flex-col justify-between p-4 sm:p-6 md:p-8">
+        <div className="relative flex h-full flex-col p-4 sm:p-6 md:p-8">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <span
               className="font-display font-black leading-none text-[#C6A15B]/60"
@@ -98,7 +105,7 @@ function ProjectCard({
             <GhostButton href="#contact" label="Enquire" />
           </div>
 
-          <div>
+          <div className="mt-4 sm:mt-6">
             <p className="text-[0.65rem] uppercase tracking-[0.3em] text-[#B6421D] sm:text-xs">
               {project.category} · {project.kind}
             </p>
