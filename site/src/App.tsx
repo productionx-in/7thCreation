@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { LandingPage } from '@/pages/LandingPage';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { ShutterCursor } from '@/components/ShutterCursor';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { logPageView } from '@/lib/tracking';
 import { SiteOverridesProvider } from '@/lib/SiteOverridesContext';
 
@@ -36,34 +37,46 @@ function PageViewTracker() {
   return null;
 }
 
+function AppRoutes() {
+  const location = useLocation();
+  return (
+    // Keyed by path so navigating away from a route that errored (e.g. via
+    // the browser back button) remounts a clean boundary instead of staying
+    // stuck on the error screen.
+    <ErrorBoundary key={location.pathname}>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/blog" element={<BlogListPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboardPage />} />
+            <Route path="new" element={<AdminPostEditorPage />} />
+            <Route path="edit/:id" element={<AdminPostEditorPage />} />
+            <Route path="settings" element={<AdminSettingsPage />} />
+            <Route path="leads" element={<AdminLeadsPage />} />
+            <Route path="quotations" element={<AdminQuotationsPage />} />
+            <Route path="quotations/new" element={<AdminQuotationEditorPage />} />
+            <Route path="quotations/:id" element={<AdminQuotationEditorPage />} />
+            <Route path="quotations/:id/print" element={<AdminQuotationPrintPage />} />
+            <Route path="analytics" element={<AdminAnalyticsPage />} />
+            <Route path="campaigns" element={<AdminCampaignsPage />} />
+            <Route path="site" element={<AdminSiteContentPage />} />
+            <Route path="site/media" element={<AdminSiteMediaPage />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </ErrorBoundary>
+  );
+}
+
 export default function App() {
   return (
     <SiteOverridesProvider>
       <main className="bg-ink" style={{ overflowX: 'clip' }}>
         <PageViewTracker />
-        <Suspense fallback={null}>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/blog" element={<BlogListPage />} />
-            <Route path="/blog/:slug" element={<BlogPostPage />} />
-            <Route path="/admin/login" element={<AdminLoginPage />} />
-            <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<AdminDashboardPage />} />
-              <Route path="new" element={<AdminPostEditorPage />} />
-              <Route path="edit/:id" element={<AdminPostEditorPage />} />
-              <Route path="settings" element={<AdminSettingsPage />} />
-              <Route path="leads" element={<AdminLeadsPage />} />
-              <Route path="quotations" element={<AdminQuotationsPage />} />
-              <Route path="quotations/new" element={<AdminQuotationEditorPage />} />
-              <Route path="quotations/:id" element={<AdminQuotationEditorPage />} />
-              <Route path="quotations/:id/print" element={<AdminQuotationPrintPage />} />
-              <Route path="analytics" element={<AdminAnalyticsPage />} />
-              <Route path="campaigns" element={<AdminCampaignsPage />} />
-              <Route path="site" element={<AdminSiteContentPage />} />
-              <Route path="site/media" element={<AdminSiteMediaPage />} />
-            </Route>
-          </Routes>
-        </Suspense>
+        <AppRoutes />
         <WhatsAppButton />
         <ShutterCursor />
       </main>
