@@ -22,6 +22,24 @@ const textInputClass =
   'rounded-lg border border-[#767F83]/30 bg-transparent px-3 py-2 text-xs text-[#E6DECD] ' +
   'placeholder:text-[#767F83] focus:border-[#C6A15B] focus:outline-none';
 
+// Every action on this page saves immediately (there's no separate "Save"
+// step, unlike the text-content editor) — this flash is the only signal
+// that a click actually went through and is live, so every write path
+// fires it.
+function useFlash() {
+  const [flashed, setFlashed] = useState(false);
+  const flash = () => {
+    setFlashed(true);
+    setTimeout(() => setFlashed(false), 2500);
+  };
+  return [flashed, flash] as const;
+}
+
+function SavedBadge({ show }: { show: boolean }) {
+  if (!show) return null;
+  return <span className="text-xs uppercase tracking-widest text-[#7FBF7F]">Saved — live now</span>;
+}
+
 function ModeTabs({ mode, onChange }: { mode: 'upload' | 'youtube'; onChange: (m: 'upload' | 'youtube') => void }) {
   return (
     <div className="flex items-center gap-1 rounded-full border border-[#767F83]/20 p-0.5 text-[0.65rem]">
@@ -56,6 +74,7 @@ function SingleImageSlot({
 }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [saved, flash] = useFlash();
 
   const handleFile = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -70,6 +89,7 @@ function SingleImageSlot({
       }
       const { error: insErr } = await supabase.from('media_items').insert({ section, kind: 'image', url, sort_order: 0 });
       if (insErr) throw insErr;
+      flash();
       onChange();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Upload failed');
@@ -88,6 +108,7 @@ function SingleImageSlot({
       setError(delErr.message);
       return;
     }
+    flash();
     onChange();
   };
 
@@ -115,7 +136,10 @@ function SingleImageSlot({
           )}
         </div>
       </div>
-      {error && <p className="mt-2 text-xs text-[#B6421D]">{error}</p>}
+      <div className="mt-2 flex items-center gap-3">
+        <SavedBadge show={saved} />
+        {error && <p className="text-xs text-[#B6421D]">{error}</p>}
+      </div>
     </div>
   );
 }
@@ -138,6 +162,7 @@ function VideoSlot({
   const [error, setError] = useState('');
   const [youtubeUrl, setYoutubeUrl] = useState('');
   const [customThumb, setCustomThumb] = useState<File | null>(null);
+  const [saved, flash] = useFlash();
 
   const replaceCurrent = async (row: { kind: 'video'; source?: 'upload' | 'youtube'; url: string; poster_url: string }) => {
     if (current) {
@@ -158,6 +183,7 @@ function VideoSlot({
       const url = await uploadToSiteMedia(file, section, 'video');
       const posterUrl = await uploadToSiteMedia(posterBlob, section, 'poster');
       await replaceCurrent({ kind: 'video', url, poster_url: posterUrl });
+      flash();
       onChange();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Upload failed');
@@ -179,6 +205,7 @@ function VideoSlot({
       await replaceCurrent({ kind: 'video', source: 'youtube', url: id, poster_url: posterUrl });
       setYoutubeUrl('');
       setCustomThumb(null);
+      flash();
       onChange();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Could not add this video');
@@ -196,6 +223,7 @@ function VideoSlot({
       setError(delErr.message);
       return;
     }
+    flash();
     onChange();
   };
 
@@ -257,7 +285,10 @@ function VideoSlot({
           </div>
         )}
       </div>
-      {error && <p className="mt-2 text-xs text-[#B6421D]">{error}</p>}
+      <div className="mt-2 flex items-center gap-3">
+        <SavedBadge show={saved} />
+        {error && <p className="text-xs text-[#B6421D]">{error}</p>}
+      </div>
     </div>
   );
 }
@@ -285,10 +316,15 @@ function MediaListManager({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [label, setLabel] = useState('');
-  const [youtubeUrl, setYoutubeUrl] = useState('');
+  const [youtubeInput, setYoutubeInput] = useState('');
   const [customThumb, setCustomThumb] = useState<File | null>(null);
+  const [saved, flash] = useFlash();
 
   const nextOrder = () => (items.length ? Math.max(...items.map((i) => i.sort_order)) + 1 : 0);
+  const youtubeLines = youtubeInput
+    .split('\n')
+    .map((l) => l.trim())
+    .filter(Boolean);
 
   const handleFile = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -318,6 +354,7 @@ function MediaListManager({
         if (insErr) throw insErr;
       }
       setLabel('');
+      flash();
       onChange();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Upload failed');
@@ -326,36 +363,47 @@ function MediaListManager({
     e.target.value = '';
   };
 
+  // One link per line, so several clips can be added in a single action
+  // instead of one add-click-wait cycle per video.
   const handleAddYoutube = async () => {
-    const id = extractYouTubeId(youtubeUrl);
-    if (!id) {
-      setError("That doesn't look like a valid YouTube link.");
+    if (youtubeLines.length === 0) {
+      setError('Paste at least one YouTube link.');
       return;
     }
-    if (requireLabel && !label.trim()) {
-      setError('Add a short label first.');
-      return;
+    const ids: string[] = [];
+    for (const line of youtubeLines) {
+      const id = extractYouTubeId(line);
+      if (!id) {
+        setError(`This doesn't look like a valid YouTube link: "${line}"`);
+        return;
+      }
+      ids.push(id);
     }
     setBusy(true);
     setError('');
     try {
-      const posterUrl = customThumb ? await uploadToSiteMedia(customThumb, section, 'thumb') : youtubeThumbnailUrl(id);
-      const { error: insErr } = await supabase.from('media_items').insert({
+      // A custom thumbnail only makes sense when adding exactly one video —
+      // for a batch, every video gets its own auto-fetched YouTube thumbnail.
+      const customPosterUrl = ids.length === 1 && customThumb ? await uploadToSiteMedia(customThumb, section, 'thumb') : null;
+      const base = nextOrder();
+      const rows = ids.map((id, i) => ({
         section,
-        kind: 'video',
-        source: 'youtube',
+        kind: 'video' as const,
+        source: 'youtube' as const,
         url: id,
-        poster_url: posterUrl,
-        label: label || null,
-        sort_order: nextOrder(),
-      });
+        poster_url: customPosterUrl ?? youtubeThumbnailUrl(id),
+        label: ids.length === 1 ? label || null : null,
+        sort_order: base + i,
+      }));
+      const { error: insErr } = await supabase.from('media_items').insert(rows);
       if (insErr) throw insErr;
       setLabel('');
-      setYoutubeUrl('');
+      setYoutubeInput('');
       setCustomThumb(null);
+      flash();
       onChange();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Could not add this video');
+      setError(err instanceof Error ? err.message : 'Could not add these videos');
     }
     setBusy(false);
   };
@@ -367,6 +415,7 @@ function MediaListManager({
       setError(delErr.message);
       return;
     }
+    flash();
     onChange();
   };
 
@@ -437,34 +486,45 @@ function MediaListManager({
               <input type="file" accept={accept} onChange={handleFile} disabled={busy} className="hidden" />
             </label>
           ) : (
-            <>
-              <input
-                value={youtubeUrl}
-                onChange={(e) => setYoutubeUrl(e.target.value)}
-                placeholder="https://youtube.com/watch?v=…"
-                className={`${textInputClass} w-64`}
+            <div className="flex w-full flex-col gap-2">
+              <textarea
+                value={youtubeInput}
+                onChange={(e) => setYoutubeInput(e.target.value)}
+                placeholder={'https://youtube.com/watch?v=…\nhttps://youtube.com/watch?v=… (one link per line — add several at once)'}
+                rows={2}
+                className={`${textInputClass} w-full resize-y`}
               />
-              <label className="text-[0.65rem] uppercase tracking-widest text-[#767F83] hover:text-[#E6DECD]">
-                {customThumb ? 'Thumbnail chosen' : 'Custom thumbnail (optional)'}
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => setCustomThumb(e.target.files?.[0] ?? null)}
-                  className="hidden"
-                />
-              </label>
-              <button
-                onClick={handleAddYoutube}
-                disabled={busy || !youtubeUrl.trim()}
-                className={`${uploadLabelClass} disabled:opacity-40`}
-              >
-                {busy ? 'Saving…' : '+ Add'}
-              </button>
-            </>
+              <div className="flex flex-wrap items-center gap-3">
+                <label className="text-[0.65rem] uppercase tracking-widest text-[#767F83] hover:text-[#E6DECD]">
+                  {customThumb ? 'Thumbnail chosen' : 'Custom thumbnail (optional, single video only)'}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setCustomThumb(e.target.files?.[0] ?? null)}
+                    disabled={youtubeLines.length > 1}
+                    className="hidden"
+                  />
+                </label>
+                <button
+                  onClick={handleAddYoutube}
+                  disabled={busy || youtubeLines.length === 0}
+                  className={`${uploadLabelClass} disabled:opacity-40`}
+                >
+                  {busy
+                    ? 'Saving…'
+                    : youtubeLines.length > 1
+                      ? `+ Add ${youtubeLines.length} videos`
+                      : '+ Add'}
+                </button>
+              </div>
+            </div>
           )}
         </div>
       </div>
-      {error && <p className="mt-2 text-xs text-[#B6421D]">{error}</p>}
+      <div className="mt-2 flex items-center gap-3">
+        <SavedBadge show={saved} />
+        {error && <p className="text-xs text-[#B6421D]">{error}</p>}
+      </div>
     </div>
   );
 }
