@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { Image as ImageIcon } from 'lucide-react';
 import { fetchSiteOverrides, type SiteOverrides, type MediaItemRow } from './siteOverrides';
+import { youtubeThumbnailUrl } from './youtube';
 import { HERO, ABOUT_COPY, FLAGSHIP_SERVICES, PROCESS, CONTACT } from '@/data/content';
 import { MARQUEE_ROW_1, MARQUEE_ROW_2, type MockImage } from '@/data/images';
 import { WORK_CATEGORIES, type WorkCategory, type GalleryItem } from '@/data/workCategories';
@@ -77,6 +78,7 @@ export function useMarqueeRow2(): MockImage[] {
 }
 
 export interface HeroVideoOverride {
+  source: 'upload' | 'youtube';
   url: string;
   poster: string;
 }
@@ -85,15 +87,16 @@ export function useHeroVideo(): HeroVideoOverride | null {
   const { media } = useOverrides();
   const row = media.hero_bg?.[0];
   if (!row || row.kind !== 'video') return null;
-  return { url: row.url, poster: row.poster_url ?? '' };
+  return { source: row.source, url: row.url, poster: row.poster_url ?? '' };
 }
 
 function toGalleryItems(rows: MediaItemRow[]): GalleryItem[] {
-  return rows.map((r) =>
-    r.kind === 'video'
-      ? { id: r.id, type: 'video' as const, videoMp4: r.url, poster: r.poster_url ?? r.url }
-      : { id: r.id, type: 'photo' as const, src: r.url },
-  );
+  return rows.map((r) => {
+    if (r.kind !== 'video') return { id: r.id, type: 'photo' as const, src: r.url };
+    return r.source === 'youtube'
+      ? { id: r.id, type: 'video' as const, youtubeId: r.url, poster: r.poster_url ?? youtubeThumbnailUrl(r.url) }
+      : { id: r.id, type: 'video' as const, videoMp4: r.url, poster: r.poster_url ?? r.url };
+  });
 }
 
 // Each work category can have its cover photo replaced independently of its

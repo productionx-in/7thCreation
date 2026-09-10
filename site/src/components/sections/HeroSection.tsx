@@ -4,6 +4,7 @@ import { ContactButton } from '@/components/ContactButton';
 import { NAV } from '@/data/content';
 import { Logo } from '@/components/Logo';
 import { useHero, useContactInfo, useHeroVideo } from '@/lib/SiteOverridesContext';
+import { YouTubeBackground } from '@/components/YouTubeBackground';
 import heroBtsWebm from '@/assets/video/hero-bts.webm';
 import heroBtsMp4 from '@/assets/video/hero-bts.mp4';
 import heroPoster from '@/assets/video/hero-poster.jpg';
@@ -23,25 +24,29 @@ export function HeroSection() {
           plenty of clean, low-detail space regardless of where playback
           lands. Ambient, so it loops. Swapped for the admin-uploaded clip
           the moment one exists (site/admin → Site → Media). */}
-      <video
-        key={customVideo?.url ?? 'stock'}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        poster={customVideo?.poster || heroPoster}
-        className="absolute inset-0 h-full w-full object-cover"
-      >
-        {customVideo ? (
-          <source src={customVideo.url} type="video/mp4" />
-        ) : (
-          <>
-            <source src={heroBtsWebm} type="video/webm" />
-            <source src={heroBtsMp4} type="video/mp4" />
-          </>
-        )}
-      </video>
+      {customVideo?.source === 'youtube' ? (
+        <YouTubeBackground videoId={customVideo.url} />
+      ) : (
+        <video
+          key={customVideo?.url ?? 'stock'}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          poster={customVideo?.poster || heroPoster}
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          {customVideo ? (
+            <source src={customVideo.url} type="video/mp4" />
+          ) : (
+            <>
+              <source src={heroBtsWebm} type="video/webm" />
+              <source src={heroBtsMp4} type="video/mp4" />
+            </>
+          )}
+        </video>
+      )}
       {!customVideo && (
         <span className="pointer-events-none absolute right-6 top-24 z-10 hidden text-[0.55rem] font-medium uppercase tracking-[0.2em] text-[#E6DECD]/40 sm:block md:right-10">
           Reference footage

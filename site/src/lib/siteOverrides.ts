@@ -10,6 +10,9 @@ export interface MediaItemRow {
   id: string;
   section: string;
   kind: 'image' | 'video';
+  // 'upload': `url` is a site-media Storage URL. 'youtube': `url` is the
+  // bare 11-character video ID, not a storage path.
+  source: 'upload' | 'youtube';
   label: string | null;
   url: string;
   poster_url: string | null;

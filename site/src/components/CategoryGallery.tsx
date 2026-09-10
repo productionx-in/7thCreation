@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import { GhostButton } from '@/components/GhostButton';
+import { youtubeEmbedUrl } from '@/lib/youtube';
 import type { WorkCategory, GalleryItem } from '@/data/workCategories';
 
 interface CategoryGalleryProps {
@@ -202,10 +203,22 @@ function Lightbox({
 
       <div className="relative min-h-0 flex-1 overflow-hidden">
         {item.type === 'video' ? (
-          <video key={item.id} autoPlay loop muted playsInline poster={item.poster} className="h-full w-full object-contain">
-            {item.videoWebm && <source src={item.videoWebm} type="video/webm" />}
-            <source src={item.videoMp4} type="video/mp4" />
-          </video>
+          item.youtubeId ? (
+            <iframe
+              key={item.id}
+              src={youtubeEmbedUrl(item.youtubeId, { autoplay: true, controls: true })}
+              title={`${category.name} — clip`}
+              allow="autoplay; encrypted-media; fullscreen"
+              allowFullScreen
+              style={{ border: 0 }}
+              className="h-full w-full"
+            />
+          ) : (
+            <video key={item.id} autoPlay loop muted playsInline poster={item.poster} className="h-full w-full object-contain">
+              {item.videoWebm && <source src={item.videoWebm} type="video/webm" />}
+              <source src={item.videoMp4} type="video/mp4" />
+            </video>
+          )
         ) : (
           <img key={item.id} src={item.src} alt={`${category.name} — reference photo`} className="h-full w-full object-contain" />
         )}

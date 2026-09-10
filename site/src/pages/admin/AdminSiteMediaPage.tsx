@@ -2,6 +2,7 @@ import { useEffect, useState, type ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '@/lib/supabase';
 import { uploadToSiteMedia, captureVideoPoster } from '@/lib/mediaUpload';
+import { extractYouTubeId, youtubeThumbnailUrl } from '@/lib/youtube';
 import type { MediaItemRow } from '@/lib/siteOverrides';
 
 // Kept as a small local list rather than importing data/workCategories.ts —
@@ -17,6 +18,28 @@ const WORK_CATEGORY_META = [
 ];
 
 const uploadLabelClass = 'cursor-pointer text-xs uppercase tracking-widest text-[#C6A15B] hover:text-[#E4CFA0]';
+const textInputClass =
+  'rounded-lg border border-[#767F83]/30 bg-transparent px-3 py-2 text-xs text-[#E6DECD] ' +
+  'placeholder:text-[#767F83] focus:border-[#C6A15B] focus:outline-none';
+
+function ModeTabs({ mode, onChange }: { mode: 'upload' | 'youtube'; onChange: (m: 'upload' | 'youtube') => void }) {
+  return (
+    <div className="flex items-center gap-1 rounded-full border border-[#767F83]/20 p-0.5 text-[0.65rem]">
+      {(['upload', 'youtube'] as const).map((m) => (
+        <button
+          key={m}
+          type="button"
+          onClick={() => onChange(m)}
+          className={`rounded-full px-2.5 py-1 uppercase tracking-wider transition-colors ${
+            mode === m ? 'bg-[#C6A15B] text-[#11151A]' : 'text-[#767F83] hover:text-[#E6DECD]'
+          }`}
+        >
+          {m === 'upload' ? 'Upload file' : 'YouTube link'}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 function SingleImageSlot({
   section,
@@ -110,8 +133,20 @@ function VideoSlot({
   current: MediaItemRow | undefined;
   onChange: () => void;
 }) {
+  const [mode, setMode] = useState<'upload' | 'youtube'>('upload');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [youtubeUrl, setYoutubeUrl] = useState('');
+  const [customThumb, setCustomThumb] = useState<File | null>(null);
+
+  const replaceCurrent = async (row: { kind: 'video'; source?: 'upload' | 'youtube'; url: string; poster_url: string }) => {
+    if (current) {
+      const { error: delErr } = await supabase.from('media_items').delete().eq('id', current.id);
+      if (delErr) throw delErr;
+    }
+    const { error: insErr } = await supabase.from('media_items').insert({ section, sort_order: 0, ...row });
+    if (insErr) throw insErr;
+  };
 
   const handleFile = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -122,20 +157,33 @@ function VideoSlot({
       const posterBlob = await captureVideoPoster(file);
       const url = await uploadToSiteMedia(file, section, 'video');
       const posterUrl = await uploadToSiteMedia(posterBlob, section, 'poster');
-      if (current) {
-        const { error: delErr } = await supabase.from('media_items').delete().eq('id', current.id);
-        if (delErr) throw delErr;
-      }
-      const { error: insErr } = await supabase
-        .from('media_items')
-        .insert({ section, kind: 'video', url, poster_url: posterUrl, sort_order: 0 });
-      if (insErr) throw insErr;
+      await replaceCurrent({ kind: 'video', url, poster_url: posterUrl });
       onChange();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Upload failed');
     }
     setBusy(false);
     e.target.value = '';
+  };
+
+  const handleAddYoutube = async () => {
+    const id = extractYouTubeId(youtubeUrl);
+    if (!id) {
+      setError("That doesn't look like a valid YouTube link.");
+      return;
+    }
+    setBusy(true);
+    setError('');
+    try {
+      const posterUrl = customThumb ? await uploadToSiteMedia(customThumb, section, 'thumb') : youtubeThumbnailUrl(id);
+      await replaceCurrent({ kind: 'video', source: 'youtube', url: id, poster_url: posterUrl });
+      setYoutubeUrl('');
+      setCustomThumb(null);
+      onChange();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not add this video');
+    }
+    setBusy(false);
   };
 
   const handleRemove = async () => {
@@ -160,20 +208,54 @@ function VideoSlot({
         </div>
         <div className="flex items-center gap-3">
           {current ? (
-            <img src={current.poster_url ?? undefined} alt={title} className="h-16 w-28 rounded-md object-cover" />
+            <div className="text-right">
+              <img src={current.poster_url ?? undefined} alt={title} className="h-16 w-28 rounded-md object-cover" />
+              {current.source === 'youtube' && <p className="mt-1 text-[0.6rem] uppercase tracking-widest text-[#767F83]">YouTube</p>}
+            </div>
           ) : (
             <span className="text-xs text-[#767F83]">Using default reference footage</span>
           )}
-          <label className={uploadLabelClass}>
-            {busy ? 'Uploading…' : current ? 'Replace' : 'Upload'}
-            <input type="file" accept="video/*" onChange={handleFile} disabled={busy} className="hidden" />
-          </label>
           {current && (
             <button onClick={handleRemove} disabled={busy} className="text-xs uppercase tracking-widest text-[#767F83] hover:text-[#B6421D]">
               Remove
             </button>
           )}
         </div>
+      </div>
+
+      <div className="mt-4 flex flex-col gap-3">
+        <ModeTabs mode={mode} onChange={setMode} />
+        {mode === 'upload' ? (
+          <label className={uploadLabelClass}>
+            {busy ? 'Uploading…' : current ? 'Replace with a file' : 'Upload a file'}
+            <input type="file" accept="video/*" onChange={handleFile} disabled={busy} className="hidden" />
+          </label>
+        ) : (
+          <div className="flex flex-wrap items-center gap-3">
+            <input
+              value={youtubeUrl}
+              onChange={(e) => setYoutubeUrl(e.target.value)}
+              placeholder="https://youtube.com/watch?v=…"
+              className={`${textInputClass} w-64`}
+            />
+            <label className="text-[0.65rem] uppercase tracking-widest text-[#767F83] hover:text-[#E6DECD]">
+              {customThumb ? 'Thumbnail chosen' : 'Custom thumbnail (optional)'}
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setCustomThumb(e.target.files?.[0] ?? null)}
+                className="hidden"
+              />
+            </label>
+            <button
+              onClick={handleAddYoutube}
+              disabled={busy || !youtubeUrl.trim()}
+              className={`${uploadLabelClass} disabled:opacity-40`}
+            >
+              {busy ? 'Saving…' : current ? 'Replace with this video' : 'Use this video'}
+            </button>
+          </div>
+        )}
       </div>
       {error && <p className="mt-2 text-xs text-[#B6421D]">{error}</p>}
     </div>
@@ -187,6 +269,7 @@ function MediaListManager({
   items,
   requireLabel,
   accept,
+  allowYoutube = false,
   onChange,
 }: {
   section: string;
@@ -195,11 +278,17 @@ function MediaListManager({
   items: MediaItemRow[];
   requireLabel: boolean;
   accept: string;
+  allowYoutube?: boolean;
   onChange: () => void;
 }) {
+  const [mode, setMode] = useState<'upload' | 'youtube'>('upload');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [label, setLabel] = useState('');
+  const [youtubeUrl, setYoutubeUrl] = useState('');
+  const [customThumb, setCustomThumb] = useState<File | null>(null);
+
+  const nextOrder = () => (items.length ? Math.max(...items.map((i) => i.sort_order)) + 1 : 0);
 
   const handleFile = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -213,20 +302,19 @@ function MediaListManager({
     setError('');
     try {
       const isVideo = file.type.startsWith('video/');
-      const nextOrder = items.length ? Math.max(...items.map((i) => i.sort_order)) + 1 : 0;
       if (isVideo) {
         const posterBlob = await captureVideoPoster(file);
         const url = await uploadToSiteMedia(file, section, 'video');
         const posterUrl = await uploadToSiteMedia(posterBlob, section, 'poster');
         const { error: insErr } = await supabase
           .from('media_items')
-          .insert({ section, kind: 'video', url, poster_url: posterUrl, label: label || null, sort_order: nextOrder });
+          .insert({ section, kind: 'video', url, poster_url: posterUrl, label: label || null, sort_order: nextOrder() });
         if (insErr) throw insErr;
       } else {
         const url = await uploadToSiteMedia(file, section, 'image');
         const { error: insErr } = await supabase
           .from('media_items')
-          .insert({ section, kind: 'image', url, label: label || null, sort_order: nextOrder });
+          .insert({ section, kind: 'image', url, label: label || null, sort_order: nextOrder() });
         if (insErr) throw insErr;
       }
       setLabel('');
@@ -236,6 +324,40 @@ function MediaListManager({
     }
     setBusy(false);
     e.target.value = '';
+  };
+
+  const handleAddYoutube = async () => {
+    const id = extractYouTubeId(youtubeUrl);
+    if (!id) {
+      setError("That doesn't look like a valid YouTube link.");
+      return;
+    }
+    if (requireLabel && !label.trim()) {
+      setError('Add a short label first.');
+      return;
+    }
+    setBusy(true);
+    setError('');
+    try {
+      const posterUrl = customThumb ? await uploadToSiteMedia(customThumb, section, 'thumb') : youtubeThumbnailUrl(id);
+      const { error: insErr } = await supabase.from('media_items').insert({
+        section,
+        kind: 'video',
+        source: 'youtube',
+        url: id,
+        poster_url: posterUrl,
+        label: label || null,
+        sort_order: nextOrder(),
+      });
+      if (insErr) throw insErr;
+      setLabel('');
+      setYoutubeUrl('');
+      setCustomThumb(null);
+      onChange();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not add this video');
+    }
+    setBusy(false);
   };
 
   const remove = async (id: string) => {
@@ -279,6 +401,9 @@ function MediaListManager({
                 className="h-20 w-24 rounded-md object-cover"
               />
               {item.label && <p className="mt-1 truncate text-[0.65rem] text-[#767F83]">{item.label}</p>}
+              {item.source === 'youtube' && (
+                <p className="mt-0.5 text-[0.6rem] uppercase tracking-widest text-[#767F83]">YouTube</p>
+              )}
               <div className="mt-1 flex items-center justify-between text-[0.65rem] text-[#767F83]">
                 <button onClick={() => move(i, -1)} disabled={i === 0} className="disabled:opacity-30 hover:text-[#E6DECD]">
                   ↑
@@ -295,19 +420,49 @@ function MediaListManager({
         </div>
       )}
 
-      <div className="mt-4 flex flex-wrap items-center gap-3">
-        {requireLabel && (
-          <input
-            value={label}
-            onChange={(e) => setLabel(e.target.value)}
-            placeholder="Label (e.g. Wedding)"
-            className="w-40 rounded-lg border border-[#767F83]/30 bg-transparent px-3 py-2 text-xs text-[#E6DECD] placeholder:text-[#767F83] focus:border-[#C6A15B] focus:outline-none"
-          />
-        )}
-        <label className={uploadLabelClass}>
-          {busy ? 'Uploading…' : '+ Add'}
-          <input type="file" accept={accept} onChange={handleFile} disabled={busy} className="hidden" />
-        </label>
+      <div className="mt-4 flex flex-col gap-3">
+        {allowYoutube && <ModeTabs mode={mode} onChange={setMode} />}
+        <div className="flex flex-wrap items-center gap-3">
+          {requireLabel && (
+            <input
+              value={label}
+              onChange={(e) => setLabel(e.target.value)}
+              placeholder="Label (e.g. Wedding)"
+              className={`${textInputClass} w-40`}
+            />
+          )}
+          {mode === 'upload' || !allowYoutube ? (
+            <label className={uploadLabelClass}>
+              {busy ? 'Uploading…' : '+ Add'}
+              <input type="file" accept={accept} onChange={handleFile} disabled={busy} className="hidden" />
+            </label>
+          ) : (
+            <>
+              <input
+                value={youtubeUrl}
+                onChange={(e) => setYoutubeUrl(e.target.value)}
+                placeholder="https://youtube.com/watch?v=…"
+                className={`${textInputClass} w-64`}
+              />
+              <label className="text-[0.65rem] uppercase tracking-widest text-[#767F83] hover:text-[#E6DECD]">
+                {customThumb ? 'Thumbnail chosen' : 'Custom thumbnail (optional)'}
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => setCustomThumb(e.target.files?.[0] ?? null)}
+                  className="hidden"
+                />
+              </label>
+              <button
+                onClick={handleAddYoutube}
+                disabled={busy || !youtubeUrl.trim()}
+                className={`${uploadLabelClass} disabled:opacity-40`}
+              >
+                {busy ? 'Saving…' : '+ Add'}
+              </button>
+            </>
+          )}
+        </div>
       </div>
       {error && <p className="mt-2 text-xs text-[#B6421D]">{error}</p>}
     </div>
@@ -340,9 +495,11 @@ export function AdminSiteMediaPage() {
         </Link>
       </div>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#767F83]">
-        Replace the stock photography and footage with your own, one piece at a time. Uploading a video also grabs a
-        thumbnail from it automatically — no separate cover image needed. Anything you don't touch keeps showing the
-        built-in placeholder, so there's no rush to do this all at once.
+        Replace the stock photography and footage with your own, one piece at a time. Uploading a video file grabs a
+        thumbnail automatically — no separate cover image needed. For clips already on YouTube, use "YouTube link"
+        instead of uploading the file itself — it saves server space and only needs the URL (plus an optional custom
+        thumbnail, otherwise YouTube's own is used). Anything you don't touch keeps showing the built-in placeholder,
+        so there's no rush to do this all at once.
       </p>
 
       <div className="mt-8 flex flex-col gap-6">
@@ -402,6 +559,7 @@ export function AdminSiteMediaPage() {
                     items={bySection(`work_${cat.slug}_gallery`)}
                     requireLabel={false}
                     accept="image/*,video/*"
+                    allowYoutube
                     onChange={load}
                   />
                 </div>

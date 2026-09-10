@@ -14,11 +14,14 @@ import babyShootImg from '@/assets/stock/baby-shoot.jpg';
 export interface VideoItem {
   id: string;
   type: 'video';
-  videoMp4: string;
-  // Optional — the built-in stock clips ship both formats, but a video
-  // uploaded through the admin is MP4-only (asking a non-technical founder
-  // to also export a WebM per clip isn't realistic).
+  // Exactly one of videoMp4 or youtubeId is set for an admin-managed item —
+  // an uploaded file (in Storage) or a linked YouTube video (nothing stored
+  // here at all, just the video ID). The built-in stock clips always use
+  // videoMp4 (+ videoWebm, MP4-only for admin uploads — asking a
+  // non-technical founder to also export WebM per clip isn't realistic).
+  videoMp4?: string;
   videoWebm?: string;
+  youtubeId?: string;
   poster: string;
 }
 

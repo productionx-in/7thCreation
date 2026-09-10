@@ -127,14 +127,28 @@ video for real client work, without touching code or waiting on a deploy.
 - **`/admin/site/media`** replaces photography and footage per slot — the
   hero background video, both marquee tile rows, and each of the six work
   categories' card cover + gallery — backed by `public.media_items`
-  (`section`, `kind` [`image`|`video`], `label`, `url`, `poster_url`,
-  `sort_order`). Files go to the `site-media` Storage bucket (public read,
-  authenticated write — same pattern as `blog-images`). Uploading a video
-  auto-captures a poster frame client-side (an off-screen `<video>` seeked
-  to ~0.5s, drawn to a `<canvas>`, exported as a JPEG) — the founder never
-  has to produce a thumbnail by hand. Admin-uploaded clips are MP4-only
-  (asking a non-technical founder to also export WebM per clip isn't
-  realistic); `VideoItem.videoWebm` is optional for exactly this reason.
+  (`section`, `kind` [`image`|`video`], `source` [`upload`|`youtube`],
+  `label`, `url`, `poster_url`, `sort_order`). Uploaded files go to the
+  `site-media` Storage bucket (public read, authenticated write — same
+  pattern as `blog-images`); uploading a video auto-captures a poster frame
+  client-side (an off-screen `<video>` seeked to ~0.5s, drawn to a
+  `<canvas>`, exported as a JPEG) — the founder never has to produce a
+  thumbnail by hand. Admin-uploaded clips are MP4-only (asking a
+  non-technical founder to also export WebM per clip isn't realistic);
+  `VideoItem.videoWebm` is optional for exactly this reason.
+  - **YouTube linking, to save Storage space:** any video slot (hero
+    background, or a work category's gallery) can be filled with a YouTube
+    link instead of an uploaded file — `source: 'youtube'` and `url` holds
+    the bare 11-character video ID, not a Storage path (`lib/youtube.ts`
+    parses whatever URL shape is pasted in). Nothing is stored for these at
+    all; the thumbnail defaults to YouTube's own (`i.ytimg.com`) unless a
+    custom one is uploaded. On the public site: the hero renders an
+    autoplaying muted looping `<iframe>` background
+    (`YouTubeBackground.tsx`, the standard oversize-and-center trick since
+    an iframe has no `object-fit: cover`); a gallery item opens as a normal
+    controlled embed (`CategoryGallery.tsx`). Both use
+    `youtube-nocookie.com` so no tracking cookie is set until a viewer
+    actually presses play.
 - **Fallback model, deliberately:** an empty `site_content` row or an empty
   `media_items` section means "show the built-in default" — nothing on the
   live site changes until the founder actually edits or uploads something,
