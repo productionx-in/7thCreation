@@ -8,17 +8,43 @@ import { WORK_CATEGORIES, type WorkCategory, type GalleryItem } from '@/data/wor
 
 const SiteOverridesContext = createContext<SiteOverrides>({ content: {}, media: {} });
 
-// Renders the built-in defaults instantly (zero network dependency, exactly
-// today's behaviour), then swaps in whatever an admin has edited once the
-// two background fetches resolve — usually well under a second, and never
-// blocking first paint.
+const CACHE_KEY = '7tc_site_overrides_v1';
+
+// A genuinely first-ever visit has no choice but to show the built-in
+// defaults (hero video included) for the brief moment the fetch takes —
+// there's nothing to show instead. But every visit after that has already
+// seen the real overrides once, so cache them and read that back
+// synchronously on mount: the correct hero video/content paints on frame
+// one instead of flashing the stock default first and swapping a second
+// later. Wrapped in try/catch since private browsing can throw on storage
+// access.
+function readCache(): SiteOverrides {
+  try {
+    const raw = localStorage.getItem(CACHE_KEY);
+    if (!raw) return { content: {}, media: {} };
+    return JSON.parse(raw) as SiteOverrides;
+  } catch {
+    return { content: {}, media: {} };
+  }
+}
+
+function writeCache(overrides: SiteOverrides) {
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify(overrides));
+  } catch {
+    // storage disabled/full/private — the page still works, just re-fetches every time
+  }
+}
+
 export function SiteOverridesProvider({ children }: { children: ReactNode }) {
-  const [overrides, setOverrides] = useState<SiteOverrides>({ content: {}, media: {} });
+  const [overrides, setOverrides] = useState<SiteOverrides>(readCache);
 
   useEffect(() => {
     let cancelled = false;
     fetchSiteOverrides().then((o) => {
-      if (!cancelled) setOverrides(o);
+      if (cancelled) return;
+      setOverrides(o);
+      writeCache(o);
     });
     return () => {
       cancelled = true;

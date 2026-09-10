@@ -1,10 +1,4 @@
-let ctx: AudioContext | null = null;
-
-function getCtx(): AudioContext {
-  if (!ctx) ctx = new AudioContext();
-  if (ctx.state === 'suspended') void ctx.resume();
-  return ctx;
-}
+import { getAudioContext } from './audioContext';
 
 function noiseBurst(ac: AudioContext, start: number, duration: number, freq: number, peak: number) {
   const size = Math.max(1, Math.floor(ac.sampleRate * duration));
@@ -34,7 +28,7 @@ function noiseBurst(ac: AudioContext, start: number, duration: number, freq: num
 // for a licensed SFX file so there's nothing extra to fetch or ship.
 export function playShutterSound() {
   try {
-    const ac = getCtx();
+    const ac = getAudioContext();
     const now = ac.currentTime;
     noiseBurst(ac, now, 0.035, 2000, 0.55);
     noiseBurst(ac, now + 0.05, 0.02, 3400, 0.35);
