@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Plus } from 'lucide-react';
 import { FadeIn } from '@/components/FadeIn';
-import { PROCESS } from '@/data/content';
+import { useProcessSteps } from '@/lib/SiteOverridesContext';
 
 export function ProcessSection() {
   const [open, setOpen] = useState(0);
   const [hover, setHover] = useState<number | null>(null);
+  const steps = useProcessSteps();
 
   return (
     <section id="process" className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-24 md:px-10 md:py-32">
@@ -22,7 +23,7 @@ export function ProcessSection() {
         </FadeIn>
 
         <FadeIn delay={0.1} className="divide-y divide-[#767F83]/15 border-y border-[#767F83]/15">
-          {PROCESS.map((p, i) => {
+          {steps.map((p, i) => {
             const active = open === i;
             const highlighted = active || hover === i;
             return (

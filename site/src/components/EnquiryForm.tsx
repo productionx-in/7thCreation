@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { CONTACT, FLAGSHIP_SERVICES } from '@/data/content';
+import { useContactInfo, useServices } from '@/lib/SiteOverridesContext';
 
 const fieldClass =
   'w-full border-0 border-b border-[#767F83]/30 bg-transparent py-2.5 text-sm text-[#E6DECD] ' +
@@ -12,6 +12,8 @@ const BUDGET_RANGES = ['Under ₹50,000', '₹50,000 – ₹1,50,000', '₹1,50,
 // that's how the founder actually works leads day to day, this just also
 // gives them a record of every one that comes in.
 export function EnquiryForm() {
+  const CONTACT = useContactInfo();
+  const services = useServices();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -76,7 +78,7 @@ export function EnquiryForm() {
         <option value="" disabled>
           What are you looking for?
         </option>
-        {FLAGSHIP_SERVICES.map((s) => (
+        {services.map((s) => (
           <option key={s.n} value={s.name} className="bg-ink text-[#E6DECD]">
             {s.name}
           </option>

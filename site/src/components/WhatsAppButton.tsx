@@ -1,8 +1,9 @@
-import { CONTACT } from '@/data/content';
+import { useContactInfo } from '@/lib/SiteOverridesContext';
 
 // Persistent utility affordance, not a marketing element — kept small and
 // plain rather than styled like the brand's editorial CTAs.
 export function WhatsAppButton() {
+  const CONTACT = useContactInfo();
   return (
     <a
       href={CONTACT.whatsappHref}

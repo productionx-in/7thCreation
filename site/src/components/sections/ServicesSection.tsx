@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { FadeIn } from '@/components/FadeIn';
-import { FLAGSHIP_SERVICES } from '@/data/content';
+import { useServices } from '@/lib/SiteOverridesContext';
 
 // Same numbered-list device as the MotionSites reference, restyled dark/gold
 // to match the studio's real identity instead of the reference's black-on-
 // white treatment, and populated with the actual five service groups.
 export function ServicesSection() {
   const [hover, setHover] = useState<number | null>(null);
+  const services = useServices();
 
   return (
     <section id="services" className="bg-ink px-5 py-20 sm:px-8 sm:py-24 md:px-10 md:py-32">
@@ -21,7 +22,7 @@ export function ServicesSection() {
       </FadeIn>
 
       <div className="mx-auto mt-16 max-w-5xl sm:mt-20 md:mt-28">
-        {FLAGSHIP_SERVICES.map((s, i) => {
+        {services.map((s, i) => {
           const active = hover === i;
           return (
             <FadeIn key={s.n} delay={i * 0.1}>

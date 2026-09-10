@@ -2,7 +2,7 @@ import { Aperture, Clapperboard, Camera, Film } from 'lucide-react';
 import { FadeIn } from '@/components/FadeIn';
 import { AnimatedText } from '@/components/AnimatedText';
 import { ContactButton } from '@/components/ContactButton';
-import { ABOUT_COPY } from '@/data/content';
+import { useAboutCopy } from '@/lib/SiteOverridesContext';
 
 // Corner accents use lucide icons rather than the MotionSites reference's 3D
 // render props (moon, lego brick) — those belonged to a "3D creator" persona
@@ -15,6 +15,7 @@ const CORNERS = [
 ];
 
 export function AboutSection() {
+  const aboutCopy = useAboutCopy();
   return (
     <section id="about" className="relative flex min-h-screen flex-col items-center justify-center bg-ink px-5 py-20 sm:px-8 md:px-10">
       {CORNERS.map(({ Icon, pos, delay, x }, i) => (
@@ -31,7 +32,7 @@ export function AboutSection() {
 
       <div className="mt-10 flex max-w-[600px] flex-col items-center gap-10 sm:mt-14 sm:gap-14 md:mt-16 md:gap-16">
         <AnimatedText
-          text={ABOUT_COPY}
+          text={aboutCopy}
           className="text-center font-medium leading-relaxed text-[#E6DECD] text-[clamp(1rem,2vw,1.35rem)]"
         />
         <ContactButton />

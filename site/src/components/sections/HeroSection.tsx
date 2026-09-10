@@ -1,13 +1,18 @@
 import { Instagram, Youtube } from 'lucide-react';
 import { FadeIn } from '@/components/FadeIn';
 import { ContactButton } from '@/components/ContactButton';
-import { NAV, HERO, CONTACT } from '@/data/content';
+import { NAV } from '@/data/content';
 import { Logo } from '@/components/Logo';
+import { useHero, useContactInfo, useHeroVideo } from '@/lib/SiteOverridesContext';
 import heroBtsWebm from '@/assets/video/hero-bts.webm';
 import heroBtsMp4 from '@/assets/video/hero-bts.mp4';
 import heroPoster from '@/assets/video/hero-poster.jpg';
 
 export function HeroSection() {
+  const HERO = useHero();
+  const CONTACT = useContactInfo();
+  const customVideo = useHeroVideo();
+
   return (
     <section id="top" className="grain-overlay relative flex h-screen min-h-[640px] flex-col overflow-hidden bg-ink">
       {/* Licensed reference footage — a photographer silhouetted against a
@@ -16,22 +21,32 @@ export function HeroSection() {
           since the studio is India-based and the earlier close-up shots
           read as a mismatch. Wide open sky on the right leaves the text
           plenty of clean, low-detail space regardless of where playback
-          lands. Ambient, so it loops. */}
+          lands. Ambient, so it loops. Swapped for the admin-uploaded clip
+          the moment one exists (site/admin → Site → Media). */}
       <video
+        key={customVideo?.url ?? 'stock'}
         autoPlay
         loop
         muted
         playsInline
         preload="auto"
-        poster={heroPoster}
+        poster={customVideo?.poster || heroPoster}
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src={heroBtsWebm} type="video/webm" />
-        <source src={heroBtsMp4} type="video/mp4" />
+        {customVideo ? (
+          <source src={customVideo.url} type="video/mp4" />
+        ) : (
+          <>
+            <source src={heroBtsWebm} type="video/webm" />
+            <source src={heroBtsMp4} type="video/mp4" />
+          </>
+        )}
       </video>
-      <span className="pointer-events-none absolute right-6 top-24 z-10 hidden text-[0.55rem] font-medium uppercase tracking-[0.2em] text-[#E6DECD]/40 sm:block md:right-10">
-        Reference footage
-      </span>
+      {!customVideo && (
+        <span className="pointer-events-none absolute right-6 top-24 z-10 hidden text-[0.55rem] font-medium uppercase tracking-[0.2em] text-[#E6DECD]/40 sm:block md:right-10">
+          Reference footage
+        </span>
+      )}
       <div
         className="pointer-events-none absolute inset-0"
         style={{

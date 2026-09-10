@@ -5,14 +5,15 @@ import { FadeIn } from '@/components/FadeIn';
 import { GhostButton } from '@/components/GhostButton';
 import { RealImage } from '@/components/RealImage';
 import { CategoryGallery } from '@/components/CategoryGallery';
-import { WORK_CATEGORIES, type WorkCategory } from '@/data/workCategories';
+import type { WorkCategory } from '@/data/workCategories';
+import { useWorkCategories } from '@/lib/SiteOverridesContext';
 
 // Six disciplines, not six literal projects — each card opens a full-screen
 // gallery/carousel of clips for that category. Stand-in stock footage
-// throughout (⚠️ replace with real client reels as they're delivered — see
-// site/README.md).
+// throughout until replaced per-category from the admin (Site → Media).
 export function ProjectsSection() {
-  const total = WORK_CATEGORIES.length;
+  const categories = useWorkCategories();
+  const total = categories.length;
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -29,13 +30,13 @@ export function ProjectsSection() {
       </div>
 
       <div className="relative mt-10 px-5 sm:px-8 md:px-10">
-        {WORK_CATEGORIES.map((c, i) => (
+        {categories.map((c, i) => (
           <CategoryCard key={c.slug} category={c} index={i} total={total} onOpen={() => setOpenIndex(i)} />
         ))}
       </div>
 
       {openIndex !== null && (
-        <CategoryGallery category={WORK_CATEGORIES[openIndex]} onClose={() => setOpenIndex(null)} />
+        <CategoryGallery category={categories[openIndex]} onClose={() => setOpenIndex(null)} />
       )}
     </section>
   );
@@ -47,7 +48,7 @@ function CategoryCard({
   total,
   onOpen,
 }: {
-  category: WorkCategory;
+  category: WorkCategory & { customCover: boolean };
   index: number;
   total: number;
   onOpen: () => void;
@@ -76,7 +77,8 @@ function CategoryCard({
         <div className="absolute inset-0">
           <RealImage
             src={category.img}
-            alt={`${category.name} — reference image`}
+            alt={category.customCover ? category.name : `${category.name} — reference image`}
+            tag={!category.customCover}
             className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
         </div>

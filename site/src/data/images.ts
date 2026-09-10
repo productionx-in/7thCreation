@@ -20,7 +20,10 @@ import birthdayImg from '@/assets/stock/birthday.jpg';
 import podcastImg from '@/assets/stock/podcast.jpg';
 import portfolioImg from '@/assets/stock/portfolio.jpg';
 
-export type MockImage = { label: string; icon: LucideIcon; photo?: string };
+// `custom` marks a tile as real, admin-uploaded media rather than the
+// built-in Adobe Stock reference set — RealImage uses it to skip the
+// "Reference" corner tag, since that label would be wrong on real photos.
+export type MockImage = { label: string; icon: LucideIcon; photo?: string; custom?: boolean };
 
 export const MARQUEE_ROW_1: MockImage[] = [
   { label: 'Industrial', icon: Factory, photo: industrialImg },

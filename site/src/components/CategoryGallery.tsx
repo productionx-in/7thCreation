@@ -203,7 +203,7 @@ function Lightbox({
       <div className="relative min-h-0 flex-1 overflow-hidden">
         {item.type === 'video' ? (
           <video key={item.id} autoPlay loop muted playsInline poster={item.poster} className="h-full w-full object-contain">
-            <source src={item.videoWebm} type="video/webm" />
+            {item.videoWebm && <source src={item.videoWebm} type="video/webm" />}
             <source src={item.videoMp4} type="video/mp4" />
           </video>
         ) : (

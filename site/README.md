@@ -114,6 +114,49 @@ so publishing a post never requires a deploy.
   becomes the primary growth channel, migrating to a framework with real
   SSR/SSG would close that gap.
 
+## Site editor — `/admin/site` and `/admin/site/media`
+
+A Wix-style layer over the landing page: the founder can change headline
+text, service descriptions, contact details, and swap stock photography/
+video for real client work, without touching code or waiting on a deploy.
+
+- **`/admin/site`** edits text — Hero, About, Services (6), Process (4),
+  Contact & socials — backed by `public.site_content` (one row per section,
+  `key text primary key, value jsonb`). RLS: anyone can read, only the
+  authenticated admin can write.
+- **`/admin/site/media`** replaces photography and footage per slot — the
+  hero background video, both marquee tile rows, and each of the six work
+  categories' card cover + gallery — backed by `public.media_items`
+  (`section`, `kind` [`image`|`video`], `label`, `url`, `poster_url`,
+  `sort_order`). Files go to the `site-media` Storage bucket (public read,
+  authenticated write — same pattern as `blog-images`). Uploading a video
+  auto-captures a poster frame client-side (an off-screen `<video>` seeked
+  to ~0.5s, drawn to a `<canvas>`, exported as a JPEG) — the founder never
+  has to produce a thumbnail by hand. Admin-uploaded clips are MP4-only
+  (asking a non-technical founder to also export WebM per clip isn't
+  realistic); `VideoItem.videoWebm` is optional for exactly this reason.
+- **Fallback model, deliberately:** an empty `site_content` row or an empty
+  `media_items` section means "show the built-in default" — nothing on the
+  live site changes until the founder actually edits or uploads something,
+  and every section can be customized independently and in any order. This
+  is also why nothing needed migrating on launch: the two tables started
+  empty (`site_content` was seeded with today's real copy so editing has
+  something to start from; `media_items` stayed empty on purpose).
+- **How the public site reads it:** `lib/siteOverrides.ts` does two raw
+  PostgREST `fetch()` calls (`site_content`, `media_items`) — not the full
+  supabase-js client, same discipline as `lib/tracking.ts` — via
+  `SiteOverridesProvider` (`lib/SiteOverridesContext.tsx`), which wraps the
+  whole app. The static defaults in `data/content.ts` / `data/images.ts` /
+  `data/workCategories.ts` still render first, instantly, with zero network
+  dependency; the fetch runs in the background and swaps in whatever's been
+  edited, typically well under a second later. A Supabase outage just means
+  the site looks exactly like it does today — it never blocks or breaks.
+- **`RealImage`'s "Reference" corner tag** is suppressed for anything
+  admin-uploaded (a `custom`/`customCover` flag threaded through
+  `MarqueeSection` and `ProjectsSection`) — that label exists specifically
+  to mark the placeholder stock photography, and would be wrong on real
+  client work.
+
 ## CRM: leads + quotations
 
 Also in the same Supabase project, alongside the blog.

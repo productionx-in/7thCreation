@@ -1,9 +1,10 @@
 import { FadeIn } from '@/components/FadeIn';
-import { CONTACT } from '@/data/content';
+import { useContactInfo } from '@/lib/SiteOverridesContext';
 import { EnquiryForm } from '@/components/EnquiryForm';
 import { SiteFooter } from '@/components/SiteFooter';
 
 export function ContactSection() {
+  const CONTACT = useContactInfo();
   return (
     <section id="contact" className="grain-overlay relative border-t border-[#767F83]/15 bg-[#0D1015]">
       <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-24 md:px-10 md:py-32">

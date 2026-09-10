@@ -15,7 +15,10 @@ export interface VideoItem {
   id: string;
   type: 'video';
   videoMp4: string;
-  videoWebm: string;
+  // Optional — the built-in stock clips ship both formats, but a video
+  // uploaded through the admin is MP4-only (asking a non-technical founder
+  // to also export a WebM per clip isn't realistic).
+  videoWebm?: string;
   poster: string;
 }
 

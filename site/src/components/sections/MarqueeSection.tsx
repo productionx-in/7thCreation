@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { MockPlate } from '@/components/MockPlate';
 import { RealImage } from '@/components/RealImage';
-import { MARQUEE_ROW_1, MARQUEE_ROW_2, type MockImage } from '@/data/images';
+import { useMarqueeRow1, useMarqueeRow2 } from '@/lib/SiteOverridesContext';
+import type { MockImage } from '@/data/images';
 
 function tripled<T>(arr: T[]): T[] {
   return [...arr, ...arr, ...arr];
@@ -26,8 +27,10 @@ export function MarqueeSection() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const row1 = tripled(MARQUEE_ROW_1);
-  const row2 = tripled(MARQUEE_ROW_2);
+  const marqueeRow1 = useMarqueeRow1();
+  const marqueeRow2 = useMarqueeRow2();
+  const row1 = tripled(marqueeRow1);
+  const row2 = tripled(marqueeRow2);
 
   const tileClass =
     'h-[180px] w-[280px] flex-shrink-0 rounded-2xl sm:h-[220px] sm:w-[340px] md:h-[270px] md:w-[420px]';
@@ -48,7 +51,13 @@ function Row({ images, offset, tileClass }: { images: MockImage[]; offset: numbe
       <div className="flex gap-3" style={{ transform: `translateX(${offset}px)`, willChange: 'transform' }}>
         {images.map((img, i) =>
           img.photo ? (
-            <RealImage key={i} src={img.photo} alt={`${img.label} — reference image`} className={`${tileClass} rounded-2xl`} />
+            <RealImage
+              key={i}
+              src={img.photo}
+              alt={img.custom ? img.label : `${img.label} — reference image`}
+              tag={!img.custom}
+              className={`${tileClass} rounded-2xl`}
+            />
           ) : (
             <MockPlate key={i} label={img.label} icon={img.icon} className={tileClass} />
           ),

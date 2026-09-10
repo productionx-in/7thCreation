@@ -4,6 +4,7 @@ import { LandingPage } from '@/pages/LandingPage';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { ShutterCursor } from '@/components/ShutterCursor';
 import { logPageView } from '@/lib/tracking';
+import { SiteOverridesProvider } from '@/lib/SiteOverridesContext';
 
 // Blog and admin pull in react-markdown, remark-gfm, and the Supabase
 // client — code the landing page (the entry point for almost every
@@ -21,6 +22,8 @@ const AdminQuotationEditorPage = lazy(() => import('@/pages/admin/AdminQuotation
 const AdminQuotationPrintPage = lazy(() => import('@/pages/admin/AdminQuotationPrintPage').then((m) => ({ default: m.AdminQuotationPrintPage })));
 const AdminAnalyticsPage = lazy(() => import('@/pages/admin/AdminAnalyticsPage').then((m) => ({ default: m.AdminAnalyticsPage })));
 const AdminCampaignsPage = lazy(() => import('@/pages/admin/AdminCampaignsPage').then((m) => ({ default: m.AdminCampaignsPage })));
+const AdminSiteContentPage = lazy(() => import('@/pages/admin/AdminSiteContentPage').then((m) => ({ default: m.AdminSiteContentPage })));
+const AdminSiteMediaPage = lazy(() => import('@/pages/admin/AdminSiteMediaPage').then((m) => ({ default: m.AdminSiteMediaPage })));
 
 // Logs a page view for every real navigation — skips /admin/* so the
 // founder's own work in the CMS doesn't inflate "site visitor" numbers.
@@ -35,31 +38,35 @@ function PageViewTracker() {
 
 export default function App() {
   return (
-    <main className="bg-ink" style={{ overflowX: 'clip' }}>
-      <PageViewTracker />
-      <Suspense fallback={null}>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/blog" element={<BlogListPage />} />
-          <Route path="/blog/:slug" element={<BlogPostPage />} />
-          <Route path="/admin/login" element={<AdminLoginPage />} />
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<AdminDashboardPage />} />
-            <Route path="new" element={<AdminPostEditorPage />} />
-            <Route path="edit/:id" element={<AdminPostEditorPage />} />
-            <Route path="settings" element={<AdminSettingsPage />} />
-            <Route path="leads" element={<AdminLeadsPage />} />
-            <Route path="quotations" element={<AdminQuotationsPage />} />
-            <Route path="quotations/new" element={<AdminQuotationEditorPage />} />
-            <Route path="quotations/:id" element={<AdminQuotationEditorPage />} />
-            <Route path="quotations/:id/print" element={<AdminQuotationPrintPage />} />
-            <Route path="analytics" element={<AdminAnalyticsPage />} />
-            <Route path="campaigns" element={<AdminCampaignsPage />} />
-          </Route>
-        </Routes>
-      </Suspense>
-      <WhatsAppButton />
-      <ShutterCursor />
-    </main>
+    <SiteOverridesProvider>
+      <main className="bg-ink" style={{ overflowX: 'clip' }}>
+        <PageViewTracker />
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/blog" element={<BlogListPage />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
+            <Route path="/admin/login" element={<AdminLoginPage />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<AdminDashboardPage />} />
+              <Route path="new" element={<AdminPostEditorPage />} />
+              <Route path="edit/:id" element={<AdminPostEditorPage />} />
+              <Route path="settings" element={<AdminSettingsPage />} />
+              <Route path="leads" element={<AdminLeadsPage />} />
+              <Route path="quotations" element={<AdminQuotationsPage />} />
+              <Route path="quotations/new" element={<AdminQuotationEditorPage />} />
+              <Route path="quotations/:id" element={<AdminQuotationEditorPage />} />
+              <Route path="quotations/:id/print" element={<AdminQuotationPrintPage />} />
+              <Route path="analytics" element={<AdminAnalyticsPage />} />
+              <Route path="campaigns" element={<AdminCampaignsPage />} />
+              <Route path="site" element={<AdminSiteContentPage />} />
+              <Route path="site/media" element={<AdminSiteMediaPage />} />
+            </Route>
+          </Routes>
+        </Suspense>
+        <WhatsAppButton />
+        <ShutterCursor />
+      </main>
+    </SiteOverridesProvider>
   );
 }

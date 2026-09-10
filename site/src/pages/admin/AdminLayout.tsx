@@ -18,6 +18,7 @@ export function AdminLayout() {
         </Link>
         <div className="flex flex-wrap items-center gap-5 text-xs uppercase tracking-widest text-[#767F83]">
           <Link to="/admin" className="hover:text-[#E6DECD]">Posts</Link>
+          <Link to="/admin/site" className="hover:text-[#E6DECD]">Site</Link>
           <Link to="/admin/leads" className="hover:text-[#E6DECD]">Leads</Link>
           <Link to="/admin/quotations" className="hover:text-[#E6DECD]">Quotations</Link>
           <Link to="/admin/campaigns" className="hover:text-[#E6DECD]">Campaigns</Link>

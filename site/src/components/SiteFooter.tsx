@@ -1,5 +1,5 @@
 import { Instagram, Youtube } from 'lucide-react';
-import { CONTACT } from '@/data/content';
+import { useContactInfo } from '@/lib/SiteOverridesContext';
 import { Logo } from '@/components/Logo';
 
 // Shared footer for the landing page's contact section and the standalone
@@ -7,6 +7,7 @@ import { Logo } from '@/components/Logo';
 // unlabeled-to-the-eye, easy to miss for a browsing client, easy to find
 // for the one person who knows to look for it.
 export function SiteFooter() {
+  const CONTACT = useContactInfo();
   return (
     <footer className="mx-auto flex max-w-5xl flex-col items-center gap-4 border-t border-[#767F83]/10 px-5 py-8 text-center sm:flex-row sm:justify-between sm:px-8 sm:text-left md:px-10">
       <div className="flex items-center gap-3">
