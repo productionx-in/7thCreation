@@ -22,7 +22,15 @@ function useSectionRow<T>(key: string, fallback: T): [T, boolean, () => void] {
       .eq('key', key)
       .maybeSingle()
       .then(({ data }) => {
-        if (data?.value) setValue({ ...fallback, ...(data.value as object) } as T);
+        if (data?.value) {
+          const saved = data.value;
+          // Array-shaped sections (services, process) must replace the
+          // default wholesale — spreading `{ ...fallback, ...saved }` on an
+          // array collapses it into a plain `{0: ..., 1: ...}` object
+          // (`.map` no longer exists on it), so only object-shaped sections
+          // (hero, about, contact) get the merge-over-defaults treatment.
+          setValue((Array.isArray(saved) ? saved : { ...fallback, ...(saved as object) }) as T);
+        }
         setLoaded(true);
       });
   };
