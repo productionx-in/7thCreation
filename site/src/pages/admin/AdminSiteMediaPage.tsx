@@ -144,11 +144,6 @@ function SingleImageSlot({
   );
 }
 
-// Upload-only, deliberately — no YouTube option here. A YouTube embed
-// always shows a bit of its own UI (the title/channel card at the start is
-// the clearest example), which is fine for a gallery clip someone chose to
-// open, but wrong for a background loop that's supposed to read as plain
-// footage. Gallery items keep the YouTube option; this one slot doesn't.
 function VideoSlot({
   section,
   title,
@@ -162,9 +157,21 @@ function VideoSlot({
   current: MediaItemRow | undefined;
   onChange: () => void;
 }) {
+  const [mode, setMode] = useState<'upload' | 'youtube'>('upload');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [youtubeUrl, setYoutubeUrl] = useState('');
+  const [customThumb, setCustomThumb] = useState<File | null>(null);
   const [saved, flash] = useFlash();
+
+  const replaceCurrent = async (row: { kind: 'video'; source?: 'upload' | 'youtube'; url: string; poster_url: string }) => {
+    if (current) {
+      const { error: delErr } = await supabase.from('media_items').delete().eq('id', current.id);
+      if (delErr) throw delErr;
+    }
+    const { error: insErr } = await supabase.from('media_items').insert({ section, sort_order: 0, ...row });
+    if (insErr) throw insErr;
+  };
 
   const handleFile = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -175,14 +182,7 @@ function VideoSlot({
       const posterBlob = await captureVideoPoster(file);
       const url = await uploadToSiteMedia(file, section, 'video');
       const posterUrl = await uploadToSiteMedia(posterBlob, section, 'poster');
-      if (current) {
-        const { error: delErr } = await supabase.from('media_items').delete().eq('id', current.id);
-        if (delErr) throw delErr;
-      }
-      const { error: insErr } = await supabase
-        .from('media_items')
-        .insert({ section, kind: 'video', url, poster_url: posterUrl, sort_order: 0 });
-      if (insErr) throw insErr;
+      await replaceCurrent({ kind: 'video', url, poster_url: posterUrl });
       flash();
       onChange();
     } catch (err) {
@@ -190,6 +190,27 @@ function VideoSlot({
     }
     setBusy(false);
     e.target.value = '';
+  };
+
+  const handleAddYoutube = async () => {
+    const id = extractYouTubeId(youtubeUrl);
+    if (!id) {
+      setError("That doesn't look like a valid YouTube link.");
+      return;
+    }
+    setBusy(true);
+    setError('');
+    try {
+      const posterUrl = customThumb ? await uploadToSiteMedia(customThumb, section, 'thumb') : youtubeThumbnailUrl(id);
+      await replaceCurrent({ kind: 'video', source: 'youtube', url: id, poster_url: posterUrl });
+      setYoutubeUrl('');
+      setCustomThumb(null);
+      flash();
+      onChange();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not add this video');
+    }
+    setBusy(false);
   };
 
   const handleRemove = async () => {
@@ -215,20 +236,54 @@ function VideoSlot({
         </div>
         <div className="flex items-center gap-3">
           {current ? (
-            <img src={current.poster_url ?? undefined} alt={title} className="h-16 w-28 rounded-md object-cover" />
+            <div className="text-right">
+              <img src={current.poster_url ?? undefined} alt={title} className="h-16 w-28 rounded-md object-cover" />
+              {current.source === 'youtube' && <p className="mt-1 text-[0.6rem] uppercase tracking-widest text-[#767F83]">YouTube</p>}
+            </div>
           ) : (
             <span className="text-xs text-[#767F83]">Using default reference footage</span>
           )}
-          <label className={uploadLabelClass}>
-            {busy ? 'Uploading…' : current ? 'Replace' : 'Upload'}
-            <input type="file" accept="video/*" onChange={handleFile} disabled={busy} className="hidden" />
-          </label>
           {current && (
             <button onClick={handleRemove} disabled={busy} className="text-xs uppercase tracking-widest text-[#767F83] hover:text-[#B6421D]">
               Remove
             </button>
           )}
         </div>
+      </div>
+
+      <div className="mt-4 flex flex-col gap-3">
+        <ModeTabs mode={mode} onChange={setMode} />
+        {mode === 'upload' ? (
+          <label className={uploadLabelClass}>
+            {busy ? 'Uploading…' : current ? 'Replace with a file' : 'Upload a file'}
+            <input type="file" accept="video/*" onChange={handleFile} disabled={busy} className="hidden" />
+          </label>
+        ) : (
+          <div className="flex flex-wrap items-center gap-3">
+            <input
+              value={youtubeUrl}
+              onChange={(e) => setYoutubeUrl(e.target.value)}
+              placeholder="https://youtube.com/watch?v=…"
+              className={`${textInputClass} w-64`}
+            />
+            <label className="text-[0.65rem] uppercase tracking-widest text-[#767F83] hover:text-[#E6DECD]">
+              {customThumb ? 'Thumbnail chosen' : 'Custom thumbnail (optional)'}
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setCustomThumb(e.target.files?.[0] ?? null)}
+                className="hidden"
+              />
+            </label>
+            <button
+              onClick={handleAddYoutube}
+              disabled={busy || !youtubeUrl.trim()}
+              className={`${uploadLabelClass} disabled:opacity-40`}
+            >
+              {busy ? 'Saving…' : current ? 'Replace with this video' : 'Use this video'}
+            </button>
+          </div>
+        )}
       </div>
       <div className="mt-2 flex items-center gap-3">
         <SavedBadge show={saved} />
@@ -511,7 +566,7 @@ export function AdminSiteMediaPage() {
         <VideoSlot
           section="hero_bg"
           title="Hero background video"
-          hint="The full-screen looping clip behind the homepage headline. Upload only — YouTube isn't offered here since its embed always shows a bit of its own UI (the title card at the start, for one), which reads wrong on a background loop. For a linked YouTube video, use a work category's gallery instead."
+          hint="The full-screen looping clip behind the homepage headline. Note: a YouTube-linked video shows a brief title/channel card from YouTube's own player when it starts — that's YouTube's UI, not something this site controls."
           current={bySection('hero_bg')[0]}
           onChange={load}
         />
