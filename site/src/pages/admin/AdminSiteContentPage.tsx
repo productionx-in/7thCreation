@@ -39,7 +39,8 @@ function useSectionRow<T>(key: string, fallback: T): [T, boolean, () => void] {
 }
 
 async function saveSection(key: string, value: unknown) {
-  await supabase.from('site_content').upsert({ key, value });
+  const { error } = await supabase.from('site_content').upsert({ key, value });
+  if (error) throw error;
 }
 
 function SectionShell({
@@ -49,6 +50,7 @@ function SectionShell({
   onSave,
   saving,
   saved,
+  error,
 }: {
   title: string;
   hint?: string;
@@ -56,6 +58,7 @@ function SectionShell({
   onSave: () => void;
   saving: boolean;
   saved: boolean;
+  error: string;
 }) {
   return (
     <div className="rounded-xl border border-[#767F83]/20 p-5 sm:p-6">
@@ -72,6 +75,7 @@ function SectionShell({
           {saving ? 'Saving…' : 'Save section'}
         </button>
         {saved && <span className="text-xs uppercase tracking-widest text-[#7FBF7F]">Saved — live now</span>}
+        {error && <span className="text-xs text-[#B6421D]">{error}</span>}
       </div>
     </div>
   );
@@ -80,21 +84,27 @@ function SectionShell({
 function useSaveState() {
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [error, setError] = useState('');
   const run = async (fn: () => Promise<void>) => {
     setSaving(true);
     setSaved(false);
-    await fn();
+    setError('');
+    try {
+      await fn();
+      setSaved(true);
+      setTimeout(() => setSaved(false), 3000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Save failed');
+    }
     setSaving(false);
-    setSaved(true);
-    setTimeout(() => setSaved(false), 3000);
   };
-  return { saving, saved, run };
+  return { saving, saved, error, run };
 }
 
 function HeroEditor() {
   const [hero, loaded] = useSectionRow<Hero>('hero', HERO);
   const [draft, setDraft] = useState<Hero>(HERO);
-  const { saving, saved, run } = useSaveState();
+  const { saving, saved, error, run } = useSaveState();
 
   useEffect(() => {
     if (loaded) setDraft(hero);
@@ -109,6 +119,7 @@ function HeroEditor() {
       hint="The first thing every visitor sees — the big headline and subtext over the background video."
       saving={saving}
       saved={saved}
+      error={error}
       onSave={() => run(() => saveSection('hero', draft))}
     >
       <input value={draft.eyebrow} onChange={set('eyebrow')} placeholder="Eyebrow line" className={fieldClass} />
@@ -128,7 +139,7 @@ function HeroEditor() {
 function AboutEditor() {
   const [about, loaded] = useSectionRow<{ copy: string }>('about', { copy: ABOUT_COPY });
   const [draft, setDraft] = useState(ABOUT_COPY);
-  const { saving, saved, run } = useSaveState();
+  const { saving, saved, error, run } = useSaveState();
 
   useEffect(() => {
     if (loaded) setDraft(about.copy);
@@ -140,6 +151,7 @@ function AboutEditor() {
       hint="The paragraph in the About section, below the corner icons."
       saving={saving}
       saved={saved}
+      error={error}
       onSave={() => run(() => saveSection('about', { copy: draft }))}
     >
       <textarea value={draft} onChange={(e) => setDraft(e.target.value)} rows={5} className={`${fieldClass} resize-none`} />
@@ -150,7 +162,7 @@ function AboutEditor() {
 function ServicesEditor() {
   const [services, loaded] = useSectionRow<Services>('services', FLAGSHIP_SERVICES);
   const [draft, setDraft] = useState<Services>(FLAGSHIP_SERVICES);
-  const { saving, saved, run } = useSaveState();
+  const { saving, saved, error, run } = useSaveState();
 
   useEffect(() => {
     if (loaded) setDraft(services);
@@ -165,6 +177,7 @@ function ServicesEditor() {
       hint="The six numbered services. Order and count are fixed — only name and description are editable."
       saving={saving}
       saved={saved}
+      error={error}
       onSave={() => run(() => saveSection('services', draft))}
     >
       {draft.map((s, i) => (
@@ -183,7 +196,7 @@ function ServicesEditor() {
 function ProcessEditor() {
   const [process, loaded] = useSectionRow<ProcessSteps>('process', PROCESS);
   const [draft, setDraft] = useState<ProcessSteps>(PROCESS);
-  const { saving, saved, run } = useSaveState();
+  const { saving, saved, error, run } = useSaveState();
 
   useEffect(() => {
     if (loaded) setDraft(process);
@@ -198,6 +211,7 @@ function ProcessEditor() {
       hint="The four expandable steps in the 'How it runs' section."
       saving={saving}
       saved={saved}
+      error={error}
       onSave={() => run(() => saveSection('process', draft))}
     >
       {draft.map((s, i) => (
@@ -216,7 +230,7 @@ function ProcessEditor() {
 function ContactEditor() {
   const [contact, loaded] = useSectionRow<Contact>('contact', CONTACT);
   const [draft, setDraft] = useState<Contact>(CONTACT);
-  const { saving, saved, run } = useSaveState();
+  const { saving, saved, error, run } = useSaveState();
 
   useEffect(() => {
     if (loaded) setDraft(contact);
@@ -245,6 +259,7 @@ function ContactEditor() {
       hint="Shown in the footer, contact section, and hero header. Changing the phone number also updates the WhatsApp and call links."
       saving={saving}
       saved={saved}
+      error={error}
       onSave={() => run(() => saveSection('contact', draft))}
     >
       <div className="grid gap-3 sm:grid-cols-2">

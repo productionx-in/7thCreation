@@ -41,8 +41,12 @@ function SingleImageSlot({
     setError('');
     try {
       const url = await uploadToSiteMedia(file, section, 'cover');
-      if (current) await supabase.from('media_items').delete().eq('id', current.id);
-      await supabase.from('media_items').insert({ section, kind: 'image', url, sort_order: 0 });
+      if (current) {
+        const { error: delErr } = await supabase.from('media_items').delete().eq('id', current.id);
+        if (delErr) throw delErr;
+      }
+      const { error: insErr } = await supabase.from('media_items').insert({ section, kind: 'image', url, sort_order: 0 });
+      if (insErr) throw insErr;
       onChange();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Upload failed');
@@ -54,8 +58,13 @@ function SingleImageSlot({
   const handleRemove = async () => {
     if (!current) return;
     setBusy(true);
-    await supabase.from('media_items').delete().eq('id', current.id);
+    setError('');
+    const { error: delErr } = await supabase.from('media_items').delete().eq('id', current.id);
     setBusy(false);
+    if (delErr) {
+      setError(delErr.message);
+      return;
+    }
     onChange();
   };
 
@@ -113,8 +122,14 @@ function VideoSlot({
       const posterBlob = await captureVideoPoster(file);
       const url = await uploadToSiteMedia(file, section, 'video');
       const posterUrl = await uploadToSiteMedia(posterBlob, section, 'poster');
-      if (current) await supabase.from('media_items').delete().eq('id', current.id);
-      await supabase.from('media_items').insert({ section, kind: 'video', url, poster_url: posterUrl, sort_order: 0 });
+      if (current) {
+        const { error: delErr } = await supabase.from('media_items').delete().eq('id', current.id);
+        if (delErr) throw delErr;
+      }
+      const { error: insErr } = await supabase
+        .from('media_items')
+        .insert({ section, kind: 'video', url, poster_url: posterUrl, sort_order: 0 });
+      if (insErr) throw insErr;
       onChange();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Upload failed');
@@ -126,8 +141,13 @@ function VideoSlot({
   const handleRemove = async () => {
     if (!current) return;
     setBusy(true);
-    await supabase.from('media_items').delete().eq('id', current.id);
+    setError('');
+    const { error: delErr } = await supabase.from('media_items').delete().eq('id', current.id);
     setBusy(false);
+    if (delErr) {
+      setError(delErr.message);
+      return;
+    }
     onChange();
   };
 
@@ -198,12 +218,16 @@ function MediaListManager({
         const posterBlob = await captureVideoPoster(file);
         const url = await uploadToSiteMedia(file, section, 'video');
         const posterUrl = await uploadToSiteMedia(posterBlob, section, 'poster');
-        await supabase
+        const { error: insErr } = await supabase
           .from('media_items')
           .insert({ section, kind: 'video', url, poster_url: posterUrl, label: label || null, sort_order: nextOrder });
+        if (insErr) throw insErr;
       } else {
         const url = await uploadToSiteMedia(file, section, 'image');
-        await supabase.from('media_items').insert({ section, kind: 'image', url, label: label || null, sort_order: nextOrder });
+        const { error: insErr } = await supabase
+          .from('media_items')
+          .insert({ section, kind: 'image', url, label: label || null, sort_order: nextOrder });
+        if (insErr) throw insErr;
       }
       setLabel('');
       onChange();
@@ -215,7 +239,12 @@ function MediaListManager({
   };
 
   const remove = async (id: string) => {
-    await supabase.from('media_items').delete().eq('id', id);
+    setError('');
+    const { error: delErr } = await supabase.from('media_items').delete().eq('id', id);
+    if (delErr) {
+      setError(delErr.message);
+      return;
+    }
     onChange();
   };
 
@@ -223,8 +252,13 @@ function MediaListManager({
     const target = items[index + dir];
     const current = items[index];
     if (!target) return;
-    await supabase.from('media_items').update({ sort_order: target.sort_order }).eq('id', current.id);
-    await supabase.from('media_items').update({ sort_order: current.sort_order }).eq('id', target.id);
+    setError('');
+    const { error: e1 } = await supabase.from('media_items').update({ sort_order: target.sort_order }).eq('id', current.id);
+    const { error: e2 } = await supabase.from('media_items').update({ sort_order: current.sort_order }).eq('id', target.id);
+    if (e1 || e2) {
+      setError((e1 ?? e2)!.message);
+      return;
+    }
     onChange();
   };
 
